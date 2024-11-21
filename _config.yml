@@ -1,0 +1,25 @@
+# Setup
+title:               Japanese Society of Systems Ethology
+tagline:             'Japanese Society of Systems Ethology homepage'
+description:         'Here is the society of Systems Ethology'
+url:                 "https://systemsethology.github.io"
+baseurl:             "/website"
+paginate:            5
+permalink:           pretty
+markdown:            kramdown
+
+remote_theme: jekyll-theme-lanyon
+plugins:
+  - jekyll-remote-theme
+  - jekyll-paginate
+
+# About/contact
+author:
+  name:              Hayato M. Yamanouchi
+  url:               https://github.com/HMYamano
+  email:             haya.m.yamano.neuro@gmail.com
+
+
+# Custom vars
+version:             beta version
+google_analytics_id: #UA-XXXX-Y

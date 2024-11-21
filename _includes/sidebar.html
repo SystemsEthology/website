@@ -1,0 +1,36 @@
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" {% if page.title =="Home" %}checked{% endif %}>
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+    <!-- Sidebar logo -->
+    <!-- <div class="sidebar-logo" style="text-align: center;">
+      <img src="/YORU_doc/logos/YORU_logo_sns.png" width="60%">
+    </div> -->
+
+  <div class="sidebar-item">
+    <p>{{ site.description }}</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <!-- Home link always at the top -->
+    <a class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}" href="{{ '/' | absolute_url }}">Home</a>
+  
+    <!-- Dynamically generate other pages in specified order -->
+    {% assign ordered_pages = site.pages | where: "layout", "page" | sort: "order" %}
+    {% for node in ordered_pages %}
+      {% if node.title and node.title != "Home" %}
+        <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url | absolute_url }}">{{ node.title }}</a>
+      {% endif %}
+    {% endfor %}
+
+    <span class="sidebar-nav-item">Currently {{ site.version }}</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy;Copyright {{ site.time | date: '%Y' }} Systems Ethology
+    </p>
+  </div>
+</div>
