@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About システム行動学研究会
+title: システム行動学研究会とは
 order: 2
 ---
 

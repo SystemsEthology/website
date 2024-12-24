@@ -20,12 +20,15 @@
     <!-- Dynamically generate other pages in specified order -->
     {% assign ordered_pages = site.pages | where: "layout", "page" | sort: "order" %}
     {% for node in ordered_pages %}
-      {% if node.title and node.title != "Home" %}
-        <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url | absolute_url }}">{{ node.title }}</a>
-      {% endif %}
+      <!-- Exclude pages in the 'event' folder -->
+      {% unless node.path contains 'event/' %}
+        {% if node.title and node.title != "Home" %}
+          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url | absolute_url }}">{{ node.title }}</a>
+        {% endif %}
+      {% endunless %}
     {% endfor %}
-
-    <span class="sidebar-nav-item">Page Update {{  site.time | date: '%Y-%m-%d' }}</span>
+  
+    <span class="sidebar-nav-item">Page Update {{ site.time | date: '%Y-%m-%d' }}</span>
   </nav>
 
   <div class="sidebar-item">
