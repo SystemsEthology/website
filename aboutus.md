@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About us
+title: About システム行動学研究会
 order: 2
 ---
 

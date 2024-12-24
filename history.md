@@ -1,7 +1,7 @@
 ---
 layout: default
 title: History
-order: 1
+order: 3
 ---
 
-# 
+# News
