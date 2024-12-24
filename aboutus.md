@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: About システム行動学研究会
 order: 2
 ---
