@@ -1,6 +1,6 @@
 ---
 layout: page
-title: History
+title: 過去の活動
 order: 3
 ---
 
