@@ -13,6 +13,3 @@ title: Home
 
 
 
-# サイト作成者
-Hayato M Yamanouchi - haya.m.yamano.neuro@gmail.com
-
