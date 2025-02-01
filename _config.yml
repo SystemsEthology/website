@@ -8,6 +8,8 @@ paginate:            5
 permalink:           pretty
 markdown:            kramdown
 
+style: /assets/css/style.css
+
 remote_theme: jekyll-theme-lanyon
 plugins:
   - jekyll-remote-theme
