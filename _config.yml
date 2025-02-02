@@ -3,7 +3,7 @@ title:               システム行動学研究会
 tagline:             'システム行動学研究会　(Systems Ethology)'
 description:         'システム行動学研究会のHPです。システム行動学とは、行動をシステムとして捉え、分野を問わずさまざまなアプローチで解明していこうとする学問です。'
 url:                 "https://systemsethology.github.io"
-baseurl:             "/website"
+baseurl:             /website
 paginate:            5
 permalink:           pretty
 markdown:            kramdown
