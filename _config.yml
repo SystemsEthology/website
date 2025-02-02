@@ -17,6 +17,10 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+gems:
+  - jekyll-sitemap
+future: true
+
 # About/contact
 author:
   name:              Hayato M. Yamanouchi
