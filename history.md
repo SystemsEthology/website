@@ -4,7 +4,7 @@ title: 過去の活動
 order: 3
 ---
 
-# News
+## News
 
 - 2024.11.9  創価大 﨑山朋子 准教授, 信州大 森山徹 准教授をお招きして、「第一回 システム行動学スペシャルセミナー」第49回行動進化生態こまば教室（東京大学）を開催しました。
   [website](https://sites.google.com/site/komabaecoevo/past_seminor/%E7%AC%AC49%E5%9B%9E-%E7%AC%AC%E4%B8%80%E5%9B%9E-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E8%A1%8C%E5%8B%95%E5%AD%A6%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%BB%E3%83%9F%E3%83%8A%E3%83%BC?authuser=0)
