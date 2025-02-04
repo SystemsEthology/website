@@ -1,6 +1,7 @@
 ---
 layout: page
 title: >
+  {: align="center"}
   第一回システム行動学研究会  <br>
   〜画像解析と行動学〜
 ---
