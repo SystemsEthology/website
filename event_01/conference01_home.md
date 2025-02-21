@@ -80,7 +80,7 @@ title: Home
 <br>
 <br>
 
-## [プレナリートーク講演者](/event_01/conference01_invited_talk.md)  
+## [プレナリートーク講演者](/conference01_invited_talk.md)  
 ***
 池上高志（東京大学）　　
 西成活裕（東京大学）　　
@@ -89,7 +89,7 @@ title: Home
 <br>
 <br>
 
-## [招待講演者](/event_01/conference01_plenary_talk.md)
+## [招待講演者](/conference01_plenary_talk.md)
 ***
 大脇大（東北大学）  
 木下充代（総合研究大学院大学）  

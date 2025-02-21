@@ -19,7 +19,7 @@
   
     <!-- Dynamically generate only Markdown files in the 'event01' folder -->
     {% assign event_pages = site.pages | where: "layout", "page_conference" %}
-    {% assign event_pages = event_pages | where_exp:"node", "node.path contains 'event01/'" %}
+    {% assign event_pages = event_pages | where_exp:"node", "node.path contains '/event01/'" %}
     {% for node in event_pages %}
       {% if node.path contains '.md' %}
         <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url | absolute_url }}">
