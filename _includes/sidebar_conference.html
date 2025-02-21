@@ -18,7 +18,7 @@
     <a class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}" href="{{ '/conference01_home/' | absolute_url }}">Home</a>
   
     <!-- Dynamically generate only Markdown files in the 'event01' folder -->
-    {% assign event_pages = site.pages | where: "layout", "page" %}
+    {% assign event_pages = site.pages | where: "layout", "page_conference" %}
     {% assign event_pages = event_pages | where_exp:"node", "node.path contains 'event01/'" %}
     {% for node in event_pages %}
       {% if node.path contains '.md' %}

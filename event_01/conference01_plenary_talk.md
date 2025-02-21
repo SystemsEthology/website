@@ -1,42 +1,9 @@
 ---
-layout: default_conference
+layout: page_conference
 title: プレナリートーク
 order: 1
 ---
 
-<style>
-.column-left {
-  float: left;
-  width: 33.33%;
-  text-align: left;
-}
-
-.column-center {
-  float: left;
-  width: 33.33%;
-  text-align: center;
-}
-
-.column-right {
-  float: left;
-  width: 33.33%;
-  text-align: right;
-}
-
-/* 全幅を使う場合 */
-.column-one {
-  float: left;
-  width: 100%;
-  text-align: left;
-}
-
-/* 浮動要素のクリア */
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-</style>
 # 第一回システム行動学研究会 n/ 〜画像解析と行動学〜
 
 <br>

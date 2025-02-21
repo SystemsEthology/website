@@ -1,5 +1,5 @@
 ---
-layout: default_conference
+layout: page_conference
 title: 招待講演
 order: 2
 ---
