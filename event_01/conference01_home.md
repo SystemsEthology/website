@@ -1,9 +1,42 @@
 ---
-layout: page
-title: >
-  第一回システム行動学研究会  
-  〜画像解析と行動学〜
+layout: default_conference
+title: Home
 ---
+
+<style>
+.column-left {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+
+.column-center {
+  float: left;
+  width: 33.33%;s
+  text-align: center;
+}
+
+.column-right {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+
+/* 全幅を使う場合 */
+.column-one {
+  float: left;
+  width: 100%;
+  text-align: left;
+}
+
+/* 浮動要素のクリア */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+# 第一回システム行動学研究会 n/ 〜画像解析と行動学〜
 
 <br>
 <br>
@@ -83,36 +116,43 @@ title: >
 
 ## プレナリートーク講演者
 ***
-池上高志（東京大学）  
-西成活裕（東京大学）  
-西森拓（明治大学）  
-(順不同)
+<div class="clearfix">
+  <div class="column-left">
+    池上高志（東京大学）
+  </div>
+  <div class="column-center">
+    西成活裕（東京大学）
+  </div>
+  <div class="column-right">
+    西森拓（明治大学）
+  </div>
+</div>
 
 <br>
 <br>
 
 ## 招待講演者
 ***
-大脇大（東北大学）  
-風間北斗（理化学研究所）  
-川嶋宏彰（兵庫県立大学）  
-木下充代（総合研究大学院大学）  
-新村毅（東京農工大学）  
-西海望（基礎生物学研究所）  
-廣井誠（沖縄科学技術大学院大学）  
-(順不同)
+<div class="clearfix">
+  <div class="column-left">
+    大脇大（東北大学）  
+    木下充代（総合研究大学院大学）  
+    廣井誠（沖縄科学技術大学院大学）  
+  </div>
+  <div class="column-center">
+    風間北斗（理化学研究所）  
+    新村毅（東京農工大学）  
+  </div>
+  <div class="column-right">
+    川嶋宏彰（兵庫県立大学）  
+    西海望（基礎生物学研究所）   
+  </div>
+</div>
 
 <br>
 <br>
 
-## 参加登録
-***
-TBA
-
-<br>
-<br>
-
-## 要旨登録
+## 参加・要旨登録
 ***
 TBA
 
