@@ -10,7 +10,7 @@ order: 3
 
 東北大学
 
-<img src="{{ site.baseurl }}/event_01/event_01/images/owaki.png" width="500px">  
+<img src="{{ site.baseurl }}/event_01/event_01/images/owaki.png" width="300px">  
 
 ## 運動への介入から紐解く生物の潜在的適応能  
 
@@ -24,7 +24,7 @@ order: 3
 
 総合研究大学院大学  
 
-<img src="{{ site.baseurl }}/event_01/images/kinoshita.png" width="500px">  
+<img src="{{ site.baseurl }}/event_01/images/kinoshita.png" width="300px">  
 
 ## アゲハチョウの視覚システム  
 
@@ -38,7 +38,7 @@ order: 3
 
 沖縄科学技術大学院大学
 
-<img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="500px">   
+<img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="300px">   
 
 ## 広視野高精細映像で追う多個体の姿勢推定と皮膚パターン解析
 
@@ -52,7 +52,7 @@ order: 3
 
 理化学研究所脳神経科学研究センター
 
-<img src="{{ site.baseurl }}/event_01/images/kazama.jpg" width="500px">  
+<img src="{{ site.baseurl }}/event_01/images/kazama.jpg" width="300px">  
 
 ## 匂いの価値に基づいた嗅覚行動を司る神経回路動態とメカニズム  
 
@@ -66,7 +66,7 @@ order: 3
 
 東京農工大学  
 
-<img src="{{ site.baseurl }}/event_01/images/shinmura.jpg" width="500px">
+<img src="{{ site.baseurl }}/event_01/images/shinmura.jpg" width="300px">
 
 ## 鳥類の行動のシステム生物学
 
@@ -80,7 +80,7 @@ order: 3
 
 兵庫県立大学
 
-<img src="{{ site.baseurl }}/event_01/images/kawashima.png" width="500px">
+<img src="{{ site.baseurl }}/event_01/images/kawashima.png" width="300px">
 
 ## 群れの機械学習と制御
 
@@ -94,7 +94,7 @@ order: 3
 
 自然科学研究機構基礎生物学研究所
 
-<img src="{{ site.baseurl }}/event_01/images/nishiumi.png" width="500px">
+<img src="{{ site.baseurl }}/event_01/images/nishiumi.png" width="300px">
 
 ## 動物に学ぶターゲット追跡戦略のシステム論
 
