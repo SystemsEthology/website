@@ -52,19 +52,19 @@ title: Home
 
 池上高志（東京大学）
 
-<img src="/event_01/images/ikegami.jpg" width="100px">  
+<img src="images/ikegami.jpg" width="100px">  
 
 <br>
 
 西成活裕（東京大学）　　
 
-<img src="/event_01/images/nishinari.jpeg" width="100px">  
+<img src="images/nishinari.jpeg" width="100px">  
 
 <br>
 
 西森拓（明治大学）　　
 
-<img src="/event_01/images/nishimori.png" width="100px">  
+<img src="images/nishimori.png" width="100px">  
 
 
 <br>
@@ -75,43 +75,43 @@ title: Home
 ***
 大脇大（東北大学）  
 
-<img src="/event_01/images/owaki.png" width="100px">  
+<img src="images/owaki.png" width="100px">  
 
 <br>
 
 木下充代（総合研究大学院大学）  
 
-<img src="/event_01/images/kinoshita.png" width="100px">  
+<img src="images/kinoshita.png" width="100px">  
 
 <br>
 
 廣井誠（沖縄科学技術大学院大学）  
 
-<img src="/event_01/images/hiroi.jpg" width="100px">  
+<img src="images/hiroi.jpg" width="100px">  
 
 <br>
 
 風間北斗（理化学研究所）  
 
-<img src="/event_01/images/kazama.jpg" width="100px">  
+<img src="images/kazama.jpg" width="100px">  
 
 <br>
 
 新村毅（東京農工大学）  
 
-<img src="/event_01/images/shinmura.jpg" width="100px">  
+<img src="images/shinmura.jpg" width="100px">  
 
 <br>
 
 川嶋宏彰（兵庫県立大学）  
 
-<img src="/event_01/images/kawashima.png" width="100px">  
+<img src="images/kawashima.png" width="100px">  
 
 <br>
 
 西海望（基礎生物学研究所）   
 
-<img src="/event_01/images/nishiumi.png" width="100px">  
+<img src="images/nishiumi.png" width="100px">  
 
 <br>
 <br>
