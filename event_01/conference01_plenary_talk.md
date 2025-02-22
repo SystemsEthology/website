@@ -8,7 +8,7 @@ order: 2
 
 東京大学大学院  
 
-<img src="/event_01/images/ikegami.jpg" width="100px">  
+<img src="{{ site.baseurl }}/event_01/images/ikegami.jpg" width="500px">  
 
 ##  A Community First Theory :  集合知の新しい理解に向けて  
 
@@ -22,7 +22,7 @@ order: 2
 
 東京大学大学院
 
-<img src="/event_01/images/nishinari.jpeg" width="100px">  
+<img src="{{ site.baseurl }}/event_01/images/nishinari.jpeg" width="500px">  
 
 
 ## 群集のマネジメントと混雑緩和
@@ -37,7 +37,7 @@ order: 2
 
 明治大学先端数理科学インスティテュート
 
-<img src="/event_01/images/nishimori.png" width="100px">  
+<img src="{{ site.baseurl }}/event_01/images/nishimori.png" width="500px">  
 
 
 ## 個のダイナミクスから集団のロジックへ <br> —アリ集団の行動測定と理論解析--  
