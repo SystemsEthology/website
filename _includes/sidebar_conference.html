@@ -15,7 +15,7 @@
 
   <nav class="sidebar-nav">
     <!-- Home link always at the top -->
-    <a class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}" href="{{ '/event_01/conference01_home/' | absolute_url }}">Home</a>
+    <a class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}" href="{{ '/event_01/conference01_home/' | absolute_url }}">ホーム</a>
   
     <!-- Dynamically generate only Markdown files in the 'event01' folder -->
     {% assign event_pages = site.pages | where: "layout", "page_conference" %}
