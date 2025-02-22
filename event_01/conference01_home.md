@@ -51,13 +51,13 @@ title: Home
 ***
 
 池上高志（東京大学）  
-<img src="images/池上高志.jpg" width="100px">
+<img src="/event_01/images/池上高志.jpg" width="100px">
 <br>
 西成活裕（東京大学）　　
-<img src="images/西成活裕.jpeg" width="100px">
+<img src="/event_01/images/西成活裕.jpeg" width="100px">
 <br>
 西森拓（明治大学）　　
-<img src="images/西森拓.png" width="100px">
+<img src="/event_01/images/西森拓.png" width="100px">
 
 <br>
 <br>
@@ -65,25 +65,25 @@ title: Home
 ## [招待講演者](/conference01_plenary_talk.md)
 ***
 大脇大（東北大学）  
-<img src="images/大脇大.png" width="100px">
+<img src="/event_01/images/大脇大.png" width="100px">
 <br>
 木下充代（総合研究大学院大学）  
-<img src="images/木下充代.png" width="100px">
+<img src="/event_01/images/木下充代.png" width="100px">
 <br>
 廣井誠（沖縄科学技術大学院大学）  
-<img src="images/廣井誠.jpg" width="100px">
+<img src="/event_01/images/廣井誠.jpg" width="100px">
 <br>
 風間北斗（理化学研究所）  
-<img src="images/風間北斗.jpg" width="100px">
+<img src="/event_01/images/風間北斗.jpg" width="100px">
 <br>
 新村毅（東京農工大学）  
-<img src="images/新村毅.jpg" width="100px">
+<img src="/event_01/images/新村毅.jpg" width="100px">
 <br>
 川嶋宏彰（兵庫県立大学）  
-<img src="images/川嶋宏彰.png" width="100px">
+<img src="/event_01/images/川嶋宏彰.png" width="100px">
 <br>
 西海望（基礎生物学研究所）   
-<img src="images/西海望.png" width="100px">
+<img src="/event_01/images/西海望.png" width="100px">
 <br>
 <br>
 
