@@ -10,7 +10,7 @@ order: 3
 
 東北大学
 
-<img src="{{ site.baseurl }}/event_01/event_01/images/owaki.png" width="300px">  
+<img src="{{ site.baseurl }}/event_01/images/owaki.png" width="300px">  
 
 ## 運動への介入から紐解く生物の潜在的適応能  
 
