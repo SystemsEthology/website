@@ -10,11 +10,11 @@ order: 2
 
 <img src="{{ site.baseurl }}/event_01/images/ikegami.jpg" width="300px">  
 
-##  A Community First Theory :  集合知の新しい理解に向けて
+##  A Community First Theory : 集合知の新しい理解に向けて
 
 <br>
 
-####　キーワード：人工生命、複雑系、非線形科学、　アンドロイド、生物シミュレーション  
+#### キーワード：人工生命、複雑系、非線形科学、　アンドロイド、生物シミュレーション
 
 ***
 
