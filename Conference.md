@@ -9,4 +9,3 @@ order: 1
     2025年5月30日, 31日  
     東京大学駒場第一キャンパス　21KOMCEE  
 
-## Past Conference
