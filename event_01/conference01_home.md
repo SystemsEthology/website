@@ -47,6 +47,14 @@ title: Home
 <br>
 <br>
 
+## ポスター
+***
+<img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png" width="250px">   <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.png" width="250px"> 
+
+
+<br>
+<br>
+
 ## [プレナリートーク講演者](/conference01_invited_talk.md)  
 ***
 
