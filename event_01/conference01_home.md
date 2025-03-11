@@ -75,7 +75,7 @@ title: Home
 <div style="display: flex; align-items: center; gap: 20px;">
   <div style="display: flex; flex-direction: column; height: 250px; text-align: center;">
     <p>大脇大<br>（東北大学）</p>
-    <img src="{{ site.baseurl }}/event_01/images/owaki.png" width="250px" style="margin-top: auto;">
+    <img src="{{ site.baseurl }}/event_01/images/owaki.png" width="186.66px" style="margin-top: auto;">
   </div>
   <div style="display: flex; flex-direction: column; height: 250px; text-align: center;">
     <p>木下充代<br>（総合研究大学院大学）</p>
@@ -83,7 +83,7 @@ title: Home
   </div>
   <div style="display: flex; flex-direction: column; height: 250px; text-align: center;">
     <p>廣井誠<br>（沖縄科学技術大学院大学）</p>
-    <img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="250px" style="margin-top: auto;">
+    <img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="186.66px" style="margin-top: auto;">
   </div>
 </div>
 
