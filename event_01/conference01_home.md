@@ -5,20 +5,17 @@ title: Home
 # 第一回システム行動学研究会 <br> 〜画像解析と行動学〜
 
 <br>
-<br>
 
 ## 日時
 ***
 2025年5月30日(金), 31日(土)
 
 <br>
-<br>
 
 ## テーマ
 ***
 行動の追跡（トラッキング）や行動分類、VR行動介入、イメージングなど、画像解析を中心とした動物行動学の研究集会
 
-<br>
 <br>
 
 ## 趣旨
@@ -49,10 +46,7 @@ title: Home
 
 ## ポスター
 ***
-<div style="display: flex; gap: 10px;">
-    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png" width="250px">
-    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.png" width="250px">
-</div>
+<img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png" width="250px">   <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.png" width="250px"> 
 
 <br>
 <br>
