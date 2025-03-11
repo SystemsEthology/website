@@ -82,7 +82,7 @@ title: Home
     <img src="{{ site.baseurl }}/event_01/images/kinoshita.png" width="186.66px" style="margin-top: auto;">
   </div>
   <div style="display: flex; flex-direction: column; height: 300px; text-align: center;">
-    <p>廣井誠<br>（OIST）</p>
+    <p>廣井誠<br>（沖縄科学技術大学院大学）</p>
     <img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="186.66px" style="margin-top: auto;">
   </div>
 </div>
