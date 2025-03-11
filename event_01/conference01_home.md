@@ -62,15 +62,15 @@ title: Home
 ***
 <div style="display: flex; align-items: center; gap: 20px;">
     <div style="text-align: center;">
-        <p>池上高志（東京大学）</p>
+        <p>池上高志<br>（東京大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/ikegami.jpg" width="230px">
     </div>
     <div style="text-align: center;">
-        <p>西成活裕（東京大学）</p>
+        <p>西成活裕<br>（東京大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/nishinari.jpeg" width="230px">
     </div>
     <div style="text-align: center;">
-        <p>西森拓（明治大学）</p>
+        <p>西森拓<br>（明治大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/nishimori.png" width="230px">
     </div>
 </div>
