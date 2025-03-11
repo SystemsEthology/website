@@ -20,12 +20,33 @@
       </div>
 
       <div class="container content">
-        {{ content }}
+        <div class="image-grid">
+          {{ content }}
+        </div>
       </div>
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
     <script src='{{ site.baseurl }}/public/js/script.js'></script>
+
+    <style>
+      .image-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .image-grid img {
+        width: 250px;
+        transition: transform 0.2s;
+        cursor: pointer;
+      }
+
+      .image-grid img:hover {
+        transform: scale(1.05);
+      }
+    </style>
   </body>
 </html>
