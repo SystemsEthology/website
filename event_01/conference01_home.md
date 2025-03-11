@@ -91,7 +91,7 @@ title: Home
         <img src="{{ site.baseurl }}/event_01/images/kinoshita.png" width="230px">
     </div>
     <div style="text-align: center;">
-        <p>廣井誠<br>（沖縄科学技術大学院大学）</p>
+        <p>廣井誠<br>（OIST）</p>
         <img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="230px">
     </div>
 </div>
@@ -112,18 +112,14 @@ title: Home
 </div>
 
 <div style="display: flex; align-items: center; gap: 20px;">
-    <div style="text-align: center;">
-        <p>西海望<br>（基礎生物学研究所）</p>
-        <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" width="230px">
-    </div>
+  <!-- 空の要素を先頭に追加 -->
+  <div style="flex-grow: 1;"></div>
+  <div style="text-align: center;">
+      <p>西海望<br>（基礎生物学研究所）</p>
+      <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" style="width:230px; height:auto; object-fit:contain;">
+  </div>
 </div>
 
-<div style="display: flex; align-items: center; gap: 20px;">
-    <div style="text-align: center;">
-        <p>西海望（基礎生物学研究所）</p>
-        <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" width="230px">
-    </div>
-</div>
 
 <br>
 <br>
