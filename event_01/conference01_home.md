@@ -83,31 +83,38 @@ title: Home
 ***
 <div style="display: flex; align-items: center; gap: 20px;">
     <div style="text-align: center;">
-        <p>大脇大（東北大学）</p>
+        <p>大脇大<br>（東北大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/owaki.png" width="230px">
     </div>
     <div style="text-align: center;">
-        <p>木下充代（総合研究大学院大学）</p>
+        <p>木下充代<br>（総合研究大学院大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/kinoshita.png" width="230px">
     </div>
     <div style="text-align: center;">
-        <p>廣井誠（沖縄科学技術大学院大学）</p>
+        <p>廣井誠<br>（沖縄科学技術大学院大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="230px">
     </div>
 </div>
 
 <div style="display: flex; align-items: center; gap: 20px;">
     <div style="text-align: center;">
-        <p>風間北斗（理化学研究所）</p>
+        <p>風間北斗<br>（理化学研究所）</p>
         <img src="{{ site.baseurl }}/event_01/images/kazama.jpg" width="230px">
     </div>
     <div style="text-align: center;">
-        <p>新村毅（東京農工大学）</p>
+        <p>新村毅<br>（東京農工大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/shinmura.jpg" width="230px">
     </div>
     <div style="text-align: center;">
-        <p>川嶋宏彰（兵庫県立大学）</p>
+        <p>川嶋宏彰<br>（兵庫県立大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/kawashima.png" width="230px">
+    </div>
+</div>
+
+<div style="display: flex; align-items: center; gap: 20px;">
+    <div style="text-align: center;">
+        <p>西海望<br>（基礎生物学研究所）</p>
+        <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" width="230px">
     </div>
 </div>
 
