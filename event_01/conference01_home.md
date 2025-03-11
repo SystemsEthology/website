@@ -112,14 +112,13 @@ title: Home
 </div>
 
 <div style="display: flex; align-items: center; gap: 20px;">
-  <!-- 空の要素を先頭に追加 -->
-  <div style="flex-grow: 1;"></div>
   <div style="text-align: center;">
       <p>西海望<br>（基礎生物学研究所）</p>
       <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" style="width:230px; height:auto; object-fit:contain;">
   </div>
+  <!-- 空の要素を末尾に追加 -->
+  <div style="flex-grow: 1;"></div>
 </div>
-
 
 <br>
 <br>
