@@ -72,7 +72,7 @@ title: Home
 
 ## [招待講演者](/conference01_plenary_talk.md)
 ***
-<div style="display: flex; gap: 20px;">
+<div style="display: flex; align-items: center; gap: 20px;">
   <div style="display: flex; flex-direction: column; height: 250px; text-align: center;">
     <p>大脇大<br>（東北大学）</p>
     <img src="{{ site.baseurl }}/event_01/images/owaki.png" width="250px" style="margin-top: auto;">
