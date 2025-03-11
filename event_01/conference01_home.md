@@ -105,7 +105,7 @@ title: Home
 <div style="display: flex; align-items: center; gap: 20px; justify-content: flex-start;">
   <div style="text-align: center;">
       <p>西海望<br>（基礎生物学研究所）</p>
-      <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" style="width:160px; height:auto; object-fit:contain;">
+      <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" style="width:186.66px; height:auto; object-fit:contain;">
   </div>
 </div>
 
