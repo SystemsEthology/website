@@ -10,7 +10,5 @@ title: ホーム
 
 ## ニュース
 - 2025年5月30日, 31日に[第一回システム行動学研究会　〜画像解析と行動学〜](/event_01/conference01_home.md)  を東京大学　駒場キャンパスで開催します。
-<br>
 - 2024.11.9 創価大 﨑山朋子 准教授, 信州大 森山徹 准教授をお招きして、「第一回 システム行動学スペシャルセミナー」第49回行動進化生態こまば教室（東京大学）を開催しました。 website
-<br>
 - 2024.9.19 国際学会SWARM2024にて、OS “Systems Ethology: Toward Elucidating the Design Principles of Animal Behavior”を開催しました。オーガナイザーは、納富祐典、山ノ内勇斗、田中良弥、久本峻平。 SWARM2024 website
