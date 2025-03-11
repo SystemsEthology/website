@@ -49,8 +49,10 @@ title: Home
 
 ## ポスター
 ***
-<img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png" width="250px">   <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.png" width="250px"> 
-
+<div style="display: flex; gap: 10px;">
+    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png" width="250px">
+    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.png" width="250px">
+</div>
 
 <br>
 <br>
