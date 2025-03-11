@@ -45,72 +45,61 @@ title: Home
 <a href="{{ site.baseurl }}/event_01/images/poster_systems_ethology.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
 
 <div style="display: flex; align-items: center; gap: 20px;">
-    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.jpg" width="186.66x">
-    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.jpg" width="186.66px">
+    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.jpg" width="180x">
+    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.jpg" width="180px">
 </div>
 
 <br>
-
-## [プレナリートーク講演者](/conference01_invited_talk.md)  
+## [プレナリートーク講演者](/conference01_invited_talk.md)
 ***
-<div style="display: flex; align-items: center; gap: 20px;">
-    <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
-        <p>池上高志<br>（東京大学）</p>
-        <img src="{{ site.baseurl }}/event_01/images/ikegami.jpg" width="186.66px">
-    </div>
-    <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
-        <p>西成活裕<br>（東京大学）</p>
-        <img src="{{ site.baseurl }}/event_01/images/nishinari.jpeg" width="186.66px">
-    </div>
-    <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
-        <p>西森拓<br>（明治大学）</p>
-        <img src="{{ site.baseurl }}/event_01/images/nishimori.png" width="186.66px">
-    </div>
+<div style="display: grid; grid-template-columns: repeat(2, auto); gap: 20px; justify-content: center;">
+  <div style="text-align: center;">
+    <p>池上高志<br>（東京大学）</p>
+    <img src="{{ site.baseurl }}/event_01/images/ikegami.jpg" width="180px">
+  </div>
+  <div style="text-align: center;">
+    <p>西成活裕<br>（東京大学）</p>
+    <img src="{{ site.baseurl }}/event_01/images/nishinari.jpeg" width="180px">
+  </div>
+  <div style="text-align: center;">
+    <p>西森拓<br>（明治大学）</p>
+    <img src="{{ site.baseurl }}/event_01/images/nishimori.png" width="180px">
+  </div>
 </div>
 
 <br>
 
 ## [招待講演者](/conference01_plenary_talk.md)
 ***
-<div style="display: flex; align-items: center; gap: 40px;">
-  <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
+<div style="display: grid; grid-template-columns: repeat(2, auto); gap: 20px; justify-content: center;">
+  <div style="text-align: center;">
     <p>大脇大<br>（東北大学）</p>
-    <img src="{{ site.baseurl }}/event_01/images/owaki.png" width="186.66px" style="margin-top: auto;">
+    <img src="{{ site.baseurl }}/event_01/images/owaki.png" width="180px">
   </div>
-  <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
+  <div style="text-align: center;">
     <p>木下充代<br>（総合研究大学院大学）</p>
-    <img src="{{ site.baseurl }}/event_01/images/kinoshita.png" width="186.66px" style="margin-top: auto;">
+    <img src="{{ site.baseurl }}/event_01/images/kinoshita.png" width="180px">
   </div>
-  <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
+  <div style="text-align: center;">
     <p>廣井誠<br>（沖縄科学技術大学院大学）</p>
-    <img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="186.66px" style="margin-top: auto;">
+    <img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="180px">
   </div>
-</div>
-
-
-<div style="display: flex; align-items: center; gap: 20px;">
-    <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
-        <p>風間北斗<br>（理化学研究所）</p>
-        <img src="{{ site.baseurl }}/event_01/images/kazama.jpg" width="186.66px">
-    </div>
-    <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
-        <p>新村毅<br>（東京農工大学）</p>
-        <img src="{{ site.baseurl }}/event_01/images/shinmura.jpg" width="186.66px">
-    </div>
-    <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
-        <p>川嶋宏彰<br>（兵庫県立大学）</p>
-        <img src="{{ site.baseurl }}/event_01/images/kawashima.png" width="186.66px">
-    </div>
-</div>
-
-<div style="display: flex; align-items: center; gap: 20px;">
-  <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
-      <p>西海望<br>（基礎生物学研究所）</p>
-      <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" style="width:186.66px; height:auto; object-fit:contain;">
+  <div style="text-align: center;">
+    <p>風間北斗<br>（理化学研究所）</p>
+    <img src="{{ site.baseurl }}/event_01/images/kazama.jpg" width="180px">
   </div>
-  <!-- 空の要素を末尾に追加 -->
-  <div style="width: 186.66px;"></div>
-  <div style="width: 186.66px;"></div>
+  <div style="text-align: center;">
+    <p>新村毅<br>（東京農工大学）</p>
+    <img src="{{ site.baseurl }}/event_01/images/shinmura.jpg" width="180px">
+  </div>
+  <div style="text-align: center;">
+    <p>川嶋宏彰<br>（兵庫県立大学）</p>
+    <img src="{{ site.baseurl }}/event_01/images/kawashima.png" width="180px">
+  </div>
+  <div style="text-align: center;">
+    <p>西海望<br>（基礎生物学研究所）</p>
+    <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" width="180px" style="height:auto; object-fit:contain;">
+  </div>
 </div>
 
 <br>
