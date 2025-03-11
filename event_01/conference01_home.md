@@ -50,28 +50,6 @@ title: Home
 ***
 <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png" width="250px">   <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.png" width="250px"> 
 
-
-<div class="image-grid">
-    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png" onclick="openModal('{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png')">
-    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png" onclick="openModal('{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.png')">
-</div>
-
-<div id="imageModal" class="modal" onclick="closeModal()">
-    <img id="modalImage" class="modal-content">
-</div>
-
-<script>
-    function openModal(imageSrc) {
-        document.getElementById("modalImage").src = imageSrc;
-        document.getElementById("imageModal").style.display = "block";
-    }
-
-    function closeModal() {
-        document.getElementById("imageModal").style.display = "none";
-    }
-</script>
-
-
 <br>
 <br>
 
