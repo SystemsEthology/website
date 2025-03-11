@@ -72,20 +72,21 @@ title: Home
 
 ## [招待講演者](/conference01_plenary_talk.md)
 ***
-<div style="display: flex; align-items: center; gap: 20px;">
-    <div style="text-align: center;">
-        <p>大脇大<br>（東北大学）</p>
-        <img src="{{ site.baseurl }}/event_01/images/owaki.png" width="186.66px">
-    </div>
-    <div style="text-align: center;">
-        <p>木下充代<br>（総合研究大学院大学）</p>
-        <img src="{{ site.baseurl }}/event_01/images/kinoshita.png" width="186.66px">
-    </div>
-    <div style="text-align: center;">
-        <p>廣井誠<br>（OIST）</p>
-        <img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="186.66px">
-    </div>
+<div style="display: flex; gap: 20px;">
+  <div style="display: flex; flex-direction: column; height: 300px; text-align: center;">
+    <p>大脇大<br>（東北大学）</p>
+    <img src="{{ site.baseurl }}/event_01/images/owaki.png" width="186.66px" style="margin-top: auto;">
+  </div>
+  <div style="display: flex; flex-direction: column; height: 300px; text-align: center;">
+    <p>木下充代<br>（総合研究大学院大学）</p>
+    <img src="{{ site.baseurl }}/event_01/images/kinoshita.png" width="186.66px" style="margin-top: auto;">
+  </div>
+  <div style="display: flex; flex-direction: column; height: 300px; text-align: center;">
+    <p>廣井誠<br>（OIST）</p>
+    <img src="{{ site.baseurl }}/event_01/images/hiroi.jpg" width="186.66px" style="margin-top: auto;">
+  </div>
 </div>
+
 
 <div style="display: flex; align-items: center; gap: 20px;">
     <div style="text-align: center;">
