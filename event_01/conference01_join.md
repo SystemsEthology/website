@@ -10,7 +10,7 @@ order: 4
 
 ### 2025年5月16日 締め切り
 
-[参加登録フォーム](https://docs.google.com/forms/d/e/1FAIpQLSfq8GA7E7LMyP78fGL7rFZV4hzA1bGYx6zy3UzEb74pd0jR1g/viewform?usp=dialog)
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfq8GA7E7LMyP78fGL7rFZV4hzA1bGYx6zy3UzEb74pd0jR1g/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">参加登録フォーム</a>
 
 > - 参加費・懇親会費は無料です。
 > - 参加登録フォームは締切日まで編集可能です。内容を送信していただくと、のちに届くメールに回答編集リンクが届きます。
