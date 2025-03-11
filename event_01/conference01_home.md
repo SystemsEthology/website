@@ -44,7 +44,7 @@ title: Home
 ***
 <a href="{{ site.baseurl }}/event_01/images/poster_systems_ethology.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
 
-<div style="display: flex; align-items: center; gap: 20px; justify-content: flex-start;">
+<div style="display: flex; align-items: center; gap: 20px;">
     <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.jpg" width="186.66x">
     <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.jpg" width="186.66px">
 </div>
@@ -53,7 +53,7 @@ title: Home
 
 ## [プレナリートーク講演者](/conference01_invited_talk.md)  
 ***
-<div style="display: flex; align-items: center; gap: 20px; justify-content: flex-start;">
+<div style="display: flex; align-items: center; gap: 20px;">
     <div style="text-align: center;">
         <p>池上高志<br>（東京大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/ikegami.jpg" width="186.66px">
@@ -72,7 +72,7 @@ title: Home
 
 ## [招待講演者](/conference01_plenary_talk.md)
 ***
-<div style="display: flex; align-items: center; gap: 20px; justify-content: flex-start;">
+<div style="display: flex; align-items: center; gap: 20px;">
     <div style="text-align: center;">
         <p>大脇大<br>（東北大学）</p>
         <img src="{{ site.baseurl }}/event_01/images/owaki.png" width="186.66px">
@@ -87,7 +87,7 @@ title: Home
     </div>
 </div>
 
-<div style="display: flex; align-items: center; gap: 20px; justify-content: flex-start;">
+<div style="display: flex; align-items: center; gap: 20px;">
     <div style="text-align: center;">
         <p>風間北斗<br>（理化学研究所）</p>
         <img src="{{ site.baseurl }}/event_01/images/kazama.jpg" width="186.66px">
