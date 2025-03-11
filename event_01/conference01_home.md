@@ -45,8 +45,8 @@ title: Home
 <a href="{{ site.baseurl }}/event_01/images/poster_systems_ethology.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
 
 <div style="display: flex; align-items: center; gap: 20px;">
-    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.jpg" width="150x">
-    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.jpg" width="150px">
+    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.jpg" width="165x">
+    <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.jpg" width="165px">
 </div>
 
 <br>
