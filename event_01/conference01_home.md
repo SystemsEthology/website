@@ -146,4 +146,4 @@ title: Home
 - 納富 祐典（東京大学）：notomiant★gmail.com
 
 旅費補助に関するお問い合わせ
-- 日本比較生理生化学会　若手の会:  jscpb.younger★gmail.com（★を@に変えてご送信ください）
+- 日本比較生理生化学会　若手の会:  jscpb.younger★gmail.com
