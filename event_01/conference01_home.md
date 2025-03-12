@@ -49,6 +49,8 @@ title: Home
     <img src="{{ site.baseurl }}/event_01/images/poster_systems_ethology_02.jpg" width="165px">
 </div>
 
+制作：納富祐典（東京大学）, 野﨑友花（名古屋⼤学），安藤遥香（名古屋大学）
+
 <br>
 
 ## [プレナリートーク講演者](/conference01_invited_talk.md)
