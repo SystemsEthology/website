@@ -142,7 +142,7 @@ title: Home
 ## お問い合わせ
 ***
 大会全体に関するお問い合わせ（★を@に変えてご送信ください）
-- 山ノ内 勇斗 (名古屋大学): haya.m.yamano.neuro★gmail.com
+- 山ノ内 勇斗 （名古屋大学）: haya.m.yamano.neuro★gmail.com
 - 納富 祐典（東京大学）：notomiant★gmail.com
 
 旅費補助に関するお問い合わせ
