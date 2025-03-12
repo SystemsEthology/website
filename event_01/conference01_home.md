@@ -141,8 +141,9 @@ title: Home
 
 ## お問い合わせ
 ***
-大会全体に関するお問い合わせ
-- 山ノ内 勇斗 (名古屋大学): haya.m.yamano.neuro★gmail.com（★を@に変えてご送信ください）
+大会全体に関するお問い合わせ（★を@に変えてご送信ください）
+- 山ノ内 勇斗 (名古屋大学): haya.m.yamano.neuro★gmail.com
+- 納富 祐典（東京大学）：notomiant★gmail.com
 
 旅費補助に関するお問い合わせ
 - 日本比較生理生化学会　若手の会:  jscpb.younger★gmail.com（★を@に変えてご送信ください）
