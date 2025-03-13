@@ -9,7 +9,7 @@ order: 4
 
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfq8GA7E7LMyP78fGL7rFZV4hzA1bGYx6zy3UzEb74pd0jR1g/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">参加登録フォーム</a>
 
-> - 参加費は無料です。
+> - 参加費は無料です。懇親会費は学生1,500円、一般3,000円です。後日支払い方法を通知します。
 > - 参加登録フォームは締切日まで編集可能です。内容を送信していただくと、のちに届くメールに回答編集リンクが届きます。
 > - 発表要旨は日本語で500文字以内です。英語での提出を希望される方は別途ご連絡ください。
 > - 当日参加も可能ですが、定員に達した場合は受け付けられないので、なるべく早めに事前登録をお願いいたします。
