@@ -2,7 +2,7 @@
 layout: default_conference
 title: Home
 ---
-# 第一回システム行動学研究会 (The 1st Conference of the Society of Systems Ethology) <br> 〜画像解析と行動学〜
+# 第一回システム行動学研究会 <br> 〜画像解析と行動学〜 <br> The 1st Conference of the Society of Systems Ethology
 
 <br>
 
