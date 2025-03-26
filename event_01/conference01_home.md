@@ -65,7 +65,7 @@ title: Home
 ### イメージムービー
 ***
 こちらの動画を見て「面白そう！」と思ったすべての人が対象です。
-<br>
+<br><br>
 [プロモーション動画](https://drive.google.com/file/d/1CkHziNDeUbJRRFNIOpsRu4ZrUMOpP4FT/view?usp=sharing)
 <br>
 制作：納富祐典（東京大学）
