@@ -67,7 +67,9 @@ title: Home
 こちらの動画を見て「面白そう！」と思ったすべての人が対象です。
 <br>
 [プロモーション動画](https://drive.google.com/file/d/1CkHziNDeUbJRRFNIOpsRu4ZrUMOpP4FT/view?usp=sharing)
+<br>
 制作：納富祐典（東京大学）
+<br>
 動画提供：納富祐典（東京大学），新村毅（東京農工大学），山ノ内 勇斗（名古屋大学），吉光 俊輔（九州⼤学），兼田典佳（東京大学），久本峻平（明治大学）
 
 ## [プレナリートーク講演者](/conference01_invited_talk.md)
