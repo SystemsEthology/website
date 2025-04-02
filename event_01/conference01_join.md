@@ -5,7 +5,7 @@ order: 4
 ---
 ***
 
-### 2025年5月16日 締め切り
+### 2025年5月16日 締め切り（定員に達し次第、締め切ります。）
 
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfq8GA7E7LMyP78fGL7rFZV4hzA1bGYx6zy3UzEb74pd0jR1g/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">参加登録フォーム</a>
 
