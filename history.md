@@ -17,4 +17,4 @@ order: 3
 - 2024年9月19日　国際学会SWARM2024にて、OS “Systems Ethology: Toward Elucidating the Design Principles of Animal Behavior”を開催しました。オーガナイザーは、納富祐典、山ノ内勇斗、田中良弥、久本峻平。
 <a href="https://www.swarm-systems.org/swarm2024/organized-sessions#h.emxq8numwflp" target="_blank" rel="noopener noreferrer">SWARM2024 website</a>
 
-- 2024年7月　公益信託進化学振興木村資生基金 講演会・セミナー等開催費用助成金「システム行動学（Systems Ethology）への招待」が採用されました（東京大学 納富祐典）
+- 2024年7月　公益信託進化学振興木村資生基金 講演会・セミナー等開催費用助成金「システム行動学（Systems Ethology）への招待」が採択されました（東京大学 納富祐典）
