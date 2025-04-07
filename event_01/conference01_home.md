@@ -121,7 +121,7 @@ title: Home
     <img src="{{ site.baseurl }}/event_01/images/kawashima.png" width="180px" style="margin-top: auto;">
   </div>
   <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <p>西海望<br>（基礎生物学研究所）</p>
+    <p>西海望<br>（新潟大学）</p>
     <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" width="180px" style="height:auto; object-fit:contain; margin-top: auto;">
   </div>
 </div>
