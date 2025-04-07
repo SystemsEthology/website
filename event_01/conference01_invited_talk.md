@@ -132,7 +132,7 @@ order: 3
 
 ## 西海 望
 
-自然科学研究機構基礎生物学研究所
+新潟大学
 
 <img src="{{ site.baseurl }}/event_01/images/nishiumi.png" width="300px">
 
