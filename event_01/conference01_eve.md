@@ -8,8 +8,9 @@ order: 2
 
 <a href="https://sites.google.com/site/komabaecoevo/" target="_blank" rel="noopener noreferrer">行動進化生態こまば教室HP</a>
 
+<br>
 ## 宮竹貴久 / Takahisa Miyatake
-
+<br>
 岡山大学大学院環境生命自然科学学域（農学部）
 
 <img src="{{ site.baseurl }}/event_01/images/miyatake.jpg" width="300px">  
