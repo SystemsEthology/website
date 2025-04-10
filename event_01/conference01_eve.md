@@ -18,6 +18,7 @@ order: 2
 「宮竹貴久 駒場スペシャルセミナー ～システム行動学研究会 前夜祭～」<br>
 2025年5月29日（木曜日） 東京大学駒場Ⅰキャンパス<br>
 18:45-19:45（延長の可能性あり）ハイブリッド開催（アーカイブなし）<br>
+オーガナイザー：納富祐典（東京大学）、工藤達実（東京大学）、朝鍋遥（東京大学）
 
 <a href="https://sites.google.com/site/komabaecoevo/" target="_blank" rel="noopener noreferrer">行動進化生態こまば教室HP</a>
 
