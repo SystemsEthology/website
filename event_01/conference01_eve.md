@@ -4,7 +4,7 @@ title: 前夜祭 特別セミナー
 order: 2
 ---
 
-## 第52回 行動進化生態こまば教室「宮竹貴久 駒場スペシャルセミナー ~システム行動学研究会 前夜祭~」
+## 第52回 行動進化生態こまば教室「宮竹貴久 駒場スペシャルセミナー ～システム行動学研究会 前夜祭～」
 
 <a href="https://sites.google.com/site/komabaecoevo/" target="_blank" rel="noopener noreferrer">行動進化生態こまば教室HP</a>
 
