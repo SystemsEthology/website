@@ -18,7 +18,7 @@ order: 2
 
 <img src="{{ site.baseurl }}/event_01/images/miyatake.jpg" width="300px">  
 
-##  死んだふりを科学する
+## 死んだふりを科学する
 
 <br>
 
