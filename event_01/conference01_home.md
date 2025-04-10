@@ -50,6 +50,15 @@ title: Home
 
 <br>
 
+## 前夜祭（new!!）
+***
+第一回 システム行動学研究会の前夜祭として、岡山大 宮竹先生をお招きし、セミナーを開催することが決まりました。
+
+<a href="{{ site.baseurl }}/event_01/conference01_eve" target="_blank" rel="noopener noreferrer">宮竹貴久 駒場スペシャルセミナー ～システム行動学研究会 前夜祭～</a>
+
+<br>
+
+
 ## ポスター
 ***
 <a href="{{ site.baseurl }}/event_01/images/poster_systems_ethology_01.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
