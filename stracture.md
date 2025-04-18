@@ -17,6 +17,13 @@ order: 4
 
 <br>
 
+会計<br>
+
+- 浜道 凱也 （千葉大学 融合理工学府 先進科学プログラム生 博士後期課程）
+
+<br>
+
+
 ## 会則
 ***
 <a href="{{ site.baseurl }}/imgs/constitution.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
