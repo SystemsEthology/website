@@ -1,7 +1,7 @@
 ---
 layout: page_conference
 title: 前夜祭 特別セミナー
-order: 2
+order: 6
 ---
 
 ## 第52回 行動進化生態こまば教室<br><br>「宮竹貴久 駒場スペシャルセミナー ～システム行動学研究会 前夜祭～」
