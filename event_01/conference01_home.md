@@ -181,4 +181,4 @@ title: Home
 - 山ノ内 勇斗（名古屋大学）: haya.m.yamano.neuro★gmail.com
 
 旅費支援に関するお問い合わせ
-- 日本比較生理生化学会　若手の会：jscpb.younger★gmail.com
+- システム行動学研究会: systems.ethology★gmail.com（★を@に変えてご送信ください）
