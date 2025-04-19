@@ -83,7 +83,7 @@ title: Home
 動画提供：納富祐典（東京大学），新村毅（東京農工大学），山ノ内勇斗（名古屋大学），吉光俊輔（九州⼤学），兼田典佳（東京大学），久本峻平（明治大学）
 <br>
 <br>
-## [プレナリートーク講演者](/conference01_invited_talk.md)
+## [プレナリートーク講演者](/conference01_plenary_talk.md)
 ***
 <div style="display: grid; grid-template-columns: repeat(2, auto); gap: 20px; justify-content: start; grid-auto-rows: 1fr;">
   <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
@@ -102,7 +102,7 @@ title: Home
 
 <br>
 
-## [招待講演者](/conference01_plenary_talk.md)
+## [招待講演者](/conference01_invited_talk.md)
 ***
 <div style="display: grid; grid-template-columns: repeat(2, auto); gap: 20px; justify-content: start; grid-auto-rows: 1fr;">
   <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
