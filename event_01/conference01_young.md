@@ -12,7 +12,7 @@ order: 4
 
 <img src="{{ site.baseurl }}/event_01/images/notomi.jpg" width="150px">  
 
-## 個体から集団まで：視覚刺激に対する反応の行動解析
+### 個体から集団まで：視覚刺激に対する反応の行動解析
 
 <br>
 
@@ -26,7 +26,7 @@ order: 4
 
 <img src="{{ site.baseurl }}/event_01/images/yamanouchi.png" width="150px">  
 
-## YORU: 物体認識アルゴリズムによる行動分類とリアルタイム介入操作実験の実現
+### YORU: 物体認識アルゴリズムによる行動分類とリアルタイム介入操作実験の実現
 
 <br>
 
@@ -40,7 +40,7 @@ order: 4
 
 <img src="{{ site.baseurl }}/event_01/images/hamamichi.png" width="150px">  
 
-## 場を動かす：ハエ集団のインフルエンサー個体とは？
+### 場を動かす：ハエ集団のインフルエンサー個体とは？
 
 <br>
 
