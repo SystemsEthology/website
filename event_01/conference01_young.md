@@ -20,7 +20,7 @@ order: 4
 
 ## 山ノ内 勇斗 / Hayato M YAMANOUCHI
 
-名古屋大学
+名古屋大学理学研究科理学専攻生命理学領域
 
 <img src="{{ site.baseurl }}/event_01/images/yamanouchi.png" width="150px">  
 
@@ -32,7 +32,7 @@ order: 4
 
 ## 浜道 凱也 / Kaiya HAMAMICHI
 
-千葉大学
+千葉大学大学院融合理工学府
 
 <img src="{{ site.baseurl }}/event_01/images/hamamichi.png" width="150px">  
 
