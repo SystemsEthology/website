@@ -1,7 +1,7 @@
 ---
 layout: page_conference
 title: 注意事項
-order: 5
+order: 6
 ---
 ***
 ## システム行動学研究会全体についての注意事項
