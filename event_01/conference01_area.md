@@ -1,7 +1,7 @@
 ---
 layout: page_conference
 title: 会場案内
-order: 6
+order: 7
 ---
 
  <br>
