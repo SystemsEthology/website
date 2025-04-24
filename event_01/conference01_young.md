@@ -4,7 +4,6 @@ title: 若手招待講演
 order: 4
 ---
 <br>
-<br>
 
 ## 納富 祐典 / Yusuke NOTOMI
 
