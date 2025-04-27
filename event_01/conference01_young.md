@@ -103,7 +103,7 @@ order: 4
 
 ## 蓮見 優奈 / Yuna HASUMI
 
-東京農業大学大学院
+東京農業大学大学院農学研究科
 
 <img src="{{ site.baseurl }}/event_01/images/hasumi.jpg" width="150px">  
 
