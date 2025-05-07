@@ -91,7 +91,7 @@ order: 4
 
 ## 小枝 大桃 / Taito KOEDA
 
-千葉大学大学院
+千葉大学融合理工学府基幹工学専攻
 
 <img src="{{ site.baseurl }}/event_01/images/koeda.jpg" width="150px">  
 
