@@ -7,7 +7,7 @@ order: 4
 
 ## 納富 祐典 / Yusuke NOTOMI
 
-東京大学大学総合文化研究科広域科学専攻広域システム科学系
+東京大学大学総合文化研究科
 
 <img src="{{ site.baseurl }}/event_01/images/notomi.jpg" width="150px">  
 
@@ -19,7 +19,7 @@ order: 4
 
 ## 山ノ内 勇斗 / Hayato M YAMANOUCHI
 
-名古屋大学理学研究科理学専攻生命理学領域
+名古屋大学理学研究科
 
 <img src="{{ site.baseurl }}/event_01/images/yamanouchi.png" width="150px">  
 
@@ -91,7 +91,7 @@ order: 4
 
 ## 小枝 大桃 / Taito KOEDA
 
-千葉大学融合理工学府基幹工学専攻
+千葉大学融合理工学府
 
 <img src="{{ site.baseurl }}/event_01/images/koeda.jpg" width="150px">  
 
