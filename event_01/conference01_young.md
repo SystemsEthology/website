@@ -91,7 +91,7 @@ order: 4
 
 ## 小枝 大桃 / Taito KOEDA
 
-名古屋市立大学大学院理学研究科
+千葉大学大学院
 
 <img src="{{ site.baseurl }}/event_01/images/koeda.jpg" width="150px">  
 
