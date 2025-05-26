@@ -18,11 +18,11 @@ order: 6
 
 - 名札のテンプレートを自身で印刷の上、記入していただいてのご持参にご協力をお願いいたします。
 
-<a href="{{ site.baseurl }}/event_01/images/第一回システム行動学研究会_名札テンプレート.pdf" target="_blank" rel="noopener noreferrer">名札テンプレート</a>
+<a href="{{ site.baseurl }}/event_01/images/name_plate_template.pdf" target="_blank" rel="noopener noreferrer">名札テンプレート</a>
 
 記入例
 <div style="display: flex; align-items: center; gap: 20px;">
-    <img src="{{ site.baseurl }}/event_01/images/システム行動学研究会_名札_例.png" width="200x">
+    <img src="{{ site.baseurl }}/event_01/images/example_of_name_card.png" width="200x">
 </div>
 
 
@@ -32,7 +32,7 @@ order: 6
 
 ***
 
-- ご飯や飲み物、酒類等はご用意する予定ですが、持ち込みも可能です。特にお酒類に関しまして、研究会側では缶の飲み物をご用意する予定です。お土産等も大歓迎です。
+- ご飯や飲み物、酒類等はご用意する予定ですが、持ち込みも可能です。特にお酒類に関しまして、研究会側では缶の飲み物を中心にご用意する予定です。お土産等も大歓迎です。
 
 <br>
 
