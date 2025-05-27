@@ -17,7 +17,9 @@ order: 6
 - オンライン配信の参加登録していない方とのご視聴、URLの共有はご遠慮願います。
 
 - 名札のテンプレートを自身で印刷の上、記入していただいてのご持参にご協力をお願いいたします。  
-***  
+
+<br>
+
 <a href="{{ site.baseurl }}/event_01/images/name_plate_template.pdf" target="_blank" rel="noopener noreferrer">名札テンプレート</a>  
 記入例  
 <div style="display: flex; align-items: center; gap: 20px;">  
