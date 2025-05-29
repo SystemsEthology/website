@@ -18,6 +18,8 @@ order: 6
 
 - 名札のテンプレートを自身で印刷の上、記入していただいてのご持参にご協力をお願いいたします。  
 
+- 会場外のウォーターサーバーがご利用いただけます。会場内の紙コップ等を使ってください。紙コップは指定のゴミ袋へ捨ててください。
+
 <br>
 
 <a href="{{ site.baseurl }}/event_01/images/name_plate_template.pdf" target="_blank" rel="noopener noreferrer">名札テンプレート</a>  
