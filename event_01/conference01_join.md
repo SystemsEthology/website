@@ -5,13 +5,20 @@ order: 5
 ---
 ***
 
-### オンライン参加登録：締切 2025年5月28日
+### オンライン参加登録：締切 2025年5月30日 7:00
 
 <br>
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSf9qamzFU8ASwbuUoWOm4jo6NI-S5W2wlpox1_JBeGU5IsTjg/viewform?usp=header" target="_blank" rel="noopener noreferrer">
   参加申し込みフォーム
 </a>
+
+<br>
+
+- オンライン参加URLは5/30の開会前にメールにてご連絡いたします。  
+
 <br><br>
+
+
 
 ### 満員御礼！！定員180名到達につき、対面参加の新規申込みを締め切りました。
 
