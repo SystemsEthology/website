@@ -27,8 +27,8 @@ title: Home
 ## 会場
 ***
 東京大学駒場第一キャンパス 21KOMCEE
-  - 5/30（金）Komcee East MMホール, レクチャーホール
-  - 5/31（土）Komcee East レクチャーホール
+  - 5/30（金）Komcee West MMホール, レクチャーホール
+  - 5/31（土）Komcee West レクチャーホール
 
 <br>
 
