@@ -1,5 +1,5 @@
 ---
-layout: default_conference
+layout: default_conference_02
 title: Home
 ---
 # The 2nd International Conference of the Society of Systems Ethology
