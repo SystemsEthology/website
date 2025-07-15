@@ -1,0 +1,38 @@
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" {% if page.title =="Home" %}checked{% endif %}>
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+    <!-- Sidebar logo -->
+    <div class="sidebar-logo" style="text-align: center;">
+      <img src="/website/imgs/SystemsEthology2025notomi.png" width="60%">
+    </div>
+
+  <!-- <div class="sidebar-item">
+    <p>{{ site.description }}</p>
+  </div> -->
+
+  <nav class="sidebar-nav">
+    <!-- Home link always at the top -->
+    <a class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}" href="{{ '/event_02/conference02_home/' | absolute_url }}">ホーム</a>
+  
+    <!-- Dynamically generate only Markdown files in the 'event01' folder -->
+    {% assign event_pages = site.pages | where: "layout", "page_conference" | sort: "order" %}
+    {% for node in event_pages %}
+      {% if node.path contains '.md' %}
+        <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url | absolute_url }}">
+          {{ node.title }}
+        </a>
+      {% endif %}
+    {% endfor %}
+
+    <span class="sidebar-nav-item">Page Update {{ site.time | date: '%Y-%m-%d' }}</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy;Copyright {{ site.time | date: '%Y' }} Systems Ethology
+    </p>
+  </div>
+</div>
