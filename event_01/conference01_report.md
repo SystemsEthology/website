@@ -15,5 +15,6 @@ order: 9
 
 ## 集合写真
 
+<img src="{{ site.baseurl }}/event_01/images/集合写真.jpeg" width="400px" style="margin-top: auto;">
 
 <br>
