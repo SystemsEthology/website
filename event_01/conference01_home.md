@@ -6,6 +6,11 @@ title: Home
 
 <br>
 
+現地参加182名、オンライン参加者186名と、大変多くの方にご参加いただきました。<br>
+来年の第二回大会はさらにスケールアップします！お楽しみに！
+<br>
+<img src="{{ site.baseurl }}/event_01/images/集合写真.jpeg" width="400px" style="margin-top: auto;">
+<br>
 ## 日時
 ***
 2025年5月30日（金）, 31日（土）
