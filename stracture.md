@@ -22,6 +22,7 @@ order: 4
 
 <br>
 
+### [コアメンバーリスト](/posts/core_members.md)
 
 ## 会則
 ***
