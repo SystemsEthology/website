@@ -2,26 +2,27 @@
 layout: default_conference_02
 title: Home
 ---
-# The 2nd International Conference of the Society of Systems Ethology
+# 第二回システム行動学研究会 <br><br> The 1st Conference of the Society for Systems Ethology
 
 <br>
 
-## Date
+## 日時
+***
+2026年　7月11日(土), 12日(日), 13日(月)
+
+<br>
+
+
+## 概要
 ***
 TBA
 
 <br>
 
-
-## Theme
+## 場所
 ***
+名古屋大学
 TBA
-
-<br>
-
-## Venue
-***
-Nagoya University
   <!-- - 5/30（金）Komcee West MMホール, レクチャーホール
   - 5/31（土）Komcee West レクチャーホール -->
 
@@ -32,21 +33,27 @@ Nagoya University
 ***
 
 #### 15/07/2025
-- Created conference HP.
+- 大会HPを開設しました。
 
 
 
 <br>
 
-## Supporters
+## 共催
 ***
-- 公益信託進化学振興木村資生基金（Yamanouchi）
+- TBA
+
+<br>
+
+## 後援・協賛
+***
+- 公益信託進化学振興木村資生基金（山ノ内）
 
 <br>
 
 ## Conference Comittee
 ***
-- *Hayato M. Yamanouchi（Nagoya University）
+- *山ノ内　勇斗（名古屋大学）
 - *納富 祐典（東京大学）
 - *浜道 凱也 (千葉大学)
 
@@ -55,11 +62,11 @@ Nagoya University
 
 ## 運営補助
 ***
-- 久本 峻平（明治大学）
+- TBA
 
 <br>
 
 ## Contact
 ***
 大会全体に関するお問い合わせ（★を@に変えてご送信ください）
-- Hayato M. Yamanouchi (Nagoya University): haya.m.yamano.neuro★gmail.com
+- 山ノ内　勇斗 (名古屋大学): haya.m.yamano.neuro★gmail.com
