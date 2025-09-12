@@ -1,5 +1,5 @@
 ---
-layout: page_conference
+layout: page_conference_01
 title: 参加・要旨登録
 order: 5
 ---

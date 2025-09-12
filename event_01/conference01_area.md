@@ -1,5 +1,5 @@
 ---
-layout: page_conference
+layout: page_conference_01
 title: 会場案内
 order: 7
 ---

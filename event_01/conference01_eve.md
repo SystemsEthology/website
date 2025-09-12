@@ -1,5 +1,5 @@
 ---
-layout: page_conference
+layout: page_conference_01
 title: 前夜祭 特別セミナー
 order: 8
 ---
