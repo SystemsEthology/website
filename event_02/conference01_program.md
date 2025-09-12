@@ -1,5 +1,5 @@
 ---
-layout: page_conference
+layout: page_conference_02
 title: プログラム
 order: 1
 ---

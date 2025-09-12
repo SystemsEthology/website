@@ -19,8 +19,8 @@
   
     <!-- Dynamically generate only Markdown files in the 'event_01' folder -->
     {% assign event_pages = site.pages
-      | where: "layout", "page_conference"
-      | where_exp: "p", "p.url contains '/event_01/'"
+      | where: "layout", "page_conference_02"
+      | where_exp: "p", "p.url contains '/event_02/'"
       | sort: "order" %}
 
     {% for node in event_pages %}
