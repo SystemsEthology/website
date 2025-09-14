@@ -51,7 +51,7 @@ TBA
 
 ## Conference Comittee
 ***
-- *山ノ内　勇斗（名古屋大学）
+- *山ノ内 勇斗（名古屋大学）
 - *納富 祐典（東京大学）
 - *浜道 凱也 (千葉大学)
 
@@ -67,4 +67,4 @@ TBA
 ## Contact
 ***
 大会全体に関するお問い合わせ（★を@に変えてご送信ください）
-- 山ノ内　勇斗 (名古屋大学): haya.m.yamano.neuro★gmail.com
+- 山ノ内 勇斗 (名古屋大学): haya.m.yamano.neuro★gmail.com
