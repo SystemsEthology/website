@@ -2,7 +2,7 @@
 layout: default_conference_02
 title: Home
 ---
-# 第二回システム行動学研究会 <br><br> The 2nd Conference of the Society for Systems Ethology
+# 第２回システム行動学研究会 <br><br> The 2nd Conference of the Society for Systems Ethology
 
 <br>
 
