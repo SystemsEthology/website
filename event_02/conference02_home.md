@@ -70,4 +70,5 @@ TBA
 ## Contact
 ***
 大会全体に関するお問い合わせ（★を@に変えてご送信ください）
+- システム行動学研究会: systems.ethology★gmail.com
 - 山ノ内 勇斗 (名古屋大学): haya.m.yamano.neuro★gmail.com
