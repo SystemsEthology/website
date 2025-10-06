@@ -8,7 +8,7 @@ title: Home
 
 ## 日時
 ***
-2026年 7月11日(土), 12日(日), 13日(月)
+2026年 7月11日（土）, 12日（日）, 13日（月）
 
 <br>
 
@@ -71,4 +71,4 @@ TBA
 ***
 大会全体に関するお問い合わせ（★を@に変えてご送信ください）
 - システム行動学研究会: systems.ethology★gmail.com
-- 山ノ内 勇斗 (名古屋大学): haya.m.yamano.neuro★gmail.com
+- 山ノ内 勇斗（名古屋大学）: haya.m.yamano.neuro★gmail.com
