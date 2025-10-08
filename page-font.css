@@ -1,0 +1,4 @@
+/* ページ専用: 本文フォントをサンセリフに変更 */
+html {
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+}
