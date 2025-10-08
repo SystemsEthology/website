@@ -3,6 +3,7 @@ layout: default_conference_02
 title: Home
 css: /main/page-font.css
 ---
+
 # 第２回システム行動学研究会 <br><br> The 2nd Conference of the Society for Systems Ethology
 
 <br>
@@ -36,45 +37,34 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.097977054295!2d1
 <br>
 
 
-## News
+## 活動報告・更新履歴
 ***
 
-#### 15/07/2025
-- 大会HPを開設しました。
+2025/7/15. 大会HPを開設しました。<br>
+2025/9/2.  大会開催のためのクラウドファンディング（CF）を開始しました。<br>
+2025/9/24. CFの第１目標金額を達成し、大会の開催が確定しました。<br>
+2025/10/7. 第２回のHPに申し込み方法の詳細を追加しました。<br>
 
-
-
-<br>
-
-## 共催
-***
-- TBA
 
 <br>
 
 ## 後援・協賛
 ***
 - 公益信託進化学振興木村資生基金（山ノ内）
+- academist Prize 第５期
 
 <br>
 
-## Conference Comittee
+## 研究会運営メンバー
 ***
 - *山ノ内 勇斗（名古屋大学）
 - *納富 祐典（東京大学）
 - *浜道 凱也（千葉大学）
 
-
 <br>
 
-## 運営補助
+## 問い合わせ
 ***
-- TBA
-
-<br>
-
-## Contact
-***
-大会全体に関するお問い合わせ（★を@に変えてご送信ください）
+大会全体に関して（★を@に変えてご送信ください）
 - システム行動学研究会: systems.ethology★gmail.com
 - 山ノ内 勇斗（名古屋大学）: haya.m.yamano.neuro★gmail.com
