@@ -1,6 +1,7 @@
 ---
 layout: default_conference_02
 title: Home
+css: /main/page-font.css
 ---
 # 第２回システム行動学研究会 <br><br> The 2nd Conference of the Society for Systems Ethology
 
