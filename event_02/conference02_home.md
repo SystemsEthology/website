@@ -17,10 +17,9 @@ title: Home
 
 ## 日程・場所
 ***
-<p style="font-family: 'Yu Gothic', '游ゴシック', sans-serif; font-weight: bold;">
 日程：2026年 7月11日（土）– 13日（月）<br><br>
 場所：名古屋大学
-</p> 
+<br>
 〒464-8601 愛知県名古屋市千種区不老町<br>
 
 <iframe 
