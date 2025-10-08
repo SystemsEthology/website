@@ -6,13 +6,6 @@ title: Home
 
 <br>
 
-## 日時
-***
-2026年 7月11日（土）, 12日（日）, 13日（月）
-
-<br>
-
-
 ## はじめに
 ***
 今年5月に開催された[第１回システム行動学研究会](https://systemsethology.github.io/website/event_01/conference01_home/)は、現地参加182名、オンライン参加者186名と、大変多くの方にご参加いただきました（学生は6割ほど）。<br>
@@ -22,10 +15,21 @@ title: Home
 
 <br>
 
-## 場所
+## 日程・場所
 ***
-名古屋
-TBA
+**日程：2026年 7月11日（土）– 13日（月）**<br><br>
+**場所：名古屋大学** <br>
+〒464-8601 愛知県名古屋市千種区不老町<br>
+
+<iframe 
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.097977054295!2d136.9657240514968!3d35.15417717852655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60037aa30bb663e3%3A0x464c087fdf7fafa3!2z5ZCN5Y-k5bGL5aSn5a2m!5e0!3m2!1sja!2sjp!4v1759885388024!5m2!1sja!2sjp" 
+  width="600" height="450" style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+  
+  </iframe>
+
 
 <br>
 
