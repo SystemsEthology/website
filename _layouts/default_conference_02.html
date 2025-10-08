@@ -2,13 +2,12 @@
 <html lang="en-us">
 
   {% include head.html %}
-
-  <body class="theme-base-0c sidebar-overlay">
-    
-    {% if page.css %}
+  
+  {% if page.css %}
     <link rel="stylesheet" href="{{ page.css }}">
     {% endif %}
-    
+
+  <body class="theme-base-0c sidebar-overlay">    
     {% include sidebar_event02.html %}
 
     <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
