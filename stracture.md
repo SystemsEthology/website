@@ -26,7 +26,7 @@ order: 4
 
 ## 会則
 ***
-<a href="{{ site.baseurl }}/imgs/constitution20251223.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+<a href="{{ site.baseurl }}/imgs/constitution20260106.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
 
 <br>
 
