@@ -32,19 +32,19 @@
     const DATA_URL = "./clustered_keywords_v2.json";
 
     // カテゴリは分かるが離れすぎない：小さいほど詰まる
-    const CLUSTER_COMPACT = 0.75;
+    const CLUSTER_COMPACT = 0.85;
 
     // 余白
-    const PADDING = 18;
+    const PADDING = 2;
 
     // 文字の周りの余白（全ノード共通円半径を決めるため）
-    const TEXT_PAD = 12;
+    const TEXT_PAD = 2;
 
     // 円同士の重なり許容：衝突半径を縮める倍率（<1 で重なってOK）
-    const OVERLAP_FACTOR = 0.82;
+    const OVERLAP_FACTOR = 0.6;
 
     // 自動フィット時の余白（px）
-    const FIT_PAD = 14;
+    const FIT_PAD = 2;
 
     // ホバーの見た目
     const HOVER_SCALE = 1.14;
