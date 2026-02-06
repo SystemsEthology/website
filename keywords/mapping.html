@@ -8,7 +8,6 @@
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; }
     #header { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
     #participants { font-weight: 700; }
-    /* 通常は何も表示しない（エラー時だけ出す） */
     #status { white-space: pre-wrap; color: #b00020; display: none; }
     svg { width: 100%; height: 78vh; border: 1px solid #ddd; border-radius: 10px; }
     .node text { pointer-events: none; }
@@ -29,9 +28,18 @@
 
     const DATA_URL = "./clustered_keywords.json";
 
-    // クラスタ間を詰める（小さいほど詰まる）
-    const CLUSTER_COMPACT = 0.72;
-    const PADDING = 30;
+    // ===== 詰め具合（小さいほど詰まる） =====
+    const CLUSTER_COMPACT = 0.42;  // 0.35〜0.55あたりが実用
+    const PADDING = 10;           // 余白ほぼゼロ
+    // ======================================
+
+    // ===== 楕円サイズ（全ノード統一） =====
+    const TEXT_PAD_X = 16;        // 文字の左右余白
+    const TEXT_PAD_Y = 10;        // 文字の上下余白
+    const ELLIPSE_STRETCH_X = 1.25; // 横長にする倍率（rxを太らせる）
+    // ======================================
+
+    // 衝突（すき間）
     const COLLIDE_PAD = 2;
 
     const participantsEl = document.getElementById("participants");
@@ -55,10 +63,8 @@
       const res = await fetch(DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error(`JSON fetch error: ${res.status} ${res.statusText}`);
       const json = await res.json();
-
       if (!Number.isInteger(json.participantCount)) throw new Error("participantCount missing/invalid");
       if (!Array.isArray(json.keywords)) throw new Error("keywords missing/invalid");
-
       return json;
     }
 
@@ -73,9 +79,8 @@
     }
 
     function makeClusterColorMap(items) {
-      // clusterId を安定した順序で並べて色を割り当て
       const ids = Array.from(new Set(items.map(d => d.clusterId ?? "c0"))).sort();
-      const palette = d3.schemePastel1; // 9色（パステル）
+      const palette = d3.schemePastel1; // 9色（循環）
       const map = new Map();
       ids.forEach((id, i) => map.set(id, palette[i % palette.length]));
       return map;
@@ -91,10 +96,10 @@
         return;
       }
 
-      // 座標圧縮（クラスタ間を詰める）
+      // 1) 座標を強く圧縮して「カテゴリ間の空白」を潰す
       items = compactAroundMean(items, CLUSTER_COMPACT);
 
-      // 色割り当て
+      // 2) 色割り当て（クラスタごと）
       const colorMap = makeClusterColorMap(items);
 
       const W = svg.clientWidth || 800;
@@ -121,11 +126,6 @@
         .domain(d3.extent(ys))
         .range([H - PADDING, PADDING]);
 
-      const counts = items.map(d => d.count);
-      const rMinScale = d3.scaleSqrt()
-        .domain(d3.extent(counts))
-        .range([10, 26]);
-
       const nodes = items.map(d => {
         const cid = d.clusterId ?? "c0";
         return {
@@ -134,8 +134,10 @@
           clusterId: cid,
           x: xScale(d.x),
           y: yScale(d.y),
-          r: rMinScale(d.count),
-          fill: colorMap.get(cid) ?? "#eee"
+          fill: colorMap.get(cid) ?? "#eee",
+          // 楕円半径は後で「最大文字」に合わせて一括設定
+          rx: 10,
+          ry: 10
         };
       });
 
@@ -146,8 +148,12 @@
         .attr("class", "node")
         .attr("transform", d => `translate(${d.x},${d.y})`);
 
-      node.append("circle")
-        .attr("r", d => d.r)
+      // ★円ではなく楕円
+      node.append("ellipse")
+        .attr("cx", 0)
+        .attr("cy", 0)
+        .attr("rx", d => d.rx)
+        .attr("ry", d => d.ry)
         .attr("fill", d => d.fill)
         .attr("stroke", "black")
         .attr("stroke-width", 1.0);
@@ -158,31 +164,48 @@
       node.append("text")
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
-        .attr("font-size", d => (d.keyword.length >= 18 ? 10 : 12))
+        .attr("font-size", 12) // 全ノード統一（最大文字に合わせて枠を作るため）
         .text(d => d.keyword);
 
-      // 文字はみ出し対策：BBoxで円半径を拡張
-      const TEXT_PAD = 10;
-      node.each(function(d) {
-        const gSel = d3.select(this);
-        const textNode = gSel.select("text").node();
-        const circleSel = gSel.select("circle");
-        if (!textNode) return;
+      // 3) まず「最大の文字BBox」を計測 → 全楕円を同一サイズに
+      let maxW = 0;
+      let maxH = 0;
 
-        const bb = textNode.getBBox();
-        const needed = Math.max(bb.width, bb.height) * 0.55 + TEXT_PAD;
-        d.r = Math.max(d.r, needed);
-        circleSel.attr("r", d.r);
+      node.each(function() {
+        const t = d3.select(this).select("text").node();
+        if (!t) return;
+        const bb = t.getBBox();
+        if (bb.width > maxW) maxW = bb.width;
+        if (bb.height > maxH) maxH = bb.height;
       });
 
-      // 衝突解消
+      // 数値整合性チェック（空なら止める）
+      if (!(maxW > 0) || !(maxH > 0)) {
+        throw new Error("text bbox measurement failed (maxW/maxH invalid)");
+      }
+
+      // 楕円半径（rx, ry）
+      const rx = ((maxW / 2) + TEXT_PAD_X) * ELLIPSE_STRETCH_X;
+      const ry = (maxH / 2) + TEXT_PAD_Y;
+
+      // 全ノードへ適用
+      nodes.forEach(d => { d.rx = rx; d.ry = ry; });
+
+      node.select("ellipse")
+        .attr("rx", rx)
+        .attr("ry", ry);
+
+      // 4) さらに詰める：衝突＋中心へ寄せる
+      // 楕円同士の衝突は厳密でなく「外接円」で近似（十分見た目が良い）
+      const collideR = Math.max(rx, ry);
+
       const sim = d3.forceSimulation(nodes)
-        .force("x", d3.forceX(d => d.x).strength(0.18))
-        .force("y", d3.forceY(d => d.y).strength(0.18))
-        .force("collide", d3.forceCollide(d => d.r + COLLIDE_PAD))
+        .force("x", d3.forceX(W/2).strength(0.12))
+        .force("y", d3.forceY(H/2).strength(0.12))
+        .force("collide", d3.forceCollide(collideR + COLLIDE_PAD))
         .stop();
 
-      for (let i = 0; i < 240; i++) sim.tick();
+      for (let i = 0; i < 320; i++) sim.tick();
       node.attr("transform", d => `translate(${d.x},${d.y})`);
     }
 
