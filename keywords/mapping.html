@@ -50,6 +50,8 @@
     const HOVER_SCALE = 1.14;
     const HOVER_RISE_PX = 6;
 
+    const TARGET_STRENGTH = 0.28; // 0.18〜0.45で調整
+
     const participantsEl = document.getElementById("participants");
     const statusEl = document.getElementById("status");
     const svg = document.getElementById("viz");
@@ -212,8 +214,8 @@
       const collideR = maxNeededR * OVERLAP_FACTOR;
 
       const sim = d3.forceSimulation(nodes)
-        .force("x", d3.forceX(d => d.x).strength(0.12))
-        .force("y", d3.forceY(d => d.y).strength(0.12))
+        .force("x", d3.forceX(d => d.x).strength(TARGET_STRENGTH))
+        .force("y", d3.forceY(d => d.y).strength(TARGET_STRENGTH))
         .force("collide", d3.forceCollide(collideR))
         .stop();
 
