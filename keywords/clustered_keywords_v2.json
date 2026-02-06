@@ -1,0 +1,511 @@
+{
+  "participantCount": 15,
+  "range": "B2:B(last)",
+  "delimiter": "comma, Japanese comma/period, newline, 「」",
+  "clusters": [
+    {
+      "clusterId": 0,
+      "clusterLabel": "生物・対象",
+      "nKeywords": 8,
+      "totalMentions": 8
+    },
+    {
+      "clusterId": 1,
+      "clusterLabel": "遺伝子・分子",
+      "nKeywords": 4,
+      "totalMentions": 4
+    },
+    {
+      "clusterId": 2,
+      "clusterLabel": "神経・生理",
+      "nKeywords": 2,
+      "totalMentions": 2
+    },
+    {
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "nKeywords": 13,
+      "totalMentions": 13
+    },
+    {
+      "clusterId": 4,
+      "clusterLabel": "画像・トラッキング",
+      "nKeywords": 4,
+      "totalMentions": 4
+    },
+    {
+      "clusterId": 5,
+      "clusterLabel": "機械学習・情報",
+      "nKeywords": 1,
+      "totalMentions": 1
+    },
+    {
+      "clusterId": 6,
+      "clusterLabel": "実験・フィールド",
+      "nKeywords": 1,
+      "totalMentions": 1
+    },
+    {
+      "clusterId": 7,
+      "clusterLabel": "理論・モデル",
+      "nKeywords": 5,
+      "totalMentions": 5
+    },
+    {
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "nKeywords": 18,
+      "totalMentions": 18
+    }
+  ],
+  "keywords": [
+    {
+      "keyword": "A Life",
+      "count": 1,
+      "clusterId": 7,
+      "clusterLabel": "理論・モデル",
+      "x": 33.60159613312013,
+      "y": -131.69715835286243
+    },
+    {
+      "keyword": "DeepLabCut",
+      "count": 1,
+      "clusterId": 4,
+      "clusterLabel": "画像・トラッキング",
+      "x": -79.88663956713705,
+      "y": 1.9299332209992457
+    },
+    {
+      "keyword": "RNA-seq",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "遺伝子・分子",
+      "x": 94.30309158042925,
+      "y": 104.10423278310714
+    },
+    {
+      "keyword": "RNAi",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "遺伝子・分子",
+      "x": 61.228670206792145,
+      "y": 83.68588735752206
+    },
+    {
+      "keyword": "VR空間",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 65.98592740457815,
+      "y": -91.62953313993225
+    },
+    {
+      "keyword": "Yolo",
+      "count": 1,
+      "clusterId": 4,
+      "clusterLabel": "画像・トラッキング",
+      "x": -84.77449396019176,
+      "y": 83.01156236211867
+    },
+    {
+      "keyword": "アリ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象",
+      "x": 129.33105993370228,
+      "y": 12.455892379856541
+    },
+    {
+      "keyword": "インフルエンサー",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 117.85660670673572,
+      "y": -4.48057745384601
+    },
+    {
+      "keyword": "エコーロケーション",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 143.40153760205038,
+      "y": -35.209357914308
+    },
+    {
+      "keyword": "カラス",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 115.68093439199438,
+      "y": -122.38617201754604
+    },
+    {
+      "keyword": "コウモリ",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 35.17834172919633,
+      "y": -70.97750469355354
+    },
+    {
+      "keyword": "コミュニケーション",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -18.946346601232378,
+      "y": 118.6207506395026
+    },
+    {
+      "keyword": "ゴキブリ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象",
+      "x": 113.16515500115534,
+      "y": 6.530546779218233
+    },
+    {
+      "keyword": "サイレンシング",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "遺伝子・分子",
+      "x": 121.49389356141663,
+      "y": 97.36459306129379
+    },
+    {
+      "keyword": "ショウジョウバエ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象",
+      "x": 121.34635839492461,
+      "y": -80.4957870812535
+    },
+    {
+      "keyword": "セルオートマトン",
+      "count": 1,
+      "clusterId": 7,
+      "clusterLabel": "理論・モデル",
+      "x": -40.40050601566535,
+      "y": -153.36706195143057
+    },
+    {
+      "keyword": "ゼブラフィッシュ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象",
+      "x": 175.5819553435057,
+      "y": 21.250521676774103
+    },
+    {
+      "keyword": "トラッキング",
+      "count": 1,
+      "clusterId": 4,
+      "clusterLabel": "画像・トラッキング",
+      "x": -115.29869435926632,
+      "y": 35.49689778247038
+    },
+    {
+      "keyword": "ナビゲーション",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -54.73728281286407,
+      "y": 71.01666318351653
+    },
+    {
+      "keyword": "バッタ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象",
+      "x": 121.05834289795054,
+      "y": 9.377802911477731
+    },
+    {
+      "keyword": "ヒト",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 86.17119348483757,
+      "y": -93.05100504799796
+    },
+    {
+      "keyword": "フィールド調査",
+      "count": 1,
+      "clusterId": 6,
+      "clusterLabel": "実験・フィールド",
+      "x": -39.311380096656265,
+      "y": -93.5985041161189
+    },
+    {
+      "keyword": "ペアボンド",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -34.822379935449504,
+      "y": 130.36790605173667
+    },
+    {
+      "keyword": "マウス",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象",
+      "x": 145.73133795580392,
+      "y": 11.29811123606144
+    },
+    {
+      "keyword": "ミズスマシ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象",
+      "x": 124.24457436043525,
+      "y": -17.348049345547818
+    },
+    {
+      "keyword": "ライフゲーム",
+      "count": 1,
+      "clusterId": 7,
+      "clusterLabel": "理論・モデル",
+      "x": -12.03608492017284,
+      "y": -64.52135493869653
+    },
+    {
+      "keyword": "ロボティクス",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 105.62702202035715,
+      "y": -61.19337581892901
+    },
+    {
+      "keyword": "交尾行動",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -38.60961450497841,
+      "y": 168.35235662466914
+    },
+    {
+      "keyword": "人工生命",
+      "count": 1,
+      "clusterId": 7,
+      "clusterLabel": "理論・モデル",
+      "x": 35.36501454101756,
+      "y": -81.02557709676091
+    },
+    {
+      "keyword": "介入操作",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 83.87899852421235,
+      "y": -68.55252736913917
+    },
+    {
+      "keyword": "個体群",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 125.89668809227707,
+      "y": -105.10865260410593
+    },
+    {
+      "keyword": "動物心理",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 69.66081761091462,
+      "y": -49.46402195071303
+    },
+    {
+      "keyword": "動物福祉",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 94.65737542984039,
+      "y": -56.207781985532606
+    },
+    {
+      "keyword": "情報学",
+      "count": 1,
+      "clusterId": 5,
+      "clusterLabel": "機械学習・情報",
+      "x": -131.76974191820074,
+      "y": -63.621050857426056
+    },
+    {
+      "keyword": "文化進化",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -49.76920464800094,
+      "y": 113.51611510047843
+    },
+    {
+      "keyword": "概日リズム",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -37.46845071795532,
+      "y": 81.23168161616145
+    },
+    {
+      "keyword": "歩様",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 118.28614488675909,
+      "y": -41.82082736301704
+    },
+    {
+      "keyword": "理論",
+      "count": 1,
+      "clusterId": 7,
+      "clusterLabel": "理論・モデル",
+      "x": 9.527499286600817,
+      "y": -46.70349718132255
+    },
+    {
+      "keyword": "生態学",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -125.99219530577727,
+      "y": 154.90949842958474
+    },
+    {
+      "keyword": "生理学",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "神経・生理",
+      "x": 41.787303356233664,
+      "y": 149.1822776485422
+    },
+    {
+      "keyword": "画像解析",
+      "count": 1,
+      "clusterId": 4,
+      "clusterLabel": "画像・トラッキング",
+      "x": -139.78247365789952,
+      "y": 2.4132563875351067
+    },
+    {
+      "keyword": "発生",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 53.80765155033958,
+      "y": -61.46163142950165
+    },
+    {
+      "keyword": "社会性",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -63.398461359304555,
+      "y": 128.3232450161148
+    },
+    {
+      "keyword": "神経生理",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "神経・生理",
+      "x": 45.05896425065813,
+      "y": 112.14164987084244
+    },
+    {
+      "keyword": "系統",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 85.8334179931657,
+      "y": -28.46105759699976
+    },
+    {
+      "keyword": "行動分類",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -22.203605107569075,
+      "y": 86.44331412257654
+    },
+    {
+      "keyword": "行動生態",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": 7.318413873311059,
+      "y": 90.3376991630309
+    },
+    {
+      "keyword": "認知",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 70.84584458854411,
+      "y": -90.55790157035693
+    },
+    {
+      "keyword": "身体拡張",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 61.35387447273363,
+      "y": -91.552907761191
+    },
+    {
+      "keyword": "進化",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -32.63153393173167,
+      "y": 117.85076005050155
+    },
+    {
+      "keyword": "進化ゲーム",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -86.30980182409922,
+      "y": 125.70155095499277
+    },
+    {
+      "keyword": "道具使用",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 123.35180019987658,
+      "y": -103.63886136314088
+    },
+    {
+      "keyword": "遺伝子解析",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "遺伝子・分子",
+      "x": 87.1458024120411,
+      "y": 85.13457577950405
+    },
+    {
+      "keyword": "集団同調",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "行動・生態・進化",
+      "x": -21.087819184057402,
+      "y": 43.20921716338467
+    },
+    {
+      "keyword": "音響",
+      "count": 1,
+      "clusterId": 8,
+      "clusterLabel": "その他",
+      "x": 41.89556864996976,
+      "y": -87.30071949936794
+    },
+    {
+      "keyword": "魚",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象",
+      "x": 139.9253570155314,
+      "y": -36.518756388730516
+    }
+  ]
+}
