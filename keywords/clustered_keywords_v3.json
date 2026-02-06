@@ -1,0 +1,479 @@
+{
+  "participantCount": 15,
+  "range": "B2:B(last)",
+  "delimiter": "comma, Japanese comma/period, newline, 「」",
+  "clusters": [
+    {
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "nKeywords": 11,
+      "totalMentions": 11
+    },
+    {
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "nKeywords": 10,
+      "totalMentions": 10
+    },
+    {
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "nKeywords": 35,
+      "totalMentions": 35
+    }
+  ],
+  "keywords": [
+    {
+      "keyword": "A Life",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 116.92442230612839,
+      "y": 73.61119720003005
+    },
+    {
+      "keyword": "DeepLabCut",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": -36.77090588895459,
+      "y": -112.72337155167037
+    },
+    {
+      "keyword": "RNA-seq",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": 41.68502057721547,
+      "y": -80.00785557346838
+    },
+    {
+      "keyword": "RNAi",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": 9.58802615379206,
+      "y": -88.62895239817902
+    },
+    {
+      "keyword": "VR空間",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": -30.229846945290284,
+      "y": -60.209558938081344
+    },
+    {
+      "keyword": "Yolo",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": -6.116659547875613,
+      "y": -41.69303855971216
+    },
+    {
+      "keyword": "アリ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -140.7999276401306,
+      "y": 62.521895104419826
+    },
+    {
+      "keyword": "インフルエンサー",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 145.29521490510365,
+      "y": 15.725705190778278
+    },
+    {
+      "keyword": "エコーロケーション",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 125.78625140825994,
+      "y": 37.802095798497845
+    },
+    {
+      "keyword": "カラス",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -118.61785245923943,
+      "y": 31.663490962518708
+    },
+    {
+      "keyword": "コウモリ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -102.15724471367358,
+      "y": -4.107434831048835
+    },
+    {
+      "keyword": "コミュニケーション",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 112.17039570206082,
+      "y": 53.463847955907234
+    },
+    {
+      "keyword": "ゴキブリ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -84.10658973675052,
+      "y": 37.18889256234364
+    },
+    {
+      "keyword": "サイレンシング",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 123.98787031613358,
+      "y": 105.56995888660802
+    },
+    {
+      "keyword": "ショウジョウバエ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -95.11336788640773,
+      "y": 57.62075795667654
+    },
+    {
+      "keyword": "セルオートマトン",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 150.15798481079025,
+      "y": 39.18271056252068
+    },
+    {
+      "keyword": "ゼブラフィッシュ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -116.70889376969303,
+      "y": 66.42131198674502
+    },
+    {
+      "keyword": "トラッキング",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": 43.612970669600045,
+      "y": -113.7147152313939
+    },
+    {
+      "keyword": "ナビゲーション",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 98.13800864648871,
+      "y": 49.31039780384652
+    },
+    {
+      "keyword": "バッタ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -144.76849836912928,
+      "y": 0.9202222341173325
+    },
+    {
+      "keyword": "ヒト",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -157.38497409400665,
+      "y": 22.40603089365434
+    },
+    {
+      "keyword": "フィールド調査",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 98.35755880393768,
+      "y": 30.74698702387585
+    },
+    {
+      "keyword": "ペアボンド",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 185.7497956493128,
+      "y": 42.88726942017368
+    },
+    {
+      "keyword": "マウス",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -123.57115639738124,
+      "y": -1.7976560829038455
+    },
+    {
+      "keyword": "ミズスマシ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -86.86684755611132,
+      "y": 14.50652535247391
+    },
+    {
+      "keyword": "ライフゲーム",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 186.60632568905876,
+      "y": 57.460334373696504
+    },
+    {
+      "keyword": "ロボティクス",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 169.94622125861923,
+      "y": 39.779094898515396
+    },
+    {
+      "keyword": "交尾行動",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 136.68025442412818,
+      "y": 55.40945978274215
+    },
+    {
+      "keyword": "人工生命",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 97.23833322567654,
+      "y": 84.23611683022352
+    },
+    {
+      "keyword": "介入操作",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": -48.42636559745662,
+      "y": -84.31714540507132
+    },
+    {
+      "keyword": "個体群",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 122.68974725125929,
+      "y": 14.796483596967725
+    },
+    {
+      "keyword": "動物心理",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 157.37075363085023,
+      "y": 15.225532120336872
+    },
+    {
+      "keyword": "動物福祉",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 171.812996442241,
+      "y": 95.4793799568894
+    },
+    {
+      "keyword": "情報学",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 177.90174924890593,
+      "y": 27.60165953925563
+    },
+    {
+      "keyword": "文化進化",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 117.6029411364209,
+      "y": 89.91701614005399
+    },
+    {
+      "keyword": "概日リズム",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 108.44665196064072,
+      "y": 98.79098978302328
+    },
+    {
+      "keyword": "歩様",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 181.39584497562805,
+      "y": 85.33009946461564
+    },
+    {
+      "keyword": "理論",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 107.21336222773756,
+      "y": 37.305371275105
+    },
+    {
+      "keyword": "生態学",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 163.88937568147745,
+      "y": 24.83708137151416
+    },
+    {
+      "keyword": "生理学",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 97.73742705132692,
+      "y": 72.76663843600994
+    },
+    {
+      "keyword": "画像解析",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": 27.587116865805275,
+      "y": -51.53662503894331
+    },
+    {
+      "keyword": "発生",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 187.27638382796954,
+      "y": 72.14762936167905
+    },
+    {
+      "keyword": "社会性",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 134.76715567324246,
+      "y": 13.505403499538055
+    },
+    {
+      "keyword": "神経生理",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 138.2531489371525,
+      "y": 108.6445353260257
+    },
+    {
+      "keyword": "系統",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 90.37402463772938,
+      "y": 60.452815374120625
+    },
+    {
+      "keyword": "行動分類",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 165.14265793289098,
+      "y": 78.3505140537617
+    },
+    {
+      "keyword": "行動生態",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 154.92175864150303,
+      "y": 61.447388844365626
+    },
+    {
+      "keyword": "認知",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 113.86545350733421,
+      "y": 22.490251316772614
+    },
+    {
+      "keyword": "身体拡張",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 157.52137447536833,
+      "y": 106.83811056290708
+    },
+    {
+      "keyword": "進化",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 135.52126697552225,
+      "y": 93.40041842137389
+    },
+    {
+      "keyword": "進化ゲーム",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 139.38048153275395,
+      "y": 79.20753776396658
+    },
+    {
+      "keyword": "道具使用",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 174.1490562689309,
+      "y": 60.73783536308642
+    },
+    {
+      "keyword": "遺伝子解析",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": 15.731953911395534,
+      "y": -131.85302121850455
+    },
+    {
+      "keyword": "集団同調",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "研究分野（大雑把）",
+      "x": 155.72775083741587,
+      "y": 95.54213270121528
+    },
+    {
+      "keyword": "音響",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "研究技術・手法",
+      "x": -16.661310198231266,
+      "y": -135.31571608497566
+    },
+    {
+      "keyword": "魚",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物名",
+      "x": -149.90464737747664,
+      "y": 42.65596386100335
+    }
+  ],
+  "notes": {
+    "category_policy": "3 categories: organism name / technique-method / broad research field",
+    "within_category_layout": "2D layout using character n-gram TF-IDF + cosine distance + MDS (deterministic random_state=42) when available; otherwise deterministic jitter"
+  }
+}
