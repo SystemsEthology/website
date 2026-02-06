@@ -29,20 +29,20 @@
 
     const DATA_URL = "./clustered_keywords.json";
 
-    // カテゴリは分かるが離れすぎない：小さいほど詰まる
-    const CLUSTER_COMPACT = 0;
+    // カテゴリ間距離
+    const CLUSTER_COMPACT = 1;
 
     // 余白
-    const PADDING = 0;
+    const PADDING = 1;
 
     // 文字の周りの余白（全ノード共通円半径を決めるため）
     const TEXT_PAD = 1;
 
     // 衝突のすき間
-    const COLLIDE_PAD = 0;
+    const COLLIDE_PAD = 1;
 
     // 自動フィット時の余白（px）
-    const FIT_PAD = 0;
+    const FIT_PAD = 1;
 
     const participantsEl = document.getElementById("participants");
     const statusEl = document.getElementById("status");
