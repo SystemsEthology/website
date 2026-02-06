@@ -1,0 +1,313 @@
+{
+  "participantCount": 9,
+  "range": "B2:B10",
+  "delimiter": "comma, Japanese comma/period, newline, 「」",
+  "clusters": [
+    {
+      "clusterId": 0,
+      "clusterLabel": "生物・対象種",
+      "nKeywords": 7,
+      "totalMentions": 7
+    },
+    {
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "nKeywords": 10,
+      "totalMentions": 10
+    },
+    {
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "nKeywords": 13,
+      "totalMentions": 13
+    },
+    {
+      "clusterId": 3,
+      "clusterLabel": "人工生命・計算モデル",
+      "nKeywords": 5,
+      "totalMentions": 5
+    }
+  ],
+  "keywords": [
+    {
+      "keyword": "A Life",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "人工生命・計算モデル",
+      "x": 75.12578022786248,
+      "y": -36.01359293209859
+    },
+    {
+      "keyword": "DeepLabCut",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 68.22697484571313,
+      "y": 24.685599254121954
+    },
+    {
+      "keyword": "RNA-seq",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 40.555297257675704,
+      "y": 44.07427919993805
+    },
+    {
+      "keyword": "RNAi",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 64.62561184925843,
+      "y": 26.650277795462408
+    },
+    {
+      "keyword": "Yolo",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 52.26950289034038,
+      "y": 29.487701748255628
+    },
+    {
+      "keyword": "アリ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象種",
+      "x": -48.89355072108312,
+      "y": 31.539398423837298
+    },
+    {
+      "keyword": "コミュニケーション",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": 13.960893194303488,
+      "y": -40.99990686883736
+    },
+    {
+      "keyword": "ゴキブリ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象種",
+      "x": -54.929603884937485,
+      "y": 35.913850214972854
+    },
+    {
+      "keyword": "サイレンシング",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 53.49044405123882,
+      "y": 50.8078189245459
+    },
+    {
+      "keyword": "セルオートマトン",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "人工生命・計算モデル",
+      "x": 101.42784201364202,
+      "y": -43.33891166135747
+    },
+    {
+      "keyword": "ゼブラフィッシュ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象種",
+      "x": -47.492638357070135,
+      "y": 23.913556670502082
+    },
+    {
+      "keyword": "トラッキング",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 70.42792555839014,
+      "y": 28.88155495445379
+    },
+    {
+      "keyword": "バッタ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象種",
+      "x": -65.1039222959295,
+      "y": 7.437076609395277
+    },
+    {
+      "keyword": "フィールド調査",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 67.75982067726076,
+      "y": 36.99931228505202
+    },
+    {
+      "keyword": "ペアボンド",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": -4.7705292004172115,
+      "y": -27.056239787187714
+    },
+    {
+      "keyword": "マウス",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象種",
+      "x": -75.96047113012057,
+      "y": 9.21348920721728
+    },
+    {
+      "keyword": "ミズスマシ",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象種",
+      "x": -70.86067412515916,
+      "y": 11.782682572040159
+    },
+    {
+      "keyword": "ライフゲーム",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "人工生命・計算モデル",
+      "x": 104.53555977731436,
+      "y": -37.776200667276626
+    },
+    {
+      "keyword": "人工生命",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "人工生命・計算モデル",
+      "x": 82.41267623892284,
+      "y": -54.131913065717065
+    },
+    {
+      "keyword": "情報学",
+      "count": 1,
+      "clusterId": 3,
+      "clusterLabel": "人工生命・計算モデル",
+      "x": 75.78964555835455,
+      "y": -52.28287223854815
+    },
+    {
+      "keyword": "文化進化",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": -12.979324293120051,
+      "y": -52.293574749507364
+    },
+    {
+      "keyword": "概日リズム",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": -13.371221981603552,
+      "y": -40.573349748607434
+    },
+    {
+      "keyword": "理論",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": -5.920117712832298,
+      "y": -32.05592603688017
+    },
+    {
+      "keyword": "生態学",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": 8.905504459246607,
+      "y": -28.649692815886763
+    },
+    {
+      "keyword": "生理学",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": 8.205561135445745,
+      "y": -35.3593542216001
+    },
+    {
+      "keyword": "画像解析",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 65.15002963621585,
+      "y": 22.05702399599796
+    },
+    {
+      "keyword": "発生",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": 10.727540498650125,
+      "y": -44.2130264772975
+    },
+    {
+      "keyword": "社会性",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": 7.710313877072293,
+      "y": -34.45338785994432
+    },
+    {
+      "keyword": "神経生理",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 79.52502902998884,
+      "y": 44.20799916842217
+    },
+    {
+      "keyword": "行動生態",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": -3.732848400969071,
+      "y": -54.548316683320365
+    },
+    {
+      "keyword": "進化",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": -8.431053073166906,
+      "y": -55.76865128040974
+    },
+    {
+      "keyword": "進化ゲーム",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": 3.28354323473871,
+      "y": -29.77628680278656
+    },
+    {
+      "keyword": "遺伝子解析",
+      "count": 1,
+      "clusterId": 1,
+      "clusterLabel": "解析・計測技術",
+      "x": 52.61482063801456,
+      "y": 55.01144427653567
+    },
+    {
+      "keyword": "集団同調",
+      "count": 1,
+      "clusterId": 2,
+      "clusterLabel": "行動・生態・進化・生理の概念",
+      "x": -14.764210133091929,
+      "y": -47.19396757312764
+    },
+    {
+      "keyword": "魚",
+      "count": 1,
+      "clusterId": 0,
+      "clusterLabel": "生物・対象種",
+      "x": -56.59840067358909,
+      "y": 10.160240161558402
+    }
+  ]
+}
