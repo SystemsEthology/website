@@ -8,7 +8,8 @@
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; }
     #header { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
     #participants { font-weight: 700; }
-    #status { white-space: pre-wrap; color: #333; }
+    /* 通常は何も表示しない（エラー時だけ出す） */
+    #status { white-space: pre-wrap; color: #b00020; display: none; }
     svg { width: 100%; height: 78vh; border: 1px solid #ddd; border-radius: 10px; }
     .node text { pointer-events: none; }
   </style>
@@ -18,7 +19,7 @@
 
   <div id="header">
     <div id="participants">参加者数: -</div>
-    <div id="status">loading...</div>
+    <div id="status"></div>
   </div>
 
   <svg id="viz"></svg>
@@ -26,16 +27,24 @@
   <script type="module">
     import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-    // ★同じディレクトリに clustered_keywords.json を置く
     const DATA_URL = "./clustered_keywords.json";
 
-    const statusEl = document.getElementById("status");
+    // クラスタ間を詰める（小さいほど詰まる）
+    const CLUSTER_COMPACT = 0.72;
+    const PADDING = 30;
+    const COLLIDE_PAD = 2;
+
     const participantsEl = document.getElementById("participants");
+    const statusEl = document.getElementById("status");
     const svg = document.getElementById("viz");
 
-    function setStatus(msg) {
-      const now = new Date();
-      statusEl.textContent = `[${now.toLocaleString()}]\n${msg}`;
+    function showError(msg) {
+      statusEl.style.display = "block";
+      statusEl.textContent = msg;
+    }
+    function clearError() {
+      statusEl.style.display = "none";
+      statusEl.textContent = "";
     }
     function setParticipants(n) {
       if (!Number.isInteger(n) || n < 0) throw new Error(`participant count invalid: ${n}`);
@@ -43,27 +52,50 @@
     }
 
     async function loadData() {
-      setStatus("Loading clustered data (JSON)...");
       const res = await fetch(DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error(`JSON fetch error: ${res.status} ${res.statusText}`);
       const json = await res.json();
 
-      // 整合性チェック（最低限）
       if (!Number.isInteger(json.participantCount)) throw new Error("participantCount missing/invalid");
       if (!Array.isArray(json.keywords)) throw new Error("keywords missing/invalid");
 
       return json;
     }
 
+    function compactAroundMean(items, factor) {
+      const mx = d3.mean(items, d => d.x);
+      const my = d3.mean(items, d => d.y);
+      return items.map(d => ({
+        ...d,
+        x: mx + (d.x - mx) * factor,
+        y: my + (d.y - my) * factor
+      }));
+    }
+
+    function makeClusterColorMap(items) {
+      // clusterId を安定した順序で並べて色を割り当て
+      const ids = Array.from(new Set(items.map(d => d.clusterId ?? "c0"))).sort();
+      const palette = d3.schemePastel1; // 9色（パステル）
+      const map = new Map();
+      ids.forEach((id, i) => map.set(id, palette[i % palette.length]));
+      return map;
+    }
+
     function draw(dataJson) {
-      const items = dataJson.keywords;
+      clearError();
       setParticipants(dataJson.participantCount);
 
-      if (items.length < 1) {
-        setStatus("キーワードがありません。");
+      let items = dataJson.keywords;
+      if (!items || items.length < 1) {
         svg.innerHTML = "";
         return;
       }
+
+      // 座標圧縮（クラスタ間を詰める）
+      items = compactAroundMean(items, CLUSTER_COMPACT);
+
+      // 色割り当て
+      const colorMap = makeClusterColorMap(items);
 
       const W = svg.clientWidth || 800;
       const H = svg.clientHeight || 600;
@@ -78,55 +110,34 @@
           .on("zoom", (event) => g.attr("transform", event.transform))
       );
 
-      // x,y は事前計算済み（クラスタ島）
       const xs = items.map(d => d.x);
       const ys = items.map(d => d.y);
 
-      const padding = 60;
       const xScale = d3.scaleLinear()
         .domain(d3.extent(xs))
-        .range([padding, W - padding]);
+        .range([PADDING, W - PADDING]);
 
       const yScale = d3.scaleLinear()
         .domain(d3.extent(ys))
-        .range([H - padding, padding]);
+        .range([H - PADDING, PADDING]);
 
-      // 頻度に応じた最小半径（文字で拡張されるので最小値として使う）
       const counts = items.map(d => d.count);
       const rMinScale = d3.scaleSqrt()
         .domain(d3.extent(counts))
         .range([10, 26]);
 
-      const nodes = items.map(d => ({
-        ...d,
-        x: xScale(d.x),
-        y: yScale(d.y),
-        r: rMinScale(d.count)
-      }));
-
-      // クラスタラベル表示（島の上に置く：簡易）
-      // clusterId -> 中心
-      const centers = d3.rollup(
-        nodes,
-        v => ({
-          x: d3.mean(v, d => d.x),
-          y: d3.mean(v, d => d.y),
-          label: v[0]?.clusterLabel ?? ""
-        }),
-        d => d.clusterId
-      );
-
-      g.selectAll(".clusterLabel")
-        .data([...centers.values()])
-        .enter()
-        .append("text")
-        .attr("class", "clusterLabel")
-        .attr("x", d => d.x)
-        .attr("y", d => d.y - 40)
-        .attr("text-anchor", "middle")
-        .attr("font-weight", 700)
-        .attr("font-size", 14)
-        .text(d => d.label);
+      const nodes = items.map(d => {
+        const cid = d.clusterId ?? "c0";
+        return {
+          keyword: d.keyword,
+          count: d.count,
+          clusterId: cid,
+          x: xScale(d.x),
+          y: yScale(d.y),
+          r: rMinScale(d.count),
+          fill: colorMap.get(cid) ?? "#eee"
+        };
+      });
 
       const node = g.selectAll(".node")
         .data(nodes)
@@ -137,23 +148,21 @@
 
       node.append("circle")
         .attr("r", d => d.r)
-        .attr("fill", "white")
+        .attr("fill", d => d.fill)
         .attr("stroke", "black")
-        .attr("stroke-width", 1.2);
+        .attr("stroke-width", 1.0);
 
       node.append("title")
-        .text(d => `${d.keyword} (n=${d.count}) / ${d.clusterLabel}`);
+        .text(d => `${d.keyword} (n=${d.count})`);
 
-      // 長いラベルは少し小さく
       node.append("text")
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
         .attr("font-size", d => (d.keyword.length >= 18 ? 10 : 12))
         .text(d => d.keyword);
 
-      // --- ここが「文字はみ出し対策」の本体 ---
-      // text.getBBox() から必要半径を計算して円を拡張（レスポンシブ）
-      const PADDING = 10;
+      // 文字はみ出し対策：BBoxで円半径を拡張
+      const TEXT_PAD = 10;
       node.each(function(d) {
         const gSel = d3.select(this);
         const textNode = gSel.select("text").node();
@@ -161,35 +170,30 @@
         if (!textNode) return;
 
         const bb = textNode.getBBox();
-        // 対角の近似（安全寄り）：半径 >= 0.55*max(w,h) + padding
-        const needed = Math.max(bb.width, bb.height) * 0.55 + PADDING;
+        const needed = Math.max(bb.width, bb.height) * 0.55 + TEXT_PAD;
         d.r = Math.max(d.r, needed);
         circleSel.attr("r", d.r);
       });
 
-      // 軽く重なり解消（円半径確定後にコリジョン）
+      // 衝突解消
       const sim = d3.forceSimulation(nodes)
-        .force("x", d3.forceX(d => d.x).strength(0.15))
-        .force("y", d3.forceY(d => d.y).strength(0.15))
-        .force("collide", d3.forceCollide(d => d.r + 2))
+        .force("x", d3.forceX(d => d.x).strength(0.18))
+        .force("y", d3.forceY(d => d.y).strength(0.18))
+        .force("collide", d3.forceCollide(d => d.r + COLLIDE_PAD))
         .stop();
 
-      for (let i = 0; i < 220; i++) sim.tick();
+      for (let i = 0; i < 240; i++) sim.tick();
       node.attr("transform", d => `translate(${d.x},${d.y})`);
-
-      setStatus(`Done. keywords=${nodes.length}`);
     }
 
     async function main() {
       try {
         const json = await loadData();
         draw(json);
-
-        // 画面リサイズでも見た目を壊さない（再描画）
         window.addEventListener("resize", () => draw(json), { passive: true });
       } catch (e) {
         console.error(e);
-        setStatus(`ERROR:\n${e?.message ?? e}`);
+        showError(e?.message ?? String(e));
       }
     }
 
