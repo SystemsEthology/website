@@ -8,7 +8,6 @@
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; }
     #header { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
     #participants { font-weight: 700; }
-    /* 通常は何も表示しない（エラー時だけ出す） */
     #status { white-space: pre-wrap; color: #b00020; display: none; }
     svg { width: 100%; height: 78vh; border: 1px solid #ddd; border-radius: 10px; }
     .node { cursor: default; }
@@ -28,30 +27,36 @@
   <script type="module">
     import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-    // ★更新したJSON
+    // ★JSON
     const DATA_URL = "./clustered_keywords_v4.json";
 
-    // カテゴリは分かるが離れすぎない：小さいほど詰まる
-    const CLUSTER_COMPACT = 0.2;
+    // ===== 近づける系 =====
+    // カテゴリは分かるが離れすぎない：小さいほど詰まる（※今度はちゃんと効く）
+    const CLUSTER_COMPACT = 0.45; // 0.2〜0.8で調整
 
-    // 余白
-    const PADDING = 2;
+    // ★これが「見た目の詰まり」を決める主ツマミ（小さいほど詰まる）
+    // extentで引き伸ばさないので、距離構造がそのまま反映される
+    const WORLD_SCALE = 0.42; // 0.20〜0.80で調整
+    // ======================
 
-    // 文字の周りの余白（全ノード共通円半径を決めるため）
-    const TEXT_PAD = 2;
+    // 余白（px）
+    const PADDING = 6;
 
-    // 円同士の重なり許容：衝突半径を縮める倍率（<1 で重なってOK）
-    const OVERLAP_FACTOR = 0.75;
+    // 最大文字に合わせて全円同一半径：文字周り余白
+    const TEXT_PAD = 6;
 
-    // 自動フィット時の余白（px）
-    const FIT_PAD = 2;
+    // 円同士の重なり許容（<1 で重なってOK）
+    const OVERLAP_FACTOR = 0.78;
 
-    // ホバーの見た目
+    // 自動フィット余白（px）
+    const FIT_PAD = 8;
+
+    // ホバー
     const HOVER_SCALE = 1.14;
     const HOVER_RISE_PX = 6;
 
-    // 要素間の距離の強さの影響
-    const TARGET_STRENGTH = 0.28; // 0.18〜0.45で調整
+    // 距離構造をどれだけ守るか（大きいほど x,y に忠実）
+    const TARGET_STRENGTH = 0.28; // 0.18〜0.45
 
     const participantsEl = document.getElementById("participants");
     const statusEl = document.getElementById("status");
@@ -74,10 +79,8 @@
       const res = await fetch(DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error(`JSON fetch error: ${res.status} ${res.statusText}`);
       const json = await res.json();
-
       if (!Number.isInteger(json.participantCount)) throw new Error("participantCount missing/invalid");
       if (!Array.isArray(json.keywords)) throw new Error("keywords missing/invalid");
-
       return json;
     }
 
@@ -93,7 +96,7 @@
 
     function makeClusterColorMap(items) {
       const ids = Array.from(new Set(items.map(d => d.clusterId ?? 0))).sort((a,b)=>a-b);
-      const palette = d3.schemePastel1; // 9色（パステル）
+      const palette = d3.schemePastel1; // パステル
       const map = new Map();
       ids.forEach((id, i) => map.set(id, palette[i % palette.length]));
       return map;
@@ -135,7 +138,7 @@
         return;
       }
 
-      // ほどよく詰める（カテゴリ分離は維持）
+      // CLUSTER_COMPACT が “見た目に効く” ようになった
       items = compactAroundMean(items, CLUSTER_COMPACT);
 
       const colorMap = makeClusterColorMap(items);
@@ -152,16 +155,18 @@
         .on("zoom", (event) => g.attr("transform", event.transform));
       root.call(zoom);
 
+      // ★ fixed “world” mapping：extentで引き伸ばさない
       const xs = items.map(d => d.x);
       const ys = items.map(d => d.y);
+      const mx = d3.mean(xs);
+      const my = d3.mean(ys);
 
-      const xScale = d3.scaleLinear()
-        .domain(d3.extent(xs))
-        .range([PADDING, W - PADDING]);
+      const dx = d3.max(xs.map(x => Math.abs(x - mx))) || 1;
+      const dy = d3.max(ys.map(y => Math.abs(y - my))) || 1;
 
-      const yScale = d3.scaleLinear()
-        .domain(d3.extent(ys))
-        .range([H - PADDING, PADDING]);
+      // WORLD_SCALE を使って中心に描画（PADDING は画面端ガード）
+      const xToScreen = (x) => (W / 2) + (x - mx) * ((W - 2 * PADDING) * WORLD_SCALE) / (2 * dx);
+      const yToScreen = (y) => (H / 2) - (y - my) * ((H - 2 * PADDING) * WORLD_SCALE) / (2 * dy);
 
       const nodes = items.map(d => {
         const cid = (d.clusterId ?? 0);
@@ -169,8 +174,8 @@
           keyword: d.keyword,
           count: d.count ?? 1,
           clusterId: cid,
-          x: xScale(d.x),
-          y: yScale(d.y),
+          x: xToScreen(d.x),
+          y: yToScreen(d.y),
           r: 10,
           fill: colorMap.get(cid) ?? "#eee"
         };
@@ -211,20 +216,20 @@
       nodes.forEach(d => d.r = maxNeededR);
       node.select("circle").attr("r", maxNeededR);
 
-      // 重なりOK：衝突半径を小さくする（外接円近似）
+      // 重なりOK（衝突半径を縮める）
       const collideR = maxNeededR * OVERLAP_FACTOR;
 
+      // x,y へ戻す力を強めると「距離構造」が効く
       const sim = d3.forceSimulation(nodes)
         .force("x", d3.forceX(d => d.x).strength(TARGET_STRENGTH))
         .force("y", d3.forceY(d => d.y).strength(TARGET_STRENGTH))
         .force("collide", d3.forceCollide(collideR))
         .stop();
 
-      for (let i = 0; i < 260; i++) sim.tick();
-
+      for (let i = 0; i < 320; i++) sim.tick();
       node.attr("transform", d => `translate(${d.x},${d.y})`);
 
-      // ホバー：少し浮かせて拡大（円同士が重なっても見つけやすい）
+      // ホバー
       node.on("mouseenter", function(event, d) {
           d3.select(this).raise()
             .transition().duration(90)
