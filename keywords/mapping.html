@@ -11,6 +11,7 @@
     /* 通常は何も表示しない（エラー時だけ出す） */
     #status { white-space: pre-wrap; color: #b00020; display: none; }
     svg { width: 100%; height: 78vh; border: 1px solid #ddd; border-radius: 10px; }
+    .node { cursor: default; }
     .node text { pointer-events: none; }
   </style>
 </head>
@@ -27,22 +28,27 @@
   <script type="module">
     import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-    const DATA_URL = "./clustered_keywords.json";
+    // ★更新したJSON
+    const DATA_URL = "./clustered_keywords_v2.json";
 
-    // カテゴリ間距離
-    const CLUSTER_COMPACT = 1;
+    // カテゴリは分かるが離れすぎない：小さいほど詰まる
+    const CLUSTER_COMPACT = 0.75;
 
     // 余白
-    const PADDING = 1;
+    const PADDING = 18;
 
     // 文字の周りの余白（全ノード共通円半径を決めるため）
-    const TEXT_PAD = 1;
+    const TEXT_PAD = 12;
 
-    // 衝突のすき間
-    const COLLIDE_PAD = 1;
+    // 円同士の重なり許容：衝突半径を縮める倍率（<1 で重なってOK）
+    const OVERLAP_FACTOR = 0.82;
 
     // 自動フィット時の余白（px）
-    const FIT_PAD = 1;
+    const FIT_PAD = 14;
+
+    // ホバーの見た目
+    const HOVER_SCALE = 1.14;
+    const HOVER_RISE_PX = 6;
 
     const participantsEl = document.getElementById("participants");
     const statusEl = document.getElementById("status");
@@ -83,15 +89,14 @@
     }
 
     function makeClusterColorMap(items) {
-      const ids = Array.from(new Set(items.map(d => d.clusterId ?? "c0"))).sort();
+      const ids = Array.from(new Set(items.map(d => d.clusterId ?? 0))).sort((a,b)=>a-b);
       const palette = d3.schemePastel1; // 9色（パステル）
       const map = new Map();
       ids.forEach((id, i) => map.set(id, palette[i % palette.length]));
       return map;
     }
 
-    function fitToView(root, zoom, g, nodes, W, H) {
-      // ノード全体（円の半径込み）の外接矩形
+    function fitToView(root, zoom, nodes, W, H) {
       let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
       for (const d of nodes) {
         minX = Math.min(minX, d.x - d.r);
@@ -99,17 +104,12 @@
         minY = Math.min(minY, d.y - d.r);
         maxY = Math.max(maxY, d.y + d.r);
       }
-      if (!Number.isFinite(minX) || !Number.isFinite(minY) || !Number.isFinite(maxX) || !Number.isFinite(maxY)) {
-        return;
-      }
+      if (!Number.isFinite(minX) || !Number.isFinite(minY) || !Number.isFinite(maxX) || !Number.isFinite(maxY)) return;
 
       const bw = (maxX - minX) + FIT_PAD * 2;
       const bh = (maxY - minY) + FIT_PAD * 2;
-
-      // 念のため（ゼロ割防止）
       if (!(bw > 0) || !(bh > 0)) return;
 
-      // 画面に収めるスケール（拡大しすぎない）
       const s = Math.min(W / bw, H / bh);
       const cx = (minX + maxX) / 2;
       const cy = (minY + maxY) / 2;
@@ -119,7 +119,6 @@
         .scale(s)
         .translate(-cx, -cy);
 
-      // ズーム状態として適用（ユーザー操作もこの上に乗る）
       root.call(zoom.transform, t);
     }
 
@@ -133,7 +132,7 @@
         return;
       }
 
-      // 「カテゴリ分離は維持しつつ」詰める
+      // ほどよく詰める（カテゴリ分離は維持）
       items = compactAroundMean(items, CLUSTER_COMPACT);
 
       const colorMap = makeClusterColorMap(items);
@@ -146,9 +145,8 @@
       const g = root.append("g");
 
       const zoom = d3.zoom()
-        .scaleExtent([0.2, 10])
+        .scaleExtent([0.2, 12])
         .on("zoom", (event) => g.attr("transform", event.transform));
-
       root.call(zoom);
 
       const xs = items.map(d => d.x);
@@ -163,13 +161,13 @@
         .range([H - PADDING, PADDING]);
 
       const nodes = items.map(d => {
-        const cid = d.clusterId ?? "c0";
+        const cid = (d.clusterId ?? 0);
         return {
           keyword: d.keyword,
+          count: d.count ?? 1,
           clusterId: cid,
           x: xScale(d.x),
           y: yScale(d.y),
-          // r は後で「最大文字」から一括決定
           r: 10,
           fill: colorMap.get(cid) ?? "#eee"
         };
@@ -188,47 +186,55 @@
         .attr("stroke", "black")
         .attr("stroke-width", 1.0);
 
-      node.append("title")
-        .text(d => d.keyword);
+      node.append("title").text(d => d.keyword);
 
-      // 文字サイズは固定（最大文字に合わせて全円を揃えるため）
       node.append("text")
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
         .attr("font-size", 12)
         .text(d => d.keyword);
 
-      // ---- ここが要件1：最大の文字に合わせて「全円同一半径」 ----
+      // 最大文字に合わせて全円同一半径
       let maxNeededR = 0;
       node.each(function() {
         const t = d3.select(this).select("text").node();
         if (!t) return;
         const bb = t.getBBox();
-        // 対角安全寄り：半径 >= 0.55*max(w,h) + pad
         const needed = Math.max(bb.width, bb.height) * 0.55 + TEXT_PAD;
         if (needed > maxNeededR) maxNeededR = needed;
       });
+      if (!(maxNeededR > 0)) throw new Error("text bbox measurement failed (maxNeededR invalid)");
 
-      if (!(maxNeededR > 0)) {
-        throw new Error("text bbox measurement failed (maxNeededR invalid)");
-      }
-
-      // 全ノードへ同一半径
-      for (const d of nodes) d.r = maxNeededR;
+      nodes.forEach(d => d.r = maxNeededR);
       node.select("circle").attr("r", maxNeededR);
 
-      // ---- 衝突解消（全円同一半径なので collide も一定） ----
+      // 重なりOK：衝突半径を小さくする（外接円近似）
+      const collideR = maxNeededR * OVERLAP_FACTOR;
+
       const sim = d3.forceSimulation(nodes)
-        .force("x", d3.forceX(d => d.x).strength(0.18))
-        .force("y", d3.forceY(d => d.y).strength(0.18))
-        .force("collide", d3.forceCollide(maxNeededR + COLLIDE_PAD))
+        .force("x", d3.forceX(d => d.x).strength(0.12))
+        .force("y", d3.forceY(d => d.y).strength(0.12))
+        .force("collide", d3.forceCollide(collideR))
         .stop();
 
-      for (let i = 0; i < 280; i++) sim.tick();
+      for (let i = 0; i < 260; i++) sim.tick();
+
       node.attr("transform", d => `translate(${d.x},${d.y})`);
 
-      // ---- ここが要件2：初期倍率で必ず「入りきる」 ----
-      fitToView(root, zoom, g, nodes, W, H);
+      // ホバー：少し浮かせて拡大（円同士が重なっても見つけやすい）
+      node.on("mouseenter", function(event, d) {
+          d3.select(this).raise()
+            .transition().duration(90)
+            .attr("transform", `translate(${d.x},${d.y - HOVER_RISE_PX}) scale(${HOVER_SCALE})`);
+        })
+        .on("mouseleave", function(event, d) {
+          d3.select(this)
+            .transition().duration(90)
+            .attr("transform", `translate(${d.x},${d.y}) scale(1)`);
+        });
+
+      // 初期倍率で必ず入りきる
+      fitToView(root, zoom, nodes, W, H);
     }
 
     async function main() {
