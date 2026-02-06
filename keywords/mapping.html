@@ -8,6 +8,7 @@
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; }
     #header { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
     #participants { font-weight: 700; }
+    /* 通常は何も表示しない（エラー時だけ出す） */
     #status { white-space: pre-wrap; color: #b00020; display: none; }
     svg { width: 100%; height: 78vh; border: 1px solid #ddd; border-radius: 10px; }
     .node text { pointer-events: none; }
@@ -28,19 +29,20 @@
 
     const DATA_URL = "./clustered_keywords.json";
 
-    // ===== 詰め具合（小さいほど詰まる） =====
-    const CLUSTER_COMPACT = 0.42;  // 0.35〜0.55あたりが実用
-    const PADDING = 10;           // 余白ほぼゼロ
-    // ======================================
+    // カテゴリは分かるが離れすぎない：小さいほど詰まる
+    const CLUSTER_COMPACT = 0.58;
 
-    // ===== 楕円サイズ（全ノード統一） =====
-    const TEXT_PAD_X = 16;        // 文字の左右余白
-    const TEXT_PAD_Y = 10;        // 文字の上下余白
-    const ELLIPSE_STRETCH_X = 1.25; // 横長にする倍率（rxを太らせる）
-    // ======================================
+    // 余白
+    const PADDING = 24;
 
-    // 衝突（すき間）
+    // 文字の周りの余白（全ノード共通円半径を決めるため）
+    const TEXT_PAD = 12;
+
+    // 衝突のすき間
     const COLLIDE_PAD = 2;
+
+    // 自動フィット時の余白（px）
+    const FIT_PAD = 14;
 
     const participantsEl = document.getElementById("participants");
     const statusEl = document.getElementById("status");
@@ -63,8 +65,10 @@
       const res = await fetch(DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error(`JSON fetch error: ${res.status} ${res.statusText}`);
       const json = await res.json();
+
       if (!Number.isInteger(json.participantCount)) throw new Error("participantCount missing/invalid");
       if (!Array.isArray(json.keywords)) throw new Error("keywords missing/invalid");
+
       return json;
     }
 
@@ -80,10 +84,43 @@
 
     function makeClusterColorMap(items) {
       const ids = Array.from(new Set(items.map(d => d.clusterId ?? "c0"))).sort();
-      const palette = d3.schemePastel1; // 9色（循環）
+      const palette = d3.schemePastel1; // 9色（パステル）
       const map = new Map();
       ids.forEach((id, i) => map.set(id, palette[i % palette.length]));
       return map;
+    }
+
+    function fitToView(root, zoom, g, nodes, W, H) {
+      // ノード全体（円の半径込み）の外接矩形
+      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      for (const d of nodes) {
+        minX = Math.min(minX, d.x - d.r);
+        maxX = Math.max(maxX, d.x + d.r);
+        minY = Math.min(minY, d.y - d.r);
+        maxY = Math.max(maxY, d.y + d.r);
+      }
+      if (!Number.isFinite(minX) || !Number.isFinite(minY) || !Number.isFinite(maxX) || !Number.isFinite(maxY)) {
+        return;
+      }
+
+      const bw = (maxX - minX) + FIT_PAD * 2;
+      const bh = (maxY - minY) + FIT_PAD * 2;
+
+      // 念のため（ゼロ割防止）
+      if (!(bw > 0) || !(bh > 0)) return;
+
+      // 画面に収めるスケール（拡大しすぎない）
+      const s = Math.min(W / bw, H / bh);
+      const cx = (minX + maxX) / 2;
+      const cy = (minY + maxY) / 2;
+
+      const t = d3.zoomIdentity
+        .translate(W / 2, H / 2)
+        .scale(s)
+        .translate(-cx, -cy);
+
+      // ズーム状態として適用（ユーザー操作もこの上に乗る）
+      root.call(zoom.transform, t);
     }
 
     function draw(dataJson) {
@@ -96,10 +133,9 @@
         return;
       }
 
-      // 1) 座標を強く圧縮して「カテゴリ間の空白」を潰す
+      // 「カテゴリ分離は維持しつつ」詰める
       items = compactAroundMean(items, CLUSTER_COMPACT);
 
-      // 2) 色割り当て（クラスタごと）
       const colorMap = makeClusterColorMap(items);
 
       const W = svg.clientWidth || 800;
@@ -109,11 +145,11 @@
       const root = d3.select(svg).attr("viewBox", `0 0 ${W} ${H}`);
       const g = root.append("g");
 
-      root.call(
-        d3.zoom()
-          .scaleExtent([0.5, 8])
-          .on("zoom", (event) => g.attr("transform", event.transform))
-      );
+      const zoom = d3.zoom()
+        .scaleExtent([0.2, 10])
+        .on("zoom", (event) => g.attr("transform", event.transform));
+
+      root.call(zoom);
 
       const xs = items.map(d => d.x);
       const ys = items.map(d => d.y);
@@ -130,14 +166,12 @@
         const cid = d.clusterId ?? "c0";
         return {
           keyword: d.keyword,
-          count: d.count,
           clusterId: cid,
           x: xScale(d.x),
           y: yScale(d.y),
-          fill: colorMap.get(cid) ?? "#eee",
-          // 楕円半径は後で「最大文字」に合わせて一括設定
-          rx: 10,
-          ry: 10
+          // r は後で「最大文字」から一括決定
+          r: 10,
+          fill: colorMap.get(cid) ?? "#eee"
         };
       });
 
@@ -148,65 +182,53 @@
         .attr("class", "node")
         .attr("transform", d => `translate(${d.x},${d.y})`);
 
-      // ★円ではなく楕円
-      node.append("ellipse")
-        .attr("cx", 0)
-        .attr("cy", 0)
-        .attr("rx", d => d.rx)
-        .attr("ry", d => d.ry)
+      node.append("circle")
+        .attr("r", d => d.r)
         .attr("fill", d => d.fill)
         .attr("stroke", "black")
         .attr("stroke-width", 1.0);
 
       node.append("title")
-        .text(d => `${d.keyword} (n=${d.count})`);
+        .text(d => d.keyword);
 
+      // 文字サイズは固定（最大文字に合わせて全円を揃えるため）
       node.append("text")
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
-        .attr("font-size", 12) // 全ノード統一（最大文字に合わせて枠を作るため）
+        .attr("font-size", 12)
         .text(d => d.keyword);
 
-      // 3) まず「最大の文字BBox」を計測 → 全楕円を同一サイズに
-      let maxW = 0;
-      let maxH = 0;
-
+      // ---- ここが要件1：最大の文字に合わせて「全円同一半径」 ----
+      let maxNeededR = 0;
       node.each(function() {
         const t = d3.select(this).select("text").node();
         if (!t) return;
         const bb = t.getBBox();
-        if (bb.width > maxW) maxW = bb.width;
-        if (bb.height > maxH) maxH = bb.height;
+        // 対角安全寄り：半径 >= 0.55*max(w,h) + pad
+        const needed = Math.max(bb.width, bb.height) * 0.55 + TEXT_PAD;
+        if (needed > maxNeededR) maxNeededR = needed;
       });
 
-      // 数値整合性チェック（空なら止める）
-      if (!(maxW > 0) || !(maxH > 0)) {
-        throw new Error("text bbox measurement failed (maxW/maxH invalid)");
+      if (!(maxNeededR > 0)) {
+        throw new Error("text bbox measurement failed (maxNeededR invalid)");
       }
 
-      // 楕円半径（rx, ry）
-      const rx = ((maxW / 2) + TEXT_PAD_X) * ELLIPSE_STRETCH_X;
-      const ry = (maxH / 2) + TEXT_PAD_Y;
+      // 全ノードへ同一半径
+      for (const d of nodes) d.r = maxNeededR;
+      node.select("circle").attr("r", maxNeededR);
 
-      // 全ノードへ適用
-      nodes.forEach(d => { d.rx = rx; d.ry = ry; });
-
-      node.select("ellipse")
-        .attr("rx", rx)
-        .attr("ry", ry);
-
-      // 4) さらに詰める：衝突＋中心へ寄せる
-      // 楕円同士の衝突は厳密でなく「外接円」で近似（十分見た目が良い）
-      const collideR = Math.max(rx, ry);
-
+      // ---- 衝突解消（全円同一半径なので collide も一定） ----
       const sim = d3.forceSimulation(nodes)
-        .force("x", d3.forceX(W/2).strength(0.12))
-        .force("y", d3.forceY(H/2).strength(0.12))
-        .force("collide", d3.forceCollide(collideR + COLLIDE_PAD))
+        .force("x", d3.forceX(d => d.x).strength(0.18))
+        .force("y", d3.forceY(d => d.y).strength(0.18))
+        .force("collide", d3.forceCollide(maxNeededR + COLLIDE_PAD))
         .stop();
 
-      for (let i = 0; i < 320; i++) sim.tick();
+      for (let i = 0; i < 280; i++) sim.tick();
       node.attr("transform", d => `translate(${d.x},${d.y})`);
+
+      // ---- ここが要件2：初期倍率で必ず「入りきる」 ----
+      fitToView(root, zoom, g, nodes, W, H);
     }
 
     async function main() {
