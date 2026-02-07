@@ -10,6 +10,10 @@
     #participants { font-weight: 700; }
     #status { white-space: pre-wrap; color: #b00020; display: none; }
     svg { width: 100%; height: 78vh; border: 1px solid #ddd; border-radius: 10px; }
+    @media (max-width: 640px) {
+      body { margin: 8px; }
+      svg { height: 86vh; }
+    }
     .node { cursor: default; }
     .node text { pointer-events: none; }
   </style>
@@ -30,14 +34,15 @@
     // ★JSON
     const DATA_URL = "./clustered_keywords_v4.json";
 
-    // ===== 近づける系 =====
-    // カテゴリは分かるが離れすぎない：小さいほど詰まる（※今度はちゃんと効く）
-    const CLUSTER_COMPACT = 0.4; // 0.2〜0.8で調整
-
-    // ★これが「見た目の詰まり」を決める主ツマミ（小さいほど詰まる）
-    // extentで引き伸ばさないので、距離構造がそのまま反映される
-    const WORLD_SCALE = 0.7;
-    // ======================
+    // ===== レイアウト調整（デスクトップ/スマホで自動切替）=====
+    // 「スマホでぎゅっと詰まりすぎる」対策：
+    // - スマホ時は (1) クラスター縮小を弱める (=広げる) (2) 重なり許容を減らす (3) 多少縦長にする
+    // - さらに、"必ず全部入れる" 自動フィットで過度に縮小されるのを避けるため、最小倍率をクランプ
+    const BASE_CLUSTER_COMPACT = 0.4;  // 小さいほど詰まる
+    const BASE_WORLD_SCALE     = 0.7;  // 小さいほど詰まる
+    const BASE_OVERLAP_FACTOR  = 0.7;  // <1 で重なってOK
+    const BASE_FIT_PAD         = 2;
+    const BASE_TARGET_STRENGTH = 0.28; // 大きいほど x,y に忠実
 
     // 余白（px）
     const PADDING = 2;
@@ -45,18 +50,47 @@
     // 最大文字に合わせて全円同一半径：文字周り余白
     const TEXT_PAD = 2;
 
-    // 円同士の重なり許容（<1 で重なってOK）
-    const OVERLAP_FACTOR = 0.7;
-
-    // 自動フィット余白（px）
-    const FIT_PAD = 2;
-
     // ホバー
     const HOVER_SCALE = 1.14;
     const HOVER_RISE_PX = 6;
 
-    // 距離構造をどれだけ守るか（大きいほど x,y に忠実）
-    const TARGET_STRENGTH = 0.28; // 0.18〜0.45
+    function getLayoutParams(W, H) {
+      const isMobile = W <= 640;
+
+      // スマホは「詰まり」を解消したいので、広がる方向へ寄せる
+      const clusterCompact = isMobile ? 0.62 : BASE_CLUSTER_COMPACT;  // ↑で広がる
+      const worldScale     = isMobile ? 0.82 : BASE_WORLD_SCALE;      // ↑で広がる
+
+      // 重なり許容を減らす（=より強く衝突回避）
+      const overlapFactor  = isMobile ? 0.95 : BASE_OVERLAP_FACTOR;
+
+      // fit余白はスマホで少し大きめ（タップ余地にもなる）
+      const fitPad         = isMobile ? 10 : BASE_FIT_PAD;
+
+      // 目標座標へ戻す力：スマホで少し強めて距離構造を保ちやすく
+      const targetStrength = isMobile ? 0.34 : BASE_TARGET_STRENGTH;
+
+      // スマホで縦長に引き離す（横は少し抑える）
+      const stretchX       = isMobile ? 0.92 : 1.0;
+      const stretchY       = isMobile ? 1.18 : 1.0;
+
+      // 自動フィットが「縮小しすぎ」にならないよう、最小倍率を設定（0 ならクランプなし）
+      // スマホは「全員集合」を諦めて、多少はみ出してもOK（ピンチ・パンで見られる）
+      const fitMinScaleClamp = isMobile ? 0.90 : 0.0;
+
+      return {
+        isMobile,
+        clusterCompact,
+        worldScale,
+        overlapFactor,
+        fitPad,
+        targetStrength,
+        stretchX,
+        stretchY,
+        fitMinScaleClamp
+      };
+    }
+    // ===========================================================
 
     const participantsEl = document.getElementById("participants");
     const statusEl = document.getElementById("status");
@@ -102,7 +136,7 @@
       return map;
     }
 
-    function fitToView(root, zoom, nodes, W, H) {
+    function fitToView(root, zoom, nodes, W, H, fitPad, minScaleClamp) {
       let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
       for (const d of nodes) {
         minX = Math.min(minX, d.x - d.r);
@@ -112,11 +146,13 @@
       }
       if (!Number.isFinite(minX) || !Number.isFinite(minY) || !Number.isFinite(maxX) || !Number.isFinite(maxY)) return;
 
-      const bw = (maxX - minX) + FIT_PAD * 2;
-      const bh = (maxY - minY) + FIT_PAD * 2;
+      const bw = (maxX - minX) + fitPad * 2;
+      const bh = (maxY - minY) + fitPad * 2;
       if (!(bw > 0) || !(bh > 0)) return;
 
-      const s = Math.min(W / bw, H / bh);
+      let s = Math.min(W / bw, H / bh);
+      if (minScaleClamp && Number.isFinite(minScaleClamp)) s = Math.max(s, minScaleClamp);
+
       const cx = (minX + maxX) / 2;
       const cy = (minY + maxY) / 2;
 
@@ -138,13 +174,15 @@
         return;
       }
 
-      // CLUSTER_COMPACT が “見た目に効く” ようになった
-      items = compactAroundMean(items, CLUSTER_COMPACT);
+      const W = svg.clientWidth || 800;
+      const H = svg.clientHeight || 600;
+      const lp = getLayoutParams(W, H);
+
+      // スマホ時は広がる方向へ
+      items = compactAroundMean(items, lp.clusterCompact);
 
       const colorMap = makeClusterColorMap(items);
 
-      const W = svg.clientWidth || 800;
-      const H = svg.clientHeight || 600;
       svg.innerHTML = "";
 
       const root = d3.select(svg).attr("viewBox", `0 0 ${W} ${H}`);
@@ -155,7 +193,7 @@
         .on("zoom", (event) => g.attr("transform", event.transform));
       root.call(zoom);
 
-      // ★ fixed “world” mapping：extentで引き伸ばさない
+      // fixed “world” mapping：extentで引き伸ばさない
       const xs = items.map(d => d.x);
       const ys = items.map(d => d.y);
       const mx = d3.mean(xs);
@@ -164,9 +202,9 @@
       const dx = d3.max(xs.map(x => Math.abs(x - mx))) || 1;
       const dy = d3.max(ys.map(y => Math.abs(y - my))) || 1;
 
-      // WORLD_SCALE を使って中心に描画（PADDING は画面端ガード）
-      const xToScreen = (x) => (W / 2) + (x - mx) * ((W - 2 * PADDING) * WORLD_SCALE) / (2 * dx);
-      const yToScreen = (y) => (H / 2) - (y - my) * ((H - 2 * PADDING) * WORLD_SCALE) / (2 * dy);
+      // WORLD_SCALE +（スマホ時は縦長ストレッチ）
+      const xToScreen = (x) => (W / 2) + (x - mx) * ((W - 2 * PADDING) * lp.worldScale * lp.stretchX) / (2 * dx);
+      const yToScreen = (y) => (H / 2) - (y - my) * ((H - 2 * PADDING) * lp.worldScale * lp.stretchY) / (2 * dy);
 
       const nodes = items.map(d => {
         const cid = (d.clusterId ?? 0);
@@ -216,13 +254,12 @@
       nodes.forEach(d => d.r = maxNeededR);
       node.select("circle").attr("r", maxNeededR);
 
-      // 重なりOK（衝突半径を縮める）
-      const collideR = maxNeededR * OVERLAP_FACTOR;
+      // スマホは重なり許容を減らして「密集感」を下げる
+      const collideR = maxNeededR * lp.overlapFactor;
 
-      // x,y へ戻す力を強めると「距離構造」が効く
       const sim = d3.forceSimulation(nodes)
-        .force("x", d3.forceX(d => d.x).strength(TARGET_STRENGTH))
-        .force("y", d3.forceY(d => d.y).strength(TARGET_STRENGTH))
+        .force("x", d3.forceX(d => d.x).strength(lp.targetStrength))
+        .force("y", d3.forceY(d => d.y).strength(lp.targetStrength))
         .force("collide", d3.forceCollide(collideR))
         .stop();
 
@@ -241,8 +278,8 @@
             .attr("transform", `translate(${d.x},${d.y}) scale(1)`);
         });
 
-      // 初期倍率で必ず入りきる
-      fitToView(root, zoom, nodes, W, H);
+      // 初期倍率：スマホでは縮小しすぎを止める（多少はみ出しOK）
+      fitToView(root, zoom, nodes, W, H, lp.fitPad, lp.fitMinScaleClamp);
     }
 
     async function main() {
