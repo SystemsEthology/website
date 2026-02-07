@@ -32,17 +32,17 @@
     import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
     // ★JSON
-    const DATA_URL = "./clustered_keywords_v4.json";
+    const DATA_URL = "./clustered_keywords_v5.json";
 
     // ===== レイアウト調整（デスクトップ/スマホで自動切替）=====
     // 「スマホでぎゅっと詰まりすぎる」対策：
     // - スマホ時は (1) クラスター縮小を弱める (=広げる) (2) 重なり許容を減らす (3) 多少縦長にする
     // - さらに、"必ず全部入れる" 自動フィットで過度に縮小されるのを避けるため、最小倍率をクランプ
-    const BASE_CLUSTER_COMPACT = 0.4;  // 小さいほど詰まる
-    const BASE_WORLD_SCALE     = 0.7;  // 小さいほど詰まる
-    const BASE_OVERLAP_FACTOR  = 0.7;  // <1 で重なってOK
+    const BASE_CLUSTER_COMPACT = 0.2;  // 小さいほど詰まる
+    const BASE_WORLD_SCALE     = 0.5;  // 小さいほど詰まる
+    const BASE_OVERLAP_FACTOR  = 0.6;  // <1 で重なってOK
     const BASE_FIT_PAD         = 2;
-    const BASE_TARGET_STRENGTH = 0.28; // 大きいほど x,y に忠実
+    const BASE_TARGET_STRENGTH = 0.5; // 大きいほど x,y に忠実
 
     // 余白（px）
     const PADDING = 2;
