@@ -32,15 +32,15 @@
 
     // ===== 近づける系 =====
     // カテゴリは分かるが離れすぎない：小さいほど詰まる（※今度はちゃんと効く）
-    const CLUSTER_COMPACT = 0.6; // 0.2〜0.8で調整
+    const CLUSTER_COMPACT = 0.4; // 0.2〜0.8で調整
 
     // ★これが「見た目の詰まり」を決める主ツマミ（小さいほど詰まる）
     // extentで引き伸ばさないので、距離構造がそのまま反映される
-    const WORLD_SCALE = 0.85;
+    const WORLD_SCALE = 0.7;
     // ======================
 
     // 余白（px）
-    const PADDING = 6;
+    const PADDING = 2;
 
     // 最大文字に合わせて全円同一半径：文字周り余白
     const TEXT_PAD = 2;
@@ -49,7 +49,7 @@
     const OVERLAP_FACTOR = 0.7;
 
     // 自動フィット余白（px）
-    const FIT_PAD = 8;
+    const FIT_PAD = 2;
 
     // ホバー
     const HOVER_SCALE = 1.14;
