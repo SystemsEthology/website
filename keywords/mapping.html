@@ -58,25 +58,25 @@
       const isMobile = W <= 640;
 
       // スマホは「詰まり」を解消したいので、広がる方向へ寄せる
-      const clusterCompact = isMobile ? 0.62 : BASE_CLUSTER_COMPACT;  // ↑で広がる
-      const worldScale     = isMobile ? 0.82 : BASE_WORLD_SCALE;      // ↑で広がる
+      const clusterCompact = isMobile ? 0.8 : BASE_CLUSTER_COMPACT;  // ↑で広がる
+      const worldScale     = isMobile ? 0.6 : BASE_WORLD_SCALE;      // ↑で広がる
 
       // 重なり許容を減らす（=より強く衝突回避）
-      const overlapFactor  = isMobile ? 0.7 : BASE_OVERLAP_FACTOR;
+      const overlapFactor  = isMobile ? 0.8 : BASE_OVERLAP_FACTOR;
 
       // fit余白はスマホで少し大きめ（タップ余地にもなる）
       const fitPad         = isMobile ? 10 : BASE_FIT_PAD;
 
       // 目標座標へ戻す力：スマホで少し強めて距離構造を保ちやすく
-      const targetStrength = isMobile ? 0.34 : BASE_TARGET_STRENGTH;
+      const targetStrength = isMobile ? 0.3 : BASE_TARGET_STRENGTH;
 
       // スマホで縦長に引き離す（横は少し抑える）
-      const stretchX       = isMobile ? 0.92 : 1.0;
-      const stretchY       = isMobile ? 1.18 : 1.0;
+      const stretchX       = isMobile ? 0.9 : 1.0;
+      const stretchY       = isMobile ? 1.2 : 1.0;
 
       // 自動フィットが「縮小しすぎ」にならないよう、最小倍率を設定（0 ならクランプなし）
       // スマホは「全員集合」を諦めて、多少はみ出してもOK（ピンチ・パンで見られる）
-      const fitMinScaleClamp = isMobile ? 0.70 : 0.0;
+      const fitMinScaleClamp = isMobile ? 0.4 : 0.0;
 
       return {
         isMobile,
