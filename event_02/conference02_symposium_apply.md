@@ -11,7 +11,7 @@ order: 5
 
 <br>
 
-### 公募シンポジウム企画 申請：締切 2025年4月30日 19:00
+### 公募シンポジウム企画 申請：締切 2026年4月30日 19:00
 
 <br>
 <a href="{{ site.baseurl }}/event_02/forms/apply_symposium_systems_ethology_2nd.docx" download>公募シンポジウムフォーム</a>
