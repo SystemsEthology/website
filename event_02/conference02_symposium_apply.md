@@ -14,8 +14,7 @@ order: 5
 ### 公募シンポジウム企画 申請：締切 2025年4月30日 19:00
 
 <br>
-<a href="./forms/apply_symposium_systems_ethology_2nd.docx" download>公募シンポジウムフォーム
-</a>
+<a href="{{ site.baseurl }}/event_02/forms/apply_symposium_systems_ethology_2nd.docx" download>公募シンポジウムフォーム</a>
 
 - 公募シンポジウムの申請フォームを入力していただき、システム行動学研究会のメールに添付してお送りください。メールタイトルは「公募シンポジウム申請 -第２回システム行動学研究会-」としてください。
 <br>
