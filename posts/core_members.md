@@ -4,7 +4,7 @@ title: メンバーリスト
 ---
 ## 役員
 
-- 納富 祐典 （明治大学 研究・知財戦略機構）<a href="https://jpmyrmecol.com/" target="_blank" rel="noopener noreferrer">web</a>
+- 納富 祐典 （明治大学 研究・知財戦略機構）<a href="https://jpmyrmecol.com/" target="_blank" rel="noopener noreferrer">website</a>
 <br>
 
 - 山ノ内 勇斗 （名古屋大学 理学研究科 理学専攻 生命理学領域 博士後期課程）
@@ -14,7 +14,7 @@ title: メンバーリスト
 <br>
 
 ## コアメンバー
-- 納富 祐典 （明治大学 研究・知財戦略機構）<a href="https://jpmyrmecol.com/" target="_blank" rel="noopener noreferrer">web</a>
+- 納富 祐典 （明治大学 研究・知財戦略機構）<a href="https://jpmyrmecol.com/" target="_blank" rel="noopener noreferrer">website</a>
 <br>
 
 - 山ノ内 勇斗 （名古屋大学 理学研究科 理学専攻 生命理学領域 博士後期課程）
@@ -26,7 +26,7 @@ title: メンバーリスト
 - 新村 毅（東京農工大学 農学部 生物生産学科）
 <br>
 
-- 寺尾 勘太（島根大学 学術研究院理工学系）
+- 寺尾 勘太（島根大学 学術研究院理工学系）<a href="https://sites.google.com/view/teraokanta/home" target="_blank" rel="noopener noreferrer">website</a>
 <br>
 
 - 土畑 重人（東京大学 大学院総合文化研究科）
