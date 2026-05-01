@@ -1,7 +1,7 @@
 ---
 layout: page_conference_02
 title: 招待講演
-order: 3
+order: 2
 ---
 <br>
 <br>
