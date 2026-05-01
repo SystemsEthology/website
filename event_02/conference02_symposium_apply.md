@@ -1,6 +1,6 @@
 ---
 layout: page_conference_02
-title: 公募シンポジウム募集
+title: (終了しました)公募シンポジウム募集
 order: 10
 ---
 ***

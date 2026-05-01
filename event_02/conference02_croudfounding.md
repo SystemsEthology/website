@@ -1,6 +1,6 @@
 ---
 layout: page_conference_02
-title: 早期参加申し込み
+title: (終了しました)早期参加申し込み
 order: 11
 ---
 
