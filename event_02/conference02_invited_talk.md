@@ -34,7 +34,7 @@ Comming soon...
 
 早稲田大学 基幹理工学部 表現工学科
 
-<img src="{{ site.baseurl }}/event_01/images/gunji.jpg" width="300px">  
+<img src="{{ site.baseurl }}/event_02/images/gunji.jpg" width="300px">  
 
 ## 群れに潜む自由
 
@@ -59,7 +59,7 @@ Comming soon...
 
 東京理科大学 創域理工学部
 
-<img src="{{ site.baseurl }}/event_01/images/takemura.jpg" width="300px">   
+<img src="{{ site.baseurl }}/event_02/images/takemura.jpg" width="300px">   
 
 ## 工学的アプローチからのシステム行動学 ― マウスの気持ち、ちょっと分からせてもらおみゃあ ―
 
@@ -84,7 +84,7 @@ Comming soon...
 
 高知大学 農林海洋科学部
 
-<img src="{{ site.baseurl }}/event_01/images/fukada.jpeg" width="300px">  
+<img src="{{ site.baseurl }}/event_02/images/fukada.jpeg" width="300px">  
 
 ## 魚類生理に基づく養殖技術の開発までの道のりとこれから 
 
@@ -108,7 +108,7 @@ Comming soon...
 
 国際農林水産業研究センター
 
-<img src="{{ site.baseurl }}/event_01/images/maeno.jpg" width="300px">  
+<img src="{{ site.baseurl }}/event_02/images/maeno.jpg" width="300px">  
 
 ## 行動が駆動する集団生活の最適化：サバクトビバッタの発育・繁殖戦略
 
