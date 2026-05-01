@@ -5,4 +5,4 @@ order: 10
 ---
 
 ## ロゴコンセプト
-<img src="{{ site.baseurl }}/imgs/集合写真.jpeg" width="400px" style="margin-top: auto;">
+<img src="{{ site.baseurl }}/imgs/SE_LOGO_ol_concept.jpg" width="400px" style="margin-top: auto;">
