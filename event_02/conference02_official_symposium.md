@@ -7,29 +7,6 @@ order: 3
 <br>
 <br>
 
-## 髙橋晋
-
-同志社大学 大学院脳科学研究科
-
-<img src="{{ site.baseurl }}/event_02/images/takahashi.jpg" width="300px">  
-
-## 渡り鳥の脳内コンパスはなぜ北を指すのか
-
-<br>
-<details>
-<summary>講演詳細</summary>
-
-Comming soon...
-
-<br><br>
-
-キーワード：頭方位細胞，海馬，渡り鳥，ナビゲーション，地磁気感覚
-
-</details>
-
-***
-<br>
-
 ## 飛龍志津子
 
 同志社大学 生命医科学部
@@ -52,6 +29,29 @@ Comming soon...
 
 ***
 
+<br>
+
+## 髙橋晋
+
+同志社大学 大学院脳科学研究科
+
+<img src="{{ site.baseurl }}/event_02/images/takahashi.jpg" width="300px">  
+
+## 渡り鳥の脳内コンパスはなぜ北を指すのか
+
+<br>
+<details>
+<summary>講演詳細</summary>
+
+Comming soon...
+
+<br><br>
+
+キーワード：頭方位細胞，海馬，渡り鳥，ナビゲーション，地磁気感覚
+
+</details>
+
+***
 
 <br>
 
