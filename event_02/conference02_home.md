@@ -15,6 +15,14 @@ css: /main/page-font.css
 第２回の名古屋大会ではより分野の幅を広げ、参加者全員が「行動をシステムの観点から理解すること」の認識を共有できる機会になれば幸いです。
 
 
+## ポスター
+***
+<a href="{{ site.baseurl }}/event_02/images/systems_ethology_2026_01.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+
+<div style="display: flex; align-items: center; gap: 20px;">
+    <img src="{{ site.baseurl }}/event_02/images/systems_ethology_2026_01.png" width="200" alt="Systems Ethology 2026 poster">
+</div>
+
 <br>
 
 ## 日程・場所
