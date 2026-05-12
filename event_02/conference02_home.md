@@ -23,6 +23,7 @@ css: /main/page-font.css
 <div style="display: flex; align-items: center; gap: 20px;">
     <img src="{{ site.baseurl }}/event_02/images/systems_ethology_2026_01.png" width="200" alt="Systems Ethology 2026 poster">
 </div>
+制作：浜道凱也
 
 <br>
 
