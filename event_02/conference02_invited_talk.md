@@ -2,6 +2,7 @@
 layout: page_conference_02
 title: 招待講演
 order: 2
+ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
 <br>
 <br>

@@ -2,6 +2,7 @@
 layout: page_conference_02
 title: プログラム
 order: 1
+ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
 
 <br>

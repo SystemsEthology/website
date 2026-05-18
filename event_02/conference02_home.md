@@ -2,6 +2,7 @@
 layout: default_conference_02
 title: Home
 css: /main/page-font.css
+ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
 
 # 第２回システム行動学研究会 <br><br> The 2nd Conference of the Society for Systems Ethology

@@ -27,7 +27,15 @@
 
   <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ '/atom.xml' | absolute_url }}">
 
-
+  <!-- OGP (Open Graph) -->
+  <meta property="og:title" content="{% if page.title == 'Home' %}{{ site.title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ page.ogp_image | default: '/website/imgs/SE_LOGO_ol_logo2.jpg' | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ page.ogp_image | default: '/website/imgs/SE_LOGO_ol_logo2.jpg' | absolute_url }}">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6R8GNZD98"></script>

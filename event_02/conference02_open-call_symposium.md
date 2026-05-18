@@ -2,6 +2,7 @@
 layout: page_conference_02
 title: 公募シンポジウム
 order: 4
+ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
 # 社会行動を測り、操り、理解する：<br>遺伝子から集団まで
 
