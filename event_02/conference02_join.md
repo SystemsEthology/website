@@ -13,7 +13,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-#### 参加費
+### 参加費
 
 | 区分 | 参加費 |
 | :--- | ---: |
@@ -34,7 +34,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 <br>
 <br>
 
-#### 懇親会費
+### 懇親会費
 
 | 区分 | 参加費 |
 | :--- | ---: |
@@ -56,6 +56,9 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
   要旨登録フォーム
 </a>
 
+
+
+>- 参加登録フォームとは別になっております。発表を希望される方はこちらも期日までにご登録お願い致します。
 
 <br>
 <br>
