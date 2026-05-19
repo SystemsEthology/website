@@ -5,7 +5,8 @@
       "WebFetch(domain:systemsethology.github.io)",
       "Bash(curl -s \"https://systemsethology.github.io/website/\")",
       "Bash(curl -s \"https://systemsethology.github.io/website/aboutus/\")",
-      "Bash(curl -I \"https://systemsethology.github.io/website/public/favicon.ico\")"
+      "Bash(curl -I \"https://systemsethology.github.io/website/public/favicon.ico\")",
+      "WebFetch(domain:link.springer.com)"
     ]
   }
 }
