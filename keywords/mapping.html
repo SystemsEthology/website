@@ -52,6 +52,11 @@
     const NODE_FONT_SIZE = 20;
     const FIXED_NODE_RADIUS = 48;
 
+    // クラスター間だけを詰めるための設定
+    // クラスター内の相対配置は維持し、クラスター全体を剛体として移動する。
+    const CLASS_PACK_GAP_PX = 6;
+    const CLASS_PACK_CENTER_IDS = [1, 3];
+
     // ホバー
     const HOVER_SCALE = 1.14;
     const HOVER_RISE_PX = 6;
@@ -138,6 +143,219 @@
       return map;
     }
 
+    // 各クラスターをPCAで主軸を求め、全体重心への放射方向に対して
+    // 接線方向（タンジェント）に揃うよう回転させる。
+    // これにより左右クラスターは縦長、上下クラスターは横長になり、
+    // 全体が横長長方形にまとまる。
+    function rotateClustersTangentially(items) {
+      const clusters = d3.group(items, d => d.clusterId ?? 0);
+      const cx = d3.mean(items, d => d.x);
+      const cy = d3.mean(items, d => d.y);
+      const result = [];
+
+      for (const [, pts] of clusters) {
+        const mcx = d3.mean(pts, d => d.x);
+        const mcy = d3.mean(pts, d => d.y);
+
+        // クラスター内の共分散行列から主軸の角度を算出
+        let sxx = 0, syy = 0, sxy = 0;
+        for (const p of pts) {
+          const dx = p.x - mcx, dy = p.y - mcy;
+          sxx += dx * dx; syy += dy * dy; sxy += dx * dy;
+        }
+        const currentAngle = 0.5 * Math.atan2(2 * sxy, sxx - syy);
+
+        // 目標：全体重心からこのクラスター重心への方向（放射方向）に対して90°（接線方向）
+        const radialAngle = Math.atan2(mcy - cy, mcx - cx);
+        const targetAngle = radialAngle + Math.PI / 2;
+
+        // 最小回転角（±90°以内に正規化）
+        let rotAngle = targetAngle - currentAngle;
+        while (rotAngle >  Math.PI / 2) rotAngle -= Math.PI;
+        while (rotAngle < -Math.PI / 2) rotAngle += Math.PI;
+
+        const cos = Math.cos(rotAngle), sin = Math.sin(rotAngle);
+        for (const p of pts) {
+          const dx = p.x - mcx, dy = p.y - mcy;
+          result.push({
+            ...p,
+            x: mcx + dx * cos - dy * sin,
+            y: mcy + dx * sin + dy * cos
+          });
+        }
+      }
+      return result;
+    }
+
+
+    function clusterBBox(nodes) {
+      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      for (const d of nodes) {
+        minX = Math.min(minX, d.x - d.r);
+        maxX = Math.max(maxX, d.x + d.r);
+        minY = Math.min(minY, d.y - d.r);
+        maxY = Math.max(maxY, d.y + d.r);
+      }
+      return {
+        minX, minY, maxX, maxY,
+        w: maxX - minX,
+        h: maxY - minY,
+        cx: (minX + maxX) / 2,
+        cy: (minY + maxY) / 2
+      };
+    }
+
+    function rectsOverlap(a, b, gap = 0) {
+      return !(
+        a.maxX + gap <= b.minX ||
+        b.maxX + gap <= a.minX ||
+        a.maxY + gap <= b.minY ||
+        b.maxY + gap <= a.minY
+      );
+    }
+
+    function translatedRect(block, cx, cy) {
+      return {
+        minX: cx - block.w / 2,
+        maxX: cx + block.w / 2,
+        minY: cy - block.h / 2,
+        maxY: cy + block.h / 2,
+        w: block.w,
+        h: block.h,
+        cx,
+        cy
+      };
+    }
+
+    function moveClusterRigidly(nodes, block, targetCx, targetCy) {
+      const dx = targetCx - block.cx;
+      const dy = targetCy - block.cy;
+      for (const d of nodes) {
+        d.x += dx;
+        d.y += dy;
+      }
+      block.cx = targetCx;
+      block.cy = targetCy;
+      block.minX += dx;
+      block.maxX += dx;
+      block.minY += dy;
+      block.maxY += dy;
+    }
+
+    // クラスター内の密度・相対位置を変えず、クラスター単位で密に詰める。
+    // 1) 中央に2クラスターを縦積みする
+    // 2) 残り2クラスターを左右から中央2クラスターのどちらかに接する位置へ置く
+    // 3) 候補のうち、全体中心に最も近く、外接矩形の広がりが小さい配置を選ぶ
+    function packClusterBlocks(nodes, gapPx) {
+      const groups = Array.from(d3.group(nodes, d => d.clusterId ?? 0), ([clusterId, pts]) => ({
+        clusterId,
+        pts,
+        box: clusterBBox(pts)
+      }));
+      if (groups.length < 2) return nodes;
+
+      const byId = new Map(groups.map(g => [g.clusterId, g]));
+      let centerGroups = CLASS_PACK_CENTER_IDS.map(id => byId.get(id)).filter(Boolean);
+      if (centerGroups.length < 2) {
+        centerGroups = [...groups].sort((a, b) => b.pts.length - a.pts.length).slice(0, 2);
+      }
+      centerGroups = centerGroups.slice(0, 2);
+      const sideGroups = groups.filter(g => !centerGroups.includes(g));
+
+      const top = centerGroups[0];
+      const bottom = centerGroups[1];
+      const totalH = top.box.h + gapPx + bottom.box.h;
+      const topCy = -totalH / 2 + top.box.h / 2;
+      const bottomCy = -totalH / 2 + top.box.h + gapPx + bottom.box.h / 2;
+
+      moveClusterRigidly(top.pts, top.box, 0, topCy);
+      moveClusterRigidly(bottom.pts, bottom.box, 0, bottomCy);
+
+      const placedBase = [top.box, bottom.box];
+
+      function candidateRects(group) {
+        const out = [];
+        for (const target of placedBase) {
+          for (const side of [-1, 1]) {
+            const cx = side < 0
+              ? target.minX - gapPx - group.box.w / 2
+              : target.maxX + gapPx + group.box.w / 2;
+            const cy = target.cy;
+            out.push({
+              group,
+              side,
+              target,
+              rect: translatedRect(group.box, cx, cy)
+            });
+          }
+        }
+        return out;
+      }
+
+      const sideCandidates = sideGroups.map(g => candidateRects(g));
+      let best = null;
+
+      function scorePlacement(rects) {
+        const all = [...placedBase, ...rects];
+        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+        for (const r of all) {
+          minX = Math.min(minX, r.minX);
+          minY = Math.min(minY, r.minY);
+          maxX = Math.max(maxX, r.maxX);
+          maxY = Math.max(maxY, r.maxY);
+        }
+        const width = maxX - minX;
+        const height = maxY - minY;
+        const centerPull = rects.reduce((acc, r) => acc + Math.hypot(r.cx, r.cy), 0);
+        return width * height + centerPull * 0.25 + Math.abs(width - height) * 0.15;
+      }
+
+      if (sideCandidates.length === 1) {
+        for (const c0 of sideCandidates[0]) {
+          const overlaps = placedBase.some(r => rectsOverlap(c0.rect, r, 0));
+          if (overlaps) continue;
+          const score = scorePlacement([c0.rect]);
+          if (!best || score < best.score) best = { score, choices: [c0] };
+        }
+      } else if (sideCandidates.length >= 2) {
+        for (const c0 of sideCandidates[0]) {
+          for (const c1 of sideCandidates[1]) {
+            // 左右に分ける。これにより4クラスターが中央に密集しやすい。
+            if (c0.side === c1.side) continue;
+            const r0 = c0.rect, r1 = c1.rect;
+            const overlapsPlaced = placedBase.some(r => rectsOverlap(r0, r, 0) || rectsOverlap(r1, r, 0));
+            const overlapsSide = rectsOverlap(r0, r1, gapPx);
+            if (overlapsPlaced || overlapsSide) continue;
+            const score = scorePlacement([r0, r1]);
+            if (!best || score < best.score) best = { score, choices: [c0, c1] };
+          }
+        }
+      }
+
+      // 完全非重複候補がない場合も、中心寄せ優先で最低限配置する。
+      if (!best && sideCandidates.length > 0) {
+        const fallback = [];
+        const usedSides = new Set();
+        for (const cands of sideCandidates) {
+          const c = [...cands]
+            .filter(c => !usedSides.has(c.side) || usedSides.size >= 2)
+            .sort((a, b) => Math.hypot(a.rect.cx, a.rect.cy) - Math.hypot(b.rect.cx, b.rect.cy))[0];
+          if (c) {
+            fallback.push(c);
+            usedSides.add(c.side);
+          }
+        }
+        best = { score: Infinity, choices: fallback };
+      }
+
+      if (best) {
+        for (const choice of best.choices) {
+          moveClusterRigidly(choice.group.pts, choice.group.box, choice.rect.cx, choice.rect.cy);
+        }
+      }
+      return nodes;
+    }
+
     function fitToView(root, zoom, nodes, W, H, fitPad, minScaleClamp) {
       let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
       for (const d of nodes) {
@@ -180,6 +398,9 @@
       const H = svg.clientHeight || 600;
       const lp = getLayoutParams(W, H);
 
+      // クラスターごとにPCA回転して全体を横長にまとめる
+      items = rotateClustersTangentially(items);
+
       // スマホ時は広がる方向へ
       items = compactAroundMean(items, lp.clusterCompact);
 
@@ -216,10 +437,13 @@
           clusterId: cid,
           x: xToScreen(d.x),
           y: yToScreen(d.y),
-          r: 10,
+          r: FIXED_NODE_RADIUS,
           fill: colorMap.get(cid) ?? "#eee"
         };
       });
+
+      // クラスター単位で剛体移動し、クラスター間だけを密に詰める
+      packClusterBlocks(nodes, CLASS_PACK_GAP_PX);
 
       const node = g.selectAll(".node")
         .data(nodes)
