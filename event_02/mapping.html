@@ -149,8 +149,16 @@
 
       const zoom = d3.zoom()
         .scaleExtent([0.2, 12])
+        .filter(event => {
+          // スクロールホイールによるズームはどこでも有効
+          if (event.type === 'wheel') return true;
+          // ドラッグ・タッチはノード要素上のみ有効（空白部分は無反応 / ページスクロール）
+          return !!event.target.closest('.node');
+        })
         .on("zoom", (event) => g.attr("transform", event.transform));
       root.call(zoom);
+      // D3 が設定する touch-action:none を上書き → 空白タッチでページを縦スクロール可能に
+      d3.select(svg).style("touch-action", "pan-y");
 
       // ★ fixed “world” mapping：extentで引き伸ばさない
       const xs = items.map(d => d.x);
