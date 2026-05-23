@@ -1,5 +1,5 @@
 {
-  "participantCount": 24,
+  "participantCount": 40,
   "range": "user-provided keyword list",
   "delimiter": "comma, Japanese comma/period, newline, 「，」「、」",
   "clusters": [
