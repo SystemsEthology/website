@@ -15,10 +15,8 @@
   </style>
 </head>
 <body>
-  <h2>Research Keyword Map</h2>
-
   <div id="header">
-    <div id="participants">参加者数: -</div>
+    <div id="participants">現在の参加者数: -</div>
     <div id="status"></div>
   </div>
 
@@ -83,7 +81,7 @@
     }
     function setParticipants(n) {
       if (!Number.isInteger(n) || n < 0) throw new Error(`participant count invalid: ${n}`);
-      participantsEl.textContent = `参加者数: ${n}`;
+      participantsEl.textContent = `現在の参加者数（2026年5月23日現在）: ${n}`;
     }
 
     async function loadData() {
