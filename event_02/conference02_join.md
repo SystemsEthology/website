@@ -4,6 +4,21 @@ title: 参加登録・要旨登録
 order: 5
 ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
+
+<br>
+
+***
+
+### 現在の参加者数（5月23日現在）：40人　ベータ版
+
+<iframe
+  src="{{ '/event_02/mapping.html' | relative_url }}"
+  style="width:100%; height:600px; border:none; display:block;"
+  loading="lazy">
+</iframe>
+
+<br>
+
 ***
 
 ### 参加登録：締切 2026年7月10日 23:59
@@ -54,19 +69,4 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
   要旨登録フォーム
 </a>
 
-
-
 >- 参加登録フォームとは別になっております。発表を希望される方はこちらも期日までにご登録お願い致します。
-
-<br>
-<br>
-
-***
-
-### 現在の参加者数（5月23日現在）：40人　ベータ版
-
-<iframe
-  src="{{ '/event_02/mapping.html' | relative_url }}"
-  style="width:100%; height:600px; border:none; display:block;"
-  loading="lazy">
-</iframe>
