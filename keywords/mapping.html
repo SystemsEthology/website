@@ -138,45 +138,39 @@
       return map;
     }
 
-    // 各クラスターをPCAで主軸を求め、全体重心への放射方向に対して
-    // 接線方向（タンジェント）に揃うよう回転させる。
-    // これにより左右クラスターは縦長、上下クラスターは横長になり、
-    // 全体が横長長方形にまとまる。
-    function rotateClustersTangentially(items) {
+    // キーワード数の多い順に3クラスを三角形の頂点へ、最小クラスを内側へ配置する。
+    // 各クラスターの内部構造（相対座標）は保ったまま重心位置だけ移動する。
+    function rearrangeClustersTriangular(items) {
       const clusters = d3.group(items, d => d.clusterId ?? 0);
-      const cx = d3.mean(items, d => d.x);
-      const cy = d3.mean(items, d => d.y);
+      const info = new Map();
+      for (const [id, pts] of clusters) {
+        info.set(id, {
+          cx: d3.mean(pts, d => d.x),
+          cy: d3.mean(pts, d => d.y),
+          count: pts.length
+        });
+      }
+      // キーワード数降順でソート
+      const sorted = [...info.keys()].sort((a, b) => info.get(b).count - info.get(a).count);
+
+      // 三角形頂点（下中央・左上・右上）＋ 内側（最小クラス）
+      // 下に広いクラスター、上左右に2クラス、内側に最小クラスが入る横長構成
+      const targets = [
+        { x:   0,  y:  95 },   // 最大  → 下中央（底辺）
+        { x: -140, y: -75 },   // 2位   → 左上
+        { x:  140, y: -75 },   // 3位   → 右上
+        { x:    0, y:  -5 },   // 最小  → 三角形の内側
+      ];
+
       const result = [];
-
-      for (const [, pts] of clusters) {
-        const mcx = d3.mean(pts, d => d.x);
-        const mcy = d3.mean(pts, d => d.y);
-
-        // クラスター内の共分散行列から主軸の角度を算出
-        let sxx = 0, syy = 0, sxy = 0;
+      for (let i = 0; i < sorted.length; i++) {
+        const id = sorted[i];
+        const pts = clusters.get(id);
+        const { cx, cy } = info.get(id);
+        const { x: tx, y: ty } = targets[i];
+        const dx = tx - cx, dy = ty - cy;
         for (const p of pts) {
-          const dx = p.x - mcx, dy = p.y - mcy;
-          sxx += dx * dx; syy += dy * dy; sxy += dx * dy;
-        }
-        const currentAngle = 0.5 * Math.atan2(2 * sxy, sxx - syy);
-
-        // 目標：全体重心からこのクラスター重心への方向（放射方向）に対して90°（接線方向）
-        const radialAngle = Math.atan2(mcy - cy, mcx - cx);
-        const targetAngle = radialAngle + Math.PI / 2;
-
-        // 最小回転角（±90°以内に正規化）
-        let rotAngle = targetAngle - currentAngle;
-        while (rotAngle >  Math.PI / 2) rotAngle -= Math.PI;
-        while (rotAngle < -Math.PI / 2) rotAngle += Math.PI;
-
-        const cos = Math.cos(rotAngle), sin = Math.sin(rotAngle);
-        for (const p of pts) {
-          const dx = p.x - mcx, dy = p.y - mcy;
-          result.push({
-            ...p,
-            x: mcx + dx * cos - dy * sin,
-            y: mcy + dx * sin + dy * cos
-          });
+          result.push({ ...p, x: p.x + dx, y: p.y + dy });
         }
       }
       return result;
@@ -224,8 +218,8 @@
       const H = svg.clientHeight || 600;
       const lp = getLayoutParams(W, H);
 
-      // クラスターごとにPCA回転して全体を横長にまとめる
-      items = rotateClustersTangentially(items);
+      // クラスター重心を三角形配置に移動（内部構造は維持）
+      items = rearrangeClustersTriangular(items);
 
       // スマホ時は広がる方向へ
       items = compactAroundMean(items, lp.clusterCompact);
