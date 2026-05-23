@@ -5,21 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Keyword Map</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 16px; }
-    #header { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
-    #participants { font-weight: 700; }
+    body { margin: 0; }
     #status { white-space: pre-wrap; color: #b00020; display: none; }
-    svg { width: 100%; height: 78vh; border: 1px solid #ddd; border-radius: 10px; }
+    svg { width: 100%; height: 100vh; display: block; }
     .node { cursor: default; }
     .node text { pointer-events: none; }
   </style>
 </head>
 <body>
-  <div id="header">
-    <div id="participants">現在の参加者数: -</div>
-    <div id="status"></div>
-  </div>
-
+  <div id="status"></div>
   <svg id="viz"></svg>
 
   <script type="module">
@@ -59,15 +53,14 @@
     // ★フォントサイズ（px）— レイアウトに影響しない（文字表示のみ）
     const FONT_SIZE = 20;
     // ★表示円の半径（px）— null でテキストに自動フィット
-    const NODE_RADIUS = 70;
+    const NODE_RADIUS = 80;
     // ★衝突・配置半径（px）— フォントと完全独立。これを変えてもフォントは変わらず、フォントを変えてもレイアウトは変わらない
-    const LAYOUT_RADIUS = 65;
+    const LAYOUT_RADIUS = 80;
 
     // クラスター配置オフセット（画面サイズに対する比率）
     const VERT_OFFSET = 0.22;   // 上・下クラスター中心の縦オフセット
     const HORIZ_OFFSET = 0.28;  // 左・右クラスター中心の横オフセット
 
-    const participantsEl = document.getElementById("participants");
     const statusEl = document.getElementById("status");
     const svg = document.getElementById("viz");
 
@@ -78,10 +71,6 @@
     function clearError() {
       statusEl.style.display = "none";
       statusEl.textContent = "";
-    }
-    function setParticipants(n) {
-      if (!Number.isInteger(n) || n < 0) throw new Error(`participant count invalid: ${n}`);
-      participantsEl.textContent = `現在の参加者数（2026年5月23日現在）: ${n} 人`;
     }
 
     async function loadData() {
@@ -139,7 +128,6 @@
 
     function draw(dataJson) {
       clearError();
-      setParticipants(dataJson.participantCount);
 
       let items = dataJson.keywords;
       if (!items || items.length < 1) {
@@ -249,11 +237,29 @@
 
       node.append("title").text(d => d.keyword);
 
+      const WRAP_CHARS = 8; // 1行の最大文字数
+      function wrapLines(str) {
+        const lines = [];
+        for (let i = 0; i < str.length; i += WRAP_CHARS) lines.push(str.slice(i, i + WRAP_CHARS));
+        return lines;
+      }
+
       node.append("text")
         .attr("text-anchor", "middle")
-        .attr("dominant-baseline", "middle")
         .attr("font-size", FONT_SIZE)
-        .text(d => d.keyword);
+        .each(function(d) {
+          const lines = wrapLines(d.keyword);
+          const lineH = FONT_SIZE * 1.2;
+          const topY = -(lines.length - 1) / 2 * lineH;
+          d3.select(this).selectAll("tspan")
+            .data(lines)
+            .enter()
+            .append("tspan")
+            .attr("x", 0)
+            .attr("y", (_, i) => topY + i * lineH)
+            .attr("dominant-baseline", "middle")
+            .text(l => l);
+        });
 
       // 最大文字に合わせて全円同一半径
       let maxNeededR = 0;
