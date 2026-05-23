@@ -17,8 +17,6 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
   loading="lazy">
 </iframe>
 
-<br>
-
 ***
 
 ### 参加登録：締切 2026年7月10日 23:59
