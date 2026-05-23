@@ -33,7 +33,7 @@
     import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
     // ★JSON
-    const DATA_URL = "./clustered_keywords.json";
+    const DATA_URL = "./clustered_keywords_v5.json";
 
     // ===== レイアウト調整（デスクトップ/スマホで自動切替）=====
     // 「スマホでぎゅっと詰まりすぎる」対策：
@@ -138,44 +138,6 @@
       return map;
     }
 
-    // キーワード数の多い順に3クラスを三角形の頂点へ、最小クラスを内側へ配置する。
-    // 各クラスターの内部構造（相対座標）は保ったまま重心位置だけ移動する。
-    function rearrangeClustersTriangular(items) {
-      const clusters = d3.group(items, d => d.clusterId ?? 0);
-      const info = new Map();
-      for (const [id, pts] of clusters) {
-        info.set(id, {
-          cx: d3.mean(pts, d => d.x),
-          cy: d3.mean(pts, d => d.y),
-          count: pts.length
-        });
-      }
-      // キーワード数降順でソート
-      const sorted = [...info.keys()].sort((a, b) => info.get(b).count - info.get(a).count);
-
-      // 三角形頂点（下中央・左上・右上）＋ 内側（最小クラス）
-      // 下に広いクラスター、上左右に2クラス、内側に最小クラスが入る横長構成
-      const targets = [
-        { x:   0,  y:  95 },   // 最大  → 下中央（底辺）
-        { x: -140, y: -75 },   // 2位   → 左上
-        { x:  140, y: -75 },   // 3位   → 右上
-        { x:    0, y:  -5 },   // 最小  → 三角形の内側
-      ];
-
-      const result = [];
-      for (let i = 0; i < sorted.length; i++) {
-        const id = sorted[i];
-        const pts = clusters.get(id);
-        const { cx, cy } = info.get(id);
-        const { x: tx, y: ty } = targets[i];
-        const dx = tx - cx, dy = ty - cy;
-        for (const p of pts) {
-          result.push({ ...p, x: p.x + dx, y: p.y + dy });
-        }
-      }
-      return result;
-    }
-
     function fitToView(root, zoom, nodes, W, H, fitPad, minScaleClamp) {
       let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
       for (const d of nodes) {
@@ -217,9 +179,6 @@
       const W = svg.clientWidth || 800;
       const H = svg.clientHeight || 600;
       const lp = getLayoutParams(W, H);
-
-      // クラスター重心を三角形配置に移動（内部構造は維持）
-      items = rearrangeClustersTriangular(items);
 
       // スマホ時は広がる方向へ
       items = compactAroundMean(items, lp.clusterCompact);
