@@ -65,11 +65,8 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 ### 現在の参加者数（5月23日現在）：40人　ベータ版
 
-<div style="width:100%; height:650px; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.12);">
-  <iframe
-    src="{{ '/event_02/mapping.html' | relative_url }}"
-    style="width:100%; height:100%; border:none;"
-    loading="lazy"
-    title="参加者キーワードマップ">
-  </iframe>
-</div>
+<iframe
+  src="{{ '/event_02/mapping.html' | relative_url }}"
+  style="width:100%; height:600px; border:none; display:block;"
+  loading="lazy">
+</iframe>
