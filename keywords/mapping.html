@@ -245,13 +245,106 @@
     // クラスター内の密度・相対位置を変えず、クラスター単位で密に詰める。
     // ルール:
     // 1) キーワード数の多い順に、上・下・左・右へ割り当てる
-    // 2) 上下クラスターは中心Xを揃えて縦積みする
-    // 3) 左右クラスターは中央2クラスター双方との接触量が最大になる候補を採用する
-    function clusterContactLength(sideRect, targetRect, side, gapPx) {
-      const overlapY = Math.max(0, Math.min(sideRect.maxY, targetRect.maxY) - Math.max(sideRect.minY, targetRect.minY));
+    // 2) 上下クラスターは、外接矩形の横方向接触長と実ノード境界の近接度が最大になるXオフセットを探索する
+    // 3) 左右クラスターは、中央2クラスター双方との接触量が最大になる候補を採用する
+    function intervalOverlap(a0, a1, b0, b1) {
+      return Math.max(0, Math.min(a1, b1) - Math.max(a0, b0));
+    }
+
+    function unionBBox(rects) {
+      return {
+        minX: d3.min(rects, d => d.minX),
+        maxX: d3.max(rects, d => d.maxX),
+        minY: d3.min(rects, d => d.minY),
+        maxY: d3.max(rects, d => d.maxY),
+        get w() { return this.maxX - this.minX; },
+        get h() { return this.maxY - this.minY; },
+        get cx() { return (this.minX + this.maxX) / 2; },
+        get cy() { return (this.minY + this.maxY) / 2; }
+      };
+    }
+
+    function nodeBoundaryContactScore(aPts, aBox, bPts, bBox, bCx, bCy) {
+      const dx = bCx - bBox.cx;
+      const dy = bCy - bBox.cy;
+      let score = 0;
+      let nearPairs = 0;
+
+      for (const a of aPts) {
+        // 上クラスターの下端側のノードをやや重視
+        const aBoundaryWeight = 0.5 + 0.5 * ((a.y + a.r) - aBox.minY) / Math.max(1, aBox.h);
+        for (const b0 of bPts) {
+          const bx = b0.x + dx;
+          const by = b0.y + dy;
+          // 下クラスターの上端側のノードをやや重視
+          const bBoundaryWeight = 0.5 + 0.5 * (bBox.maxY - (b0.y - b0.r)) / Math.max(1, bBox.h);
+          const ddx = bx - a.x;
+          const ddy = by - a.y;
+          if (ddy <= 0) continue;
+          const dist = Math.hypot(ddx, ddy);
+          const surfaceGap = dist - a.r - b0.r;
+          if (surfaceGap < -0.1) return -Infinity; // 実円が重なる候補は不可
+          if (surfaceGap <= FIXED_NODE_RADIUS * 1.5) {
+            nearPairs += 1;
+            score += Math.exp(-surfaceGap / Math.max(1, FIXED_NODE_RADIUS * 0.35)) * aBoundaryWeight * bBoundaryWeight;
+          }
+        }
+      }
+      return score + nearPairs * 0.02;
+    }
+
+    function bestVerticalBottomPlacement(top, bottom, gapPx) {
+      // 上クラスターを原点上側に固定し、下クラスターのXだけを探索する。
+      const topTargetCy = -gapPx / 2 - top.box.h / 2;
+      moveClusterRigidly(top.pts, top.box, 0, topTargetCy);
+
+      const bottomTargetCy = gapPx / 2 + bottom.box.h / 2;
+      const minCx = top.box.minX - bottom.box.w / 2;
+      const maxCx = top.box.maxX + bottom.box.w / 2;
+      const step = Math.max(2, FIXED_NODE_RADIUS / 6);
+
+      const candidates = [];
+      for (let cx = minCx; cx <= maxCx + 1e-6; cx += step) candidates.push(cx);
+      // 重要な整列候補を必ず含める
+      candidates.push(
+        0,
+        top.box.cx,
+        top.box.minX + bottom.box.w / 2,
+        top.box.maxX - bottom.box.w / 2,
+        top.box.minX - gapPx - bottom.box.w / 2,
+        top.box.maxX + gapPx + bottom.box.w / 2
+      );
+
+      let best = null;
+      for (const cxRaw of candidates) {
+        const cx = Math.round(cxRaw * 1000) / 1000;
+        const rect = translatedRect(bottom.box, cx, bottomTargetCy);
+        const rectContact = intervalOverlap(top.box.minX, top.box.maxX, rect.minX, rect.maxX);
+        if (rectContact <= 0) continue;
+
+        const contactScore = nodeBoundaryContactScore(top.pts, top.box, bottom.pts, bottom.box, cx, bottomTargetCy);
+        if (!Number.isFinite(contactScore)) continue;
+
+        const area = unionBBox([top.box, rect]).w * unionBBox([top.box, rect]).h;
+        const centerPull = Math.abs(cx);
+        const score =
+          -contactScore * 1000000 +
+          -rectContact * 10000 +
+          area * 0.05 +
+          centerPull * 20;
+
+        if (!best || score < best.score) best = { cx, cy: bottomTargetCy, score, rectContact, contactScore };
+      }
+
+      if (!best) best = { cx: 0, cy: bottomTargetCy };
+      moveClusterRigidly(bottom.pts, bottom.box, best.cx, best.cy);
+    }
+
+    function clusterSideContactLength(sideRect, targetRect, side, gapPx) {
+      const overlapY = intervalOverlap(sideRect.minY, sideRect.maxY, targetRect.minY, targetRect.maxY);
       const horizontalGap = side < 0
-        ? Math.max(0, targetRect.minX - sideRect.maxX - gapPx)
-        : Math.max(0, sideRect.minX - targetRect.maxX - gapPx);
+        ? Math.abs(sideRect.maxX + gapPx - targetRect.minX)
+        : Math.abs(sideRect.minX - gapPx - targetRect.maxX);
       return overlapY / (1 + horizontalGap * 0.08);
     }
 
@@ -277,50 +370,30 @@
       const left = ordered[2];
       const right = ordered[3];
 
-      // 中央2クラスターは外接矩形同士が gapPx で接するように縦積みする。
-      const topCy = -gapPx / 2 - top.box.h / 2;
-      const bottomCy = gapPx / 2 + bottom.box.h / 2;
-      moveClusterRigidly(top.pts, top.box, 0, topCy);
-      moveClusterRigidly(bottom.pts, bottom.box, 0, bottomCy);
-
+      // 上下2クラスターも「中心揃え」ではなく、接触量最大のXオフセットを探索する。
+      bestVerticalBottomPlacement(top, bottom, gapPx);
       const centerRects = [top.box, bottom.box];
-
-      function unionBBox(rects) {
-        return {
-          minX: d3.min(rects, d => d.minX),
-          maxX: d3.max(rects, d => d.maxX),
-          minY: d3.min(rects, d => d.minY),
-          maxY: d3.max(rects, d => d.maxY),
-          get w() { return this.maxX - this.minX; },
-          get h() { return this.maxY - this.minY; },
-          get cx() { return (this.minX + this.maxX) / 2; },
-          get cy() { return (this.minY + this.maxY) / 2; }
-        };
-      }
-
-      function overlapsAny(rect, rects) {
-        return rects.some(r => rectsOverlap(rect, r, 0));
-      }
 
       function sideCandidates(group, side) {
         if (!group) return [];
-        const union = unionBBox(centerRects);
+        const centerUnion = unionBBox(centerRects);
         const xCenters = [];
 
-        // 中央2クラスターの各外接矩形に接する候補 + 中央2つの合成外接矩形に接する候補。
+        // 中央2クラスターそれぞれの外接矩形に接する候補。
         for (const target of centerRects) {
           xCenters.push(side < 0
             ? target.minX - gapPx - group.box.w / 2
             : target.maxX + gapPx + group.box.w / 2
           );
         }
+        // 中央2つの合成外接矩形に接する候補。
         xCenters.push(side < 0
-          ? union.minX - gapPx - group.box.w / 2
-          : union.maxX + gapPx + group.box.w / 2
+          ? centerUnion.minX - gapPx - group.box.w / 2
+          : centerUnion.maxX + gapPx + group.box.w / 2
         );
 
-        // y候補は、中心合わせ・上下辺合わせ・両中央矩形の境界合わせを網羅する。
-        const yCenters = [0, union.cy];
+        // y候補は、中央2矩形の上下端・中心を密にサンプリングする。
+        const yCenters = [0, centerUnion.cy];
         for (const target of centerRects) {
           yCenters.push(target.cy);
           yCenters.push(target.minY + group.box.h / 2);
@@ -328,8 +401,14 @@
           yCenters.push(target.minY - gapPx - group.box.h / 2);
           yCenters.push(target.maxY + gapPx + group.box.h / 2);
         }
-        yCenters.push(union.minY + group.box.h / 2);
-        yCenters.push(union.maxY - group.box.h / 2);
+        yCenters.push(centerUnion.minY + group.box.h / 2);
+        yCenters.push(centerUnion.maxY - group.box.h / 2);
+
+        // 連続的な候補も加える。上下どちらかだけでなく、両方に長く接する位置を拾う。
+        const yMin = centerUnion.minY - group.box.h / 2;
+        const yMax = centerUnion.maxY + group.box.h / 2;
+        const yStep = Math.max(3, FIXED_NODE_RADIUS / 4);
+        for (let y = yMin; y <= yMax + 1e-6; y += yStep) yCenters.push(y);
 
         const cands = [];
         const uniqX = Array.from(new Set(xCenters.map(v => Math.round(v * 1000) / 1000)));
@@ -338,25 +417,20 @@
         for (const cx of uniqX) {
           for (const cy of uniqY) {
             const rect = translatedRect(group.box, cx, cy);
-            if (overlapsAny(rect, centerRects)) continue;
-            const contacts = centerRects.map(r => clusterContactLength(rect, r, side, gapPx));
+            if (centerRects.some(r => rectsOverlap(rect, r, 0))) continue;
+
+            const contacts = centerRects.map(r => clusterSideContactLength(rect, r, side, gapPx));
             const minContact = Math.min(...contacts);
             const sumContact = d3.sum(contacts);
-            const touchGap = side < 0
-              ? Math.min(...centerRects.map(r => Math.abs(rect.maxX + gapPx - r.minX)))
-              : Math.min(...centerRects.map(r => Math.abs(rect.minX - gapPx - r.maxX)));
+            const span = unionBBox([...centerRects, rect]);
+            const spanArea = span.w * span.h;
             const centerPull = Math.hypot(rect.cx, rect.cy);
-            const spanArea = (() => {
-              const b = unionBBox([...centerRects, rect]);
-              return b.w * b.h;
-            })();
 
-            // 「中央2矩形のどちらにもよく接する」を最優先するため、minContactを最重視する。
+            // 「中央2矩形のどちらにもよく接する」を最優先。
             const score =
               -minContact * 1000000 +
-              -sumContact * 10000 +
-              touchGap * 300 +
-              spanArea * 0.2 +
+              -sumContact * 50000 +
+              spanArea * 0.05 +
               centerPull * 10;
             cands.push({ group, rect, score, minContact, sumContact });
           }
