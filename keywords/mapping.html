@@ -49,7 +49,7 @@
     const PADDING = 2;
 
     // ノード文字サイズと円サイズを独立管理
-    const NODE_FONT_SIZE = 12;
+    const NODE_FONT_SIZE = 20;
     const FIXED_NODE_RADIUS = 48;
 
     // ホバー
@@ -138,6 +138,50 @@
       return map;
     }
 
+    // 各クラスターをPCAで主軸を求め、全体重心への放射方向に対して
+    // 接線方向（タンジェント）に揃うよう回転させる。
+    // これにより左右クラスターは縦長、上下クラスターは横長になり、
+    // 全体が横長長方形にまとまる。
+    function rotateClustersTangentially(items) {
+      const clusters = d3.group(items, d => d.clusterId ?? 0);
+      const cx = d3.mean(items, d => d.x);
+      const cy = d3.mean(items, d => d.y);
+      const result = [];
+
+      for (const [, pts] of clusters) {
+        const mcx = d3.mean(pts, d => d.x);
+        const mcy = d3.mean(pts, d => d.y);
+
+        // クラスター内の共分散行列から主軸の角度を算出
+        let sxx = 0, syy = 0, sxy = 0;
+        for (const p of pts) {
+          const dx = p.x - mcx, dy = p.y - mcy;
+          sxx += dx * dx; syy += dy * dy; sxy += dx * dy;
+        }
+        const currentAngle = 0.5 * Math.atan2(2 * sxy, sxx - syy);
+
+        // 目標：全体重心からこのクラスター重心への方向（放射方向）に対して90°（接線方向）
+        const radialAngle = Math.atan2(mcy - cy, mcx - cx);
+        const targetAngle = radialAngle + Math.PI / 2;
+
+        // 最小回転角（±90°以内に正規化）
+        let rotAngle = targetAngle - currentAngle;
+        while (rotAngle >  Math.PI / 2) rotAngle -= Math.PI;
+        while (rotAngle < -Math.PI / 2) rotAngle += Math.PI;
+
+        const cos = Math.cos(rotAngle), sin = Math.sin(rotAngle);
+        for (const p of pts) {
+          const dx = p.x - mcx, dy = p.y - mcy;
+          result.push({
+            ...p,
+            x: mcx + dx * cos - dy * sin,
+            y: mcy + dx * sin + dy * cos
+          });
+        }
+      }
+      return result;
+    }
+
     function fitToView(root, zoom, nodes, W, H, fitPad, minScaleClamp) {
       let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
       for (const d of nodes) {
@@ -179,6 +223,9 @@
       const W = svg.clientWidth || 800;
       const H = svg.clientHeight || 600;
       const lp = getLayoutParams(W, H);
+
+      // クラスターごとにPCA回転して全体を横長にまとめる
+      items = rotateClustersTangentially(items);
 
       // スマホ時は広がる方向へ
       items = compactAroundMean(items, lp.clusterCompact);
