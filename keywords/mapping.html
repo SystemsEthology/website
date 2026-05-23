@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Keyword Map</title>
   <style>
@@ -11,10 +10,6 @@
     #participants { font-weight: 700; }
     #status { white-space: pre-wrap; color: #b00020; display: none; }
     svg { width: 100%; height: 78vh; border: 1px solid #ddd; border-radius: 10px; }
-    @media (max-width: 640px) {
-      body { margin: 8px; }
-      svg { height: 86vh; }
-    }
     .node { cursor: default; }
     .node text { pointer-events: none; }
   </style>
@@ -33,71 +28,44 @@
     import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
     // ★JSON
-    const DATA_URL = "./clustered_keywords.json";
+    const DATA_URL = "./clustered_keywords_v4.json";
 
-    // ===== レイアウト調整（デスクトップ/スマホで自動切替）=====
-    // 「スマホでぎゅっと詰まりすぎる」対策：
-    // - スマホ時は (1) クラスター縮小を弱める (=広げる) (2) 重なり許容を減らす (3) 多少縦長にする
-    // - さらに、"必ず全部入れる" 自動フィットで過度に縮小されるのを避けるため、最小倍率をクランプ
-    const BASE_CLUSTER_COMPACT = 0.3;  // 小さいほど詰まる
-    const BASE_WORLD_SCALE     = 0.6;  // 小さいほど詰まる
-    const BASE_OVERLAP_FACTOR  = 0.7;  // <1 で重なってOK
-    const BASE_FIT_PAD         = 2;
-    const BASE_TARGET_STRENGTH = 0.5; // 大きいほど x,y に忠実
+    // ===== 近づける系 =====
+    // カテゴリは分かるが離れすぎない：小さいほど詰まる（※今度はちゃんと効く）
+    const CLUSTER_COMPACT = 0.4; // 0.2〜0.8で調整
+
+    // ★これが「見た目の詰まり」を決める主ツマミ（小さいほど詰まる）
+    // extentで引き伸ばさないので、距離構造がそのまま反映される
+    const WORLD_SCALE = 0.7;
+    // ======================
 
     // 余白（px）
     const PADDING = 2;
 
-    // ノード文字サイズと円サイズを独立管理
-    const NODE_FONT_SIZE = 12;
-    const FIXED_NODE_RADIUS = 48;
+    // 最大文字に合わせて全円同一半径：文字周り余白
+    const TEXT_PAD = 2;
 
-    // クラスター間だけを詰めるための設定
-    // クラスター内の相対配置は維持し、クラスター全体を剛体として移動する。
-    // 配置順はキーワード数の多い順に 上・下・左・右。
-    const CLASS_PACK_GAP_PX = 6;
+    // 円同士の重なり許容（<1 で重なってOK）
+    const OVERLAP_FACTOR = 0.7;
+
+    // 自動フィット余白（px）
+    const FIT_PAD = 2;
 
     // ホバー
     const HOVER_SCALE = 1.14;
     const HOVER_RISE_PX = 6;
 
-    function getLayoutParams(W, H) {
-      const isMobile = W <= 640;
+    // 距離構造をどれだけ守るか（大きいほど x,y に忠実）
+    const TARGET_STRENGTH = 0.28; // 0.18〜0.45
 
-      // スマホは「詰まり」を解消したいので、広がる方向へ寄せる
-      const clusterCompact = isMobile ? 0.8 : BASE_CLUSTER_COMPACT;  // ↑で広がる
-      const worldScale     = isMobile ? 0.6 : BASE_WORLD_SCALE;      // ↑で広がる
+    // ★フォントサイズ（px）— 円の半径とは独立して動作
+    const FONT_SIZE = 12;
+    // ★円の半径（px）— null でテキストに自動フィット、数値で固定（フォントと独立）
+    const NODE_RADIUS = null;
 
-      // 重なり許容を減らす（=より強く衝突回避）
-      const overlapFactor  = isMobile ? 0.8 : BASE_OVERLAP_FACTOR;
-
-      // fit余白はスマホで少し大きめ（タップ余地にもなる）
-      const fitPad         = isMobile ? 10 : BASE_FIT_PAD;
-
-      // 目標座標へ戻す力：スマホで少し強めて距離構造を保ちやすく
-      const targetStrength = isMobile ? 0.3 : BASE_TARGET_STRENGTH;
-
-      // スマホで縦長に引き離す（横は少し抑える）
-      const stretchX       = isMobile ? 0.95 : 1.0;
-      const stretchY       = isMobile ? 2.5 : 1.0;
-
-      // 自動フィットが「縮小しすぎ」にならないよう、最小倍率を設定（0 ならクランプなし）
-      // スマホは「全員集合」を諦めて、多少はみ出してもOK（ピンチ・パンで見られる）
-      const fitMinScaleClamp = isMobile ? 0.4 : 0.0;
-
-      return {
-        isMobile,
-        clusterCompact,
-        worldScale,
-        overlapFactor,
-        fitPad,
-        targetStrength,
-        stretchX,
-        stretchY,
-        fitMinScaleClamp
-      };
-    }
-    // ===========================================================
+    // クラスター配置オフセット（画面サイズに対する比率）
+    const VERT_OFFSET = 0.22;   // 上・下クラスター中心の縦オフセット
+    const HORIZ_OFFSET = 0.28;  // 左・右クラスター中心の横オフセット
 
     const participantsEl = document.getElementById("participants");
     const statusEl = document.getElementById("status");
@@ -143,336 +111,7 @@
       return map;
     }
 
-    // 各クラスターをPCAで主軸を求め、全体重心への放射方向に対して
-    // 接線方向（タンジェント）に揃うよう回転させる。
-    // これにより左右クラスターは縦長、上下クラスターは横長になり、
-    // 全体が横長長方形にまとまる。
-    function rotateClustersTangentially(items) {
-      const clusters = d3.group(items, d => d.clusterId ?? 0);
-      const cx = d3.mean(items, d => d.x);
-      const cy = d3.mean(items, d => d.y);
-      const result = [];
-
-      for (const [, pts] of clusters) {
-        const mcx = d3.mean(pts, d => d.x);
-        const mcy = d3.mean(pts, d => d.y);
-
-        // クラスター内の共分散行列から主軸の角度を算出
-        let sxx = 0, syy = 0, sxy = 0;
-        for (const p of pts) {
-          const dx = p.x - mcx, dy = p.y - mcy;
-          sxx += dx * dx; syy += dy * dy; sxy += dx * dy;
-        }
-        const currentAngle = 0.5 * Math.atan2(2 * sxy, sxx - syy);
-
-        // 目標：全体重心からこのクラスター重心への方向（放射方向）に対して90°（接線方向）
-        const radialAngle = Math.atan2(mcy - cy, mcx - cx);
-        const targetAngle = radialAngle + Math.PI / 2;
-
-        // 最小回転角（±90°以内に正規化）
-        let rotAngle = targetAngle - currentAngle;
-        while (rotAngle >  Math.PI / 2) rotAngle -= Math.PI;
-        while (rotAngle < -Math.PI / 2) rotAngle += Math.PI;
-
-        const cos = Math.cos(rotAngle), sin = Math.sin(rotAngle);
-        for (const p of pts) {
-          const dx = p.x - mcx, dy = p.y - mcy;
-          result.push({
-            ...p,
-            x: mcx + dx * cos - dy * sin,
-            y: mcy + dx * sin + dy * cos
-          });
-        }
-      }
-      return result;
-    }
-
-
-    function clusterBBox(nodes) {
-      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-      for (const d of nodes) {
-        minX = Math.min(minX, d.x - d.r);
-        maxX = Math.max(maxX, d.x + d.r);
-        minY = Math.min(minY, d.y - d.r);
-        maxY = Math.max(maxY, d.y + d.r);
-      }
-      return {
-        minX, minY, maxX, maxY,
-        w: maxX - minX,
-        h: maxY - minY,
-        cx: (minX + maxX) / 2,
-        cy: (minY + maxY) / 2
-      };
-    }
-
-    function rectsOverlap(a, b, gap = 0) {
-      return !(
-        a.maxX + gap <= b.minX ||
-        b.maxX + gap <= a.minX ||
-        a.maxY + gap <= b.minY ||
-        b.maxY + gap <= a.minY
-      );
-    }
-
-    function translatedRect(block, cx, cy) {
-      return {
-        minX: cx - block.w / 2,
-        maxX: cx + block.w / 2,
-        minY: cy - block.h / 2,
-        maxY: cy + block.h / 2,
-        w: block.w,
-        h: block.h,
-        cx,
-        cy
-      };
-    }
-
-    function moveClusterRigidly(nodes, block, targetCx, targetCy) {
-      const dx = targetCx - block.cx;
-      const dy = targetCy - block.cy;
-      for (const d of nodes) {
-        d.x += dx;
-        d.y += dy;
-      }
-      block.cx = targetCx;
-      block.cy = targetCy;
-      block.minX += dx;
-      block.maxX += dx;
-      block.minY += dy;
-      block.maxY += dy;
-    }
-
-    // クラスター内の密度・相対位置を変えず、クラスター単位で密に詰める。
-    // ルール:
-    // 1) キーワード数の多い順に、上・下・左・右へ割り当てる
-    // 2) 上下クラスターは、外接矩形の横方向接触長と実ノード境界の近接度が最大になるXオフセットを探索する
-    // 3) 左右クラスターは、中央2クラスター双方との接触量が最大になる候補を採用する
-    function intervalOverlap(a0, a1, b0, b1) {
-      return Math.max(0, Math.min(a1, b1) - Math.max(a0, b0));
-    }
-
-    function unionBBox(rects) {
-      return {
-        minX: d3.min(rects, d => d.minX),
-        maxX: d3.max(rects, d => d.maxX),
-        minY: d3.min(rects, d => d.minY),
-        maxY: d3.max(rects, d => d.maxY),
-        get w() { return this.maxX - this.minX; },
-        get h() { return this.maxY - this.minY; },
-        get cx() { return (this.minX + this.maxX) / 2; },
-        get cy() { return (this.minY + this.maxY) / 2; }
-      };
-    }
-
-    function nodeBoundaryContactScore(aPts, aBox, bPts, bBox, bCx, bCy) {
-      const dx = bCx - bBox.cx;
-      const dy = bCy - bBox.cy;
-      let score = 0;
-      let nearPairs = 0;
-
-      for (const a of aPts) {
-        // 上クラスターの下端側のノードをやや重視
-        const aBoundaryWeight = 0.5 + 0.5 * ((a.y + a.r) - aBox.minY) / Math.max(1, aBox.h);
-        for (const b0 of bPts) {
-          const bx = b0.x + dx;
-          const by = b0.y + dy;
-          // 下クラスターの上端側のノードをやや重視
-          const bBoundaryWeight = 0.5 + 0.5 * (bBox.maxY - (b0.y - b0.r)) / Math.max(1, bBox.h);
-          const ddx = bx - a.x;
-          const ddy = by - a.y;
-          if (ddy <= 0) continue;
-          const dist = Math.hypot(ddx, ddy);
-          const surfaceGap = dist - a.r - b0.r;
-          if (surfaceGap < -0.1) return -Infinity; // 実円が重なる候補は不可
-          if (surfaceGap <= FIXED_NODE_RADIUS * 1.5) {
-            nearPairs += 1;
-            score += Math.exp(-surfaceGap / Math.max(1, FIXED_NODE_RADIUS * 0.35)) * aBoundaryWeight * bBoundaryWeight;
-          }
-        }
-      }
-      return score + nearPairs * 0.02;
-    }
-
-    function bestVerticalBottomPlacement(top, bottom, gapPx) {
-      // 上クラスターを原点上側に固定し、下クラスターのXだけを探索する。
-      const topTargetCy = -gapPx / 2 - top.box.h / 2;
-      moveClusterRigidly(top.pts, top.box, 0, topTargetCy);
-
-      const bottomTargetCy = gapPx / 2 + bottom.box.h / 2;
-      const minCx = top.box.minX - bottom.box.w / 2;
-      const maxCx = top.box.maxX + bottom.box.w / 2;
-      const step = Math.max(2, FIXED_NODE_RADIUS / 6);
-
-      const candidates = [];
-      for (let cx = minCx; cx <= maxCx + 1e-6; cx += step) candidates.push(cx);
-      // 重要な整列候補を必ず含める
-      candidates.push(
-        0,
-        top.box.cx,
-        top.box.minX + bottom.box.w / 2,
-        top.box.maxX - bottom.box.w / 2,
-        top.box.minX - gapPx - bottom.box.w / 2,
-        top.box.maxX + gapPx + bottom.box.w / 2
-      );
-
-      let best = null;
-      for (const cxRaw of candidates) {
-        const cx = Math.round(cxRaw * 1000) / 1000;
-        const rect = translatedRect(bottom.box, cx, bottomTargetCy);
-        const rectContact = intervalOverlap(top.box.minX, top.box.maxX, rect.minX, rect.maxX);
-        if (rectContact <= 0) continue;
-
-        const contactScore = nodeBoundaryContactScore(top.pts, top.box, bottom.pts, bottom.box, cx, bottomTargetCy);
-        if (!Number.isFinite(contactScore)) continue;
-
-        const area = unionBBox([top.box, rect]).w * unionBBox([top.box, rect]).h;
-        const centerPull = Math.abs(cx);
-        const score =
-          -contactScore * 1000000 +
-          -rectContact * 10000 +
-          area * 0.05 +
-          centerPull * 20;
-
-        if (!best || score < best.score) best = { cx, cy: bottomTargetCy, score, rectContact, contactScore };
-      }
-
-      if (!best) best = { cx: 0, cy: bottomTargetCy };
-      moveClusterRigidly(bottom.pts, bottom.box, best.cx, best.cy);
-    }
-
-    function clusterSideContactLength(sideRect, targetRect, side, gapPx) {
-      const overlapY = intervalOverlap(sideRect.minY, sideRect.maxY, targetRect.minY, targetRect.maxY);
-      const horizontalGap = side < 0
-        ? Math.abs(sideRect.maxX + gapPx - targetRect.minX)
-        : Math.abs(sideRect.minX - gapPx - targetRect.maxX);
-      return overlapY / (1 + horizontalGap * 0.08);
-    }
-
-    function packClusterBlocks(nodes, gapPx) {
-      const groups = Array.from(d3.group(nodes, d => d.clusterId ?? 0), ([clusterId, pts]) => ({
-        clusterId,
-        pts,
-        nKeywords: pts.length,
-        totalMentions: d3.sum(pts, d => d.count ?? 1),
-        box: clusterBBox(pts)
-      }));
-      if (groups.length < 2) return nodes;
-
-      // 最大キーワード数順。1位=上、2位=下、3位=左、4位=右。
-      const ordered = [...groups].sort((a, b) =>
-        d3.descending(a.nKeywords, b.nKeywords) ||
-        d3.descending(a.totalMentions, b.totalMentions) ||
-        d3.ascending(a.clusterId, b.clusterId)
-      );
-
-      const top = ordered[0];
-      const bottom = ordered[1];
-      const left = ordered[2];
-      const right = ordered[3];
-
-      // 上下2クラスターも「中心揃え」ではなく、接触量最大のXオフセットを探索する。
-      bestVerticalBottomPlacement(top, bottom, gapPx);
-      const centerRects = [top.box, bottom.box];
-
-      function sideCandidates(group, side) {
-        if (!group) return [];
-        const centerUnion = unionBBox(centerRects);
-        const xCenters = [];
-
-        // 中央2クラスターそれぞれの外接矩形に接する候補。
-        for (const target of centerRects) {
-          xCenters.push(side < 0
-            ? target.minX - gapPx - group.box.w / 2
-            : target.maxX + gapPx + group.box.w / 2
-          );
-        }
-        // 中央2つの合成外接矩形に接する候補。
-        xCenters.push(side < 0
-          ? centerUnion.minX - gapPx - group.box.w / 2
-          : centerUnion.maxX + gapPx + group.box.w / 2
-        );
-
-        // y候補は、中央2矩形の上下端・中心を密にサンプリングする。
-        const yCenters = [0, centerUnion.cy];
-        for (const target of centerRects) {
-          yCenters.push(target.cy);
-          yCenters.push(target.minY + group.box.h / 2);
-          yCenters.push(target.maxY - group.box.h / 2);
-          yCenters.push(target.minY - gapPx - group.box.h / 2);
-          yCenters.push(target.maxY + gapPx + group.box.h / 2);
-        }
-        yCenters.push(centerUnion.minY + group.box.h / 2);
-        yCenters.push(centerUnion.maxY - group.box.h / 2);
-
-        // 連続的な候補も加える。上下どちらかだけでなく、両方に長く接する位置を拾う。
-        const yMin = centerUnion.minY - group.box.h / 2;
-        const yMax = centerUnion.maxY + group.box.h / 2;
-        const yStep = Math.max(3, FIXED_NODE_RADIUS / 4);
-        for (let y = yMin; y <= yMax + 1e-6; y += yStep) yCenters.push(y);
-
-        const cands = [];
-        const uniqX = Array.from(new Set(xCenters.map(v => Math.round(v * 1000) / 1000)));
-        const uniqY = Array.from(new Set(yCenters.map(v => Math.round(v * 1000) / 1000)));
-
-        for (const cx of uniqX) {
-          for (const cy of uniqY) {
-            const rect = translatedRect(group.box, cx, cy);
-            if (centerRects.some(r => rectsOverlap(rect, r, 0))) continue;
-
-            const contacts = centerRects.map(r => clusterSideContactLength(rect, r, side, gapPx));
-            const minContact = Math.min(...contacts);
-            const sumContact = d3.sum(contacts);
-            const span = unionBBox([...centerRects, rect]);
-            const spanArea = span.w * span.h;
-            const centerPull = Math.hypot(rect.cx, rect.cy);
-
-            // 「中央2矩形のどちらにもよく接する」を最優先。
-            const score =
-              -minContact * 1000000 +
-              -sumContact * 50000 +
-              spanArea * 0.05 +
-              centerPull * 10;
-            cands.push({ group, rect, score, minContact, sumContact });
-          }
-        }
-        return cands.sort((a, b) => a.score - b.score);
-      }
-
-      if (left) {
-        const bestLeft = sideCandidates(left, -1)[0];
-        if (bestLeft) moveClusterRigidly(left.pts, left.box, bestLeft.rect.cx, bestLeft.rect.cy);
-      }
-      if (right) {
-        const bestRight = sideCandidates(right, 1)[0];
-        if (bestRight) moveClusterRigidly(right.pts, right.box, bestRight.rect.cx, bestRight.rect.cy);
-      }
-
-      // 5つ以上のクラスターが存在する場合は、残りを右下へ退避配置する。
-      // 今回は4クラス固定なので通常は実行されない。
-      let extraX = 0;
-      for (const extra of ordered.slice(4)) {
-        const allBox = clusterBBox(nodes);
-        extraX = allBox.maxX + gapPx + extra.box.w / 2 + extraX;
-        moveClusterRigidly(extra.pts, extra.box, extraX, allBox.maxY + gapPx + extra.box.h / 2);
-      }
-
-      return nodes;
-    }
-
-    function runClusterLocalCollision(nodes, collideR, targetStrength) {
-      const groups = d3.group(nodes, d => d.clusterId ?? 0);
-      for (const pts of groups.values()) {
-        const sim = d3.forceSimulation(pts)
-          .force("x", d3.forceX(d => d.x).strength(targetStrength))
-          .force("y", d3.forceY(d => d.y).strength(targetStrength))
-          .force("collide", d3.forceCollide(collideR))
-          .stop();
-        for (let i = 0; i < 320; i++) sim.tick();
-      }
-      return nodes;
-    }
-
-    function fitToView(root, zoom, nodes, W, H, fitPad, minScaleClamp) {
+    function fitToView(root, zoom, nodes, W, H) {
       let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
       for (const d of nodes) {
         minX = Math.min(minX, d.x - d.r);
@@ -482,13 +121,11 @@
       }
       if (!Number.isFinite(minX) || !Number.isFinite(minY) || !Number.isFinite(maxX) || !Number.isFinite(maxY)) return;
 
-      const bw = (maxX - minX) + fitPad * 2;
-      const bh = (maxY - minY) + fitPad * 2;
+      const bw = (maxX - minX) + FIT_PAD * 2;
+      const bh = (maxY - minY) + FIT_PAD * 2;
       if (!(bw > 0) || !(bh > 0)) return;
 
-      let s = Math.min(W / bw, H / bh);
-      if (minScaleClamp && Number.isFinite(minScaleClamp)) s = Math.max(s, minScaleClamp);
-
+      const s = Math.min(W / bw, H / bh);
       const cx = (minX + maxX) / 2;
       const cy = (minY + maxY) / 2;
 
@@ -510,18 +147,13 @@
         return;
       }
 
-      const W = svg.clientWidth || 800;
-      const H = svg.clientHeight || 600;
-      const lp = getLayoutParams(W, H);
-
-      // クラスターごとにPCA回転して全体を横長にまとめる
-      items = rotateClustersTangentially(items);
-
-      // スマホ時は広がる方向へ
-      items = compactAroundMean(items, lp.clusterCompact);
+      // CLUSTER_COMPACT が “見た目に効く” ようになった
+      items = compactAroundMean(items, CLUSTER_COMPACT);
 
       const colorMap = makeClusterColorMap(items);
 
+      const W = svg.clientWidth || 800;
+      const H = svg.clientHeight || 600;
       svg.innerHTML = "";
 
       const root = d3.select(svg).attr("viewBox", `0 0 ${W} ${H}`);
@@ -532,7 +164,7 @@
         .on("zoom", (event) => g.attr("transform", event.transform));
       root.call(zoom);
 
-      // fixed “world” mapping：extentで引き伸ばさない
+      // ★ fixed “world” mapping：extentで引き伸ばさない
       const xs = items.map(d => d.x);
       const ys = items.map(d => d.y);
       const mx = d3.mean(xs);
@@ -541,9 +173,9 @@
       const dx = d3.max(xs.map(x => Math.abs(x - mx))) || 1;
       const dy = d3.max(ys.map(y => Math.abs(y - my))) || 1;
 
-      // WORLD_SCALE +（スマホ時は縦長ストレッチ）
-      const xToScreen = (x) => (W / 2) + (x - mx) * ((W - 2 * PADDING) * lp.worldScale * lp.stretchX) / (2 * dx);
-      const yToScreen = (y) => (H / 2) - (y - my) * ((H - 2 * PADDING) * lp.worldScale * lp.stretchY) / (2 * dy);
+      // WORLD_SCALE を使って中心に描画（PADDING は画面端ガード）
+      const xToScreen = (x) => (W / 2) + (x - mx) * ((W - 2 * PADDING) * WORLD_SCALE) / (2 * dx);
+      const yToScreen = (y) => (H / 2) - (y - my) * ((H - 2 * PADDING) * WORLD_SCALE) / (2 * dy);
 
       const nodes = items.map(d => {
         const cid = (d.clusterId ?? 0);
@@ -553,17 +185,54 @@
           clusterId: cid,
           x: xToScreen(d.x),
           y: yToScreen(d.y),
-          r: FIXED_NODE_RADIUS,
+          r: 10,
           fill: colorMap.get(cid) ?? "#eee"
         };
       });
 
-      // クラスター内だけで衝突回避を行う。ここでクラスター間を押し広げない。
-      const collideR = FIXED_NODE_RADIUS * lp.overlapFactor;
-      runClusterLocalCollision(nodes, collideR, lp.targetStrength);
+      // === クラスター配置：キーワード数順で上・下・左・右に割り当て ===
+      {
+        // クラスターごとの重心とキーワード数を集計
+        const cStats = new Map();
+        for (const nd of nodes) {
+          const cid = nd.clusterId;
+          if (!cStats.has(cid)) cStats.set(cid, { count: 0, sumX: 0, sumY: 0 });
+          const s = cStats.get(cid);
+          s.count++;
+          s.sumX += nd.x;
+          s.sumY += nd.y;
+        }
+        for (const s of cStats.values()) {
+          s.cx = s.sumX / s.count;
+          s.cy = s.sumY / s.count;
+        }
 
-      // クラスター単位で剛体移動し、クラスター間だけを外接矩形ベースで密に詰める。
-      packClusterBlocks(nodes, CLASS_PACK_GAP_PX);
+        // キーワード数降順でソート → 1位=上、2位=下、3位=左、4位=右
+        const sortedCids = Array.from(cStats.entries())
+          .sort((a, b) => b[1].count - a[1].count)
+          .map(([cid]) => cid);
+        const ROLES = ['top', 'bottom', 'left', 'right'];
+        const cidRole = new Map(sortedCids.map((cid, i) => [cid, ROLES[i] ?? 'other']));
+
+        // 上下を中央付近に近接配置、左右を上下の中間高さに配置
+        const vOff = H * VERT_OFFSET;
+        const hOff = W * HORIZ_OFFSET;
+        const roleCentroid = {
+          top:    { x: W / 2,        y: H / 2 - vOff },
+          bottom: { x: W / 2,        y: H / 2 + vOff },
+          left:   { x: W / 2 - hOff, y: H / 2 },
+          right:  { x: W / 2 + hOff, y: H / 2 },
+          other:  { x: W / 2,        y: H / 2 }
+        };
+
+        // クラスター内部の相対位置を保持しながら重心を目標位置へ移動
+        for (const nd of nodes) {
+          const s = cStats.get(nd.clusterId);
+          const tc = roleCentroid[cidRole.get(nd.clusterId) ?? 'other'];
+          nd.x = tc.x + (nd.x - s.cx);
+          nd.y = tc.y + (nd.y - s.cy);
+        }
+      }
 
       const node = g.selectAll(".node")
         .data(nodes)
@@ -583,12 +252,37 @@
       node.append("text")
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
-        .attr("font-size", NODE_FONT_SIZE)
+        .attr("font-size", FONT_SIZE)
         .text(d => d.keyword);
 
-      // 円サイズは文字サイズから独立させる
-      nodes.forEach(d => d.r = FIXED_NODE_RADIUS);
-      node.select("circle").attr("r", FIXED_NODE_RADIUS);
+      // 最大文字に合わせて全円同一半径
+      let maxNeededR = 0;
+      node.each(function() {
+        const t = d3.select(this).select("text").node();
+        if (!t) return;
+        const bb = t.getBBox();
+        const needed = Math.max(bb.width, bb.height) * 0.55 + TEXT_PAD;
+        if (needed > maxNeededR) maxNeededR = needed;
+      });
+      if (!(maxNeededR > 0)) throw new Error("text bbox measurement failed (maxNeededR invalid)");
+
+      // NODE_RADIUS が設定されていれば固定値、null なら自動フィット（フォントと独立）
+      const nodeR = (NODE_RADIUS !== null && NODE_RADIUS > 0) ? NODE_RADIUS : maxNeededR;
+      nodes.forEach(d => d.r = nodeR);
+      node.select("circle").attr("r", nodeR);
+
+      // 重なりOK（衝突半径を縮める）
+      const collideR = nodeR * OVERLAP_FACTOR;
+
+      // x,y へ戻す力を強めると「距離構造」が効く
+      const sim = d3.forceSimulation(nodes)
+        .force("x", d3.forceX(d => d.x).strength(TARGET_STRENGTH))
+        .force("y", d3.forceY(d => d.y).strength(TARGET_STRENGTH))
+        .force("collide", d3.forceCollide(collideR))
+        .stop();
+
+      for (let i = 0; i < 320; i++) sim.tick();
+      node.attr("transform", d => `translate(${d.x},${d.y})`);
 
       // ホバー
       node.on("mouseenter", function(event, d) {
@@ -602,8 +296,8 @@
             .attr("transform", `translate(${d.x},${d.y}) scale(1)`);
         });
 
-      // 初期倍率：スマホでは縮小しすぎを止める（多少はみ出しOK）
-      fitToView(root, zoom, nodes, W, H, lp.fitPad, lp.fitMinScaleClamp);
+      // 初期倍率で必ず入りきる
+      fitToView(root, zoom, nodes, W, H);
     }
 
     async function main() {
