@@ -33,7 +33,7 @@
     import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
     // ★JSON
-    const DATA_URL = "./clustered_keywords.json";
+    const DATA_URL = "./clustered_keywords_v5.json";
 
     // ===== レイアウト調整（デスクトップ/スマホで自動切替）=====
     // 「スマホでぎゅっと詰まりすぎる」対策：
@@ -48,8 +48,9 @@
     // 余白（px）
     const PADDING = 2;
 
-    // 最大文字に合わせて全円同一半径：文字周り余白
-    const TEXT_PAD = 2;
+    // ノード文字サイズと円サイズを独立管理
+    const NODE_FONT_SIZE = 20;
+    const FIXED_NODE_RADIUS = 48;
 
     // ホバー
     const HOVER_SCALE = 1.14;
@@ -238,25 +239,15 @@
       node.append("text")
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
-        .attr("font-size", 20)
+        .attr("font-size", NODE_FONT_SIZE)
         .text(d => d.keyword);
 
-      // 最大文字に合わせて全円同一半径
-      let maxNeededR = 0;
-      node.each(function() {
-        const t = d3.select(this).select("text").node();
-        if (!t) return;
-        const bb = t.getBBox();
-        const needed = Math.max(bb.width, bb.height) * 0.55 + TEXT_PAD;
-        if (needed > maxNeededR) maxNeededR = needed;
-      });
-      if (!(maxNeededR > 0)) throw new Error("text bbox measurement failed (maxNeededR invalid)");
-
-      nodes.forEach(d => d.r = maxNeededR);
-      node.select("circle").attr("r", maxNeededR);
+      // 円サイズは文字サイズから独立させる
+      nodes.forEach(d => d.r = FIXED_NODE_RADIUS);
+      node.select("circle").attr("r", FIXED_NODE_RADIUS);
 
       // スマホは重なり許容を減らして「密集感」を下げる
-      const collideR = maxNeededR * lp.overlapFactor;
+      const collideR = FIXED_NODE_RADIUS * lp.overlapFactor;
 
       const sim = d3.forceSimulation(nodes)
         .force("x", d3.forceX(d => d.x).strength(lp.targetStrength))
