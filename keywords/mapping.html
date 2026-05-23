@@ -54,8 +54,8 @@
 
     // クラスター間だけを詰めるための設定
     // クラスター内の相対配置は維持し、クラスター全体を剛体として移動する。
+    // 配置順はキーワード数の多い順に 上・下・左・右。
     const CLASS_PACK_GAP_PX = 6;
-    const CLASS_PACK_CENTER_IDS = [1, 3];
 
     // ホバー
     const HOVER_SCALE = 1.14;
@@ -243,115 +243,184 @@
     }
 
     // クラスター内の密度・相対位置を変えず、クラスター単位で密に詰める。
-    // 1) 中央に2クラスターを縦積みする
-    // 2) 残り2クラスターを左右から中央2クラスターのどちらかに接する位置へ置く
-    // 3) 候補のうち、全体中心に最も近く、外接矩形の広がりが小さい配置を選ぶ
+    // ルール:
+    // 1) キーワード数の多い順に、上・下・左・右へ割り当てる
+    // 2) 上下クラスターは中心Xを揃えて縦積みする
+    // 3) 左右クラスターは中央2クラスター双方との接触量が最大になる候補を採用する
     function packClusterBlocks(nodes, gapPx) {
       const groups = Array.from(d3.group(nodes, d => d.clusterId ?? 0), ([clusterId, pts]) => ({
         clusterId,
         pts,
+        nKeywords: pts.length,
+        totalMentions: d3.sum(pts, d => d.count ?? 1),
         box: clusterBBox(pts)
       }));
       if (groups.length < 2) return nodes;
 
-      const byId = new Map(groups.map(g => [g.clusterId, g]));
-      let centerGroups = CLASS_PACK_CENTER_IDS.map(id => byId.get(id)).filter(Boolean);
-      if (centerGroups.length < 2) {
-        centerGroups = [...groups].sort((a, b) => b.pts.length - a.pts.length).slice(0, 2);
-      }
-      centerGroups = centerGroups.slice(0, 2);
-      const sideGroups = groups.filter(g => !centerGroups.includes(g));
+      // 最大キーワード数順。タイブレークは totalMentions → clusterId。
+      const ordered = [...groups].sort((a, b) =>
+        d3.descending(a.nKeywords, b.nKeywords) ||
+        d3.descending(a.totalMentions, b.totalMentions) ||
+        d3.ascending(a.clusterId, b.clusterId)
+      );
 
-      const top = centerGroups[0];
-      const bottom = centerGroups[1];
-      const totalH = top.box.h + gapPx + bottom.box.h;
-      const topCy = -totalH / 2 + top.box.h / 2;
-      const bottomCy = -totalH / 2 + top.box.h + gapPx + bottom.box.h / 2;
+      const top = ordered[0];
+      const bottom = ordered[1];
+      const left = ordered[2];
+      const right = ordered[3];
 
+      // 上・下を中央に縦積みする。
+      const totalCenterH = top.box.h + gapPx + bottom.box.h;
+      const topCy = -totalCenterH / 2 + top.box.h / 2;
+      const bottomCy = -totalCenterH / 2 + top.box.h + gapPx + bottom.box.h / 2;
       moveClusterRigidly(top.pts, top.box, 0, topCy);
       moveClusterRigidly(bottom.pts, bottom.box, 0, bottomCy);
 
-      const placedBase = [top.box, bottom.box];
+      const centerRects = [top.box, bottom.box];
 
-      function candidateRects(group) {
-        const out = [];
-        for (const target of placedBase) {
-          for (const side of [-1, 1]) {
-            const cx = side < 0
-              ? target.minX - gapPx - group.box.w / 2
-              : target.maxX + gapPx + group.box.w / 2;
-            const cy = target.cy;
-            out.push({
-              group,
-              side,
-              target,
-              rect: translatedRect(group.box, cx, cy)
-            });
-          }
-        }
-        return out;
+      function verticalOverlap(a, b) {
+        return Math.max(0, Math.min(a.maxY, b.maxY) - Math.max(a.minY, b.minY));
       }
 
-      const sideCandidates = sideGroups.map(g => candidateRects(g));
+      function horizontalGapToTouch(rect, target, side) {
+        return side < 0
+          ? Math.abs(rect.maxX + gapPx - target.minX)
+          : Math.abs(rect.minX - gapPx - target.maxX);
+      }
+
+      function totalContactScore(rect, side) {
+        // 水平方向で接している中央矩形ほど、縦方向の重なりを接触量として強く評価する。
+        // 「どちらか一方だけに接する」より「中央2矩形の両方に近く、かつ重なる」候補を優先する。
+        let weightedContact = 0;
+        let rawContact = 0;
+        let nearestGap = Infinity;
+        for (const target of centerRects) {
+          const overlap = verticalOverlap(rect, target);
+          const gap = horizontalGapToTouch(rect, target, side);
+          nearestGap = Math.min(nearestGap, gap);
+          rawContact += overlap;
+          weightedContact += overlap / (1 + gap * 0.035);
+        }
+        return { weightedContact, rawContact, nearestGap };
+      }
+
+      function unionBBox(rects) {
+        return {
+          minX: d3.min(rects, d => d.minX),
+          maxX: d3.max(rects, d => d.maxX),
+          minY: d3.min(rects, d => d.minY),
+          maxY: d3.max(rects, d => d.maxY)
+        };
+      }
+
+      function combinedArea(rects) {
+        const b = unionBBox(rects);
+        return (b.maxX - b.minX) * (b.maxY - b.minY);
+      }
+
+      function sideCandidates(group, side) {
+        if (!group) return [];
+
+        const cands = [];
+        const union = unionBBox(centerRects);
+
+        // x候補: 上・下それぞれの外接矩形に接する位置 + 中央2矩形の外側端に接する位置。
+        const xCenters = [];
+        for (const target of centerRects) {
+          xCenters.push(side < 0
+            ? target.minX - gapPx - group.box.w / 2
+            : target.maxX + gapPx + group.box.w / 2
+          );
+        }
+        xCenters.push(side < 0
+          ? union.minX - gapPx - group.box.w / 2
+          : union.maxX + gapPx + group.box.w / 2
+        );
+
+        // y候補: 上下それぞれの中心・辺合わせ・全体中心。
+        const yCenters = [0];
+        for (const target of centerRects) {
+          yCenters.push(target.cy);
+          yCenters.push(target.minY + group.box.h / 2);
+          yCenters.push(target.maxY - group.box.h / 2);
+        }
+        yCenters.push(union.minY + group.box.h / 2);
+        yCenters.push(union.maxY - group.box.h / 2);
+        yCenters.push((union.minY + union.maxY) / 2);
+
+        for (const cx of Array.from(new Set(xCenters.map(v => Math.round(v * 1000) / 1000)))) {
+          for (const cy of Array.from(new Set(yCenters.map(v => Math.round(v * 1000) / 1000)))) {
+            const rect = translatedRect(group.box, cx, cy);
+            const contact = totalContactScore(rect, side);
+            cands.push({ group, side, rect, contact });
+          }
+        }
+        return cands;
+      }
+
+      const leftCandidates = sideCandidates(left, -1);
+      const rightCandidates = sideCandidates(right, 1);
       let best = null;
 
-      function scorePlacement(rects) {
-        const all = [...placedBase, ...rects];
-        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-        for (const r of all) {
-          minX = Math.min(minX, r.minX);
-          minY = Math.min(minY, r.minY);
-          maxX = Math.max(maxX, r.maxX);
-          maxY = Math.max(maxY, r.maxY);
-        }
-        const width = maxX - minX;
-        const height = maxY - minY;
-        const centerPull = rects.reduce((acc, r) => acc + Math.hypot(r.cx, r.cy), 0);
-        return width * height + centerPull * 0.25 + Math.abs(width - height) * 0.15;
+      function overlapsAny(rect, rects, gap = 0) {
+        return rects.some(r => rectsOverlap(rect, r, gap));
       }
 
-      if (sideCandidates.length === 1) {
-        for (const c0 of sideCandidates[0]) {
-          const overlaps = placedBase.some(r => rectsOverlap(c0.rect, r, 0));
-          if (overlaps) continue;
-          const score = scorePlacement([c0.rect]);
-          if (!best || score < best.score) best = { score, choices: [c0] };
+      function evaluate(choices) {
+        const sideRects = choices.map(c => c.rect);
+        for (const rect of sideRects) {
+          if (overlapsAny(rect, centerRects, 0)) return null;
         }
-      } else if (sideCandidates.length >= 2) {
-        for (const c0 of sideCandidates[0]) {
-          for (const c1 of sideCandidates[1]) {
-            // 左右に分ける。これにより4クラスターが中央に密集しやすい。
-            if (c0.side === c1.side) continue;
-            const r0 = c0.rect, r1 = c1.rect;
-            const overlapsPlaced = placedBase.some(r => rectsOverlap(r0, r, 0) || rectsOverlap(r1, r, 0));
-            const overlapsSide = rectsOverlap(r0, r1, gapPx);
-            if (overlapsPlaced || overlapsSide) continue;
-            const score = scorePlacement([r0, r1]);
-            if (!best || score < best.score) best = { score, choices: [c0, c1] };
+        if (sideRects.length === 2 && rectsOverlap(sideRects[0], sideRects[1], gapPx)) return null;
+
+        const allRects = [...centerRects, ...sideRects];
+        const area = combinedArea(allRects);
+        const centerPull = sideRects.reduce((acc, r) => acc + Math.hypot(r.cx, r.cy), 0);
+        const contact = choices.reduce((acc, c) => acc + c.contact.weightedContact, 0);
+        const rawContact = choices.reduce((acc, c) => acc + c.contact.rawContact, 0);
+        const nearestGap = choices.reduce((acc, c) => acc + c.contact.nearestGap, 0);
+
+        // 接触量を最優先。次に外接面積、中心寄せ、実際の水平ギャップ。
+        const score = -contact * 100000 - rawContact * 1000 + area * 0.35 + centerPull * 5 + nearestGap * 40;
+        return { score, choices };
+      }
+
+      if (leftCandidates.length && rightCandidates.length) {
+        for (const lc of leftCandidates) {
+          for (const rc of rightCandidates) {
+            const ev = evaluate([lc, rc]);
+            if (!ev) continue;
+            if (!best || ev.score < best.score) best = ev;
           }
         }
+      } else {
+        for (const c of [...leftCandidates, ...rightCandidates]) {
+          const ev = evaluate([c]);
+          if (!ev) continue;
+          if (!best || ev.score < best.score) best = ev;
+        }
       }
 
-      // 完全非重複候補がない場合も、中心寄せ優先で最低限配置する。
-      if (!best && sideCandidates.length > 0) {
+      // 完全非重複候補がない場合の安全策。
+      if (!best) {
         const fallback = [];
-        const usedSides = new Set();
-        for (const cands of sideCandidates) {
-          const c = [...cands]
-            .filter(c => !usedSides.has(c.side) || usedSides.size >= 2)
-            .sort((a, b) => Math.hypot(a.rect.cx, a.rect.cy) - Math.hypot(b.rect.cx, b.rect.cy))[0];
-          if (c) {
-            fallback.push(c);
-            usedSides.add(c.side);
-          }
+        if (leftCandidates.length) {
+          fallback.push([...leftCandidates].sort((a, b) =>
+            b.contact.weightedContact - a.contact.weightedContact ||
+            Math.hypot(a.rect.cx, a.rect.cy) - Math.hypot(b.rect.cx, b.rect.cy)
+          )[0]);
+        }
+        if (rightCandidates.length) {
+          fallback.push([...rightCandidates].sort((a, b) =>
+            b.contact.weightedContact - a.contact.weightedContact ||
+            Math.hypot(a.rect.cx, a.rect.cy) - Math.hypot(b.rect.cx, b.rect.cy)
+          )[0]);
         }
         best = { score: Infinity, choices: fallback };
       }
 
-      if (best) {
-        for (const choice of best.choices) {
-          moveClusterRigidly(choice.group.pts, choice.group.box, choice.rect.cx, choice.rect.cy);
-        }
+      for (const choice of best.choices) {
+        moveClusterRigidly(choice.group.pts, choice.group.box, choice.rect.cx, choice.rect.cy);
       }
       return nodes;
     }
@@ -442,7 +511,16 @@
         };
       });
 
-      // クラスター単位で剛体移動し、クラスター間だけを密に詰める
+      // まず既存のノード衝突回避でクラス内の見え方を確定し、その後クラスター単位で剛体配置する。
+      const collideR = FIXED_NODE_RADIUS * lp.overlapFactor;
+      const sim = d3.forceSimulation(nodes)
+        .force("x", d3.forceX(d => d.x).strength(lp.targetStrength))
+        .force("y", d3.forceY(d => d.y).strength(lp.targetStrength))
+        .force("collide", d3.forceCollide(collideR))
+        .stop();
+      for (let i = 0; i < 320; i++) sim.tick();
+
+      // クラスター単位で剛体移動し、クラスター間だけを密に詰める。
       packClusterBlocks(nodes, CLASS_PACK_GAP_PX);
 
       const node = g.selectAll(".node")
@@ -469,18 +547,6 @@
       // 円サイズは文字サイズから独立させる
       nodes.forEach(d => d.r = FIXED_NODE_RADIUS);
       node.select("circle").attr("r", FIXED_NODE_RADIUS);
-
-      // スマホは重なり許容を減らして「密集感」を下げる
-      const collideR = FIXED_NODE_RADIUS * lp.overlapFactor;
-
-      const sim = d3.forceSimulation(nodes)
-        .force("x", d3.forceX(d => d.x).strength(lp.targetStrength))
-        .force("y", d3.forceY(d => d.y).strength(lp.targetStrength))
-        .force("collide", d3.forceCollide(collideR))
-        .stop();
-
-      for (let i = 0; i < 320; i++) sim.tick();
-      node.attr("transform", d => `translate(${d.x},${d.y})`);
 
       // ホバー
       node.on("mouseenter", function(event, d) {
