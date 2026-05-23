@@ -58,10 +58,12 @@
     // 距離構造をどれだけ守るか（大きいほど x,y に忠実）
     const TARGET_STRENGTH = 0.28; // 0.18〜0.45
 
-    // ★フォントサイズ（px）— 円の半径とは独立して動作
+    // ★フォントサイズ（px）— レイアウトに影響しない（文字表示のみ）
     const FONT_SIZE = 20;
-    // ★円の半径（px）— null でテキストに自動フィット、数値で固定（フォントと独立）
+    // ★表示円の半径（px）— null でテキストに自動フィット
     const NODE_RADIUS = null;
+    // ★衝突・配置半径（px）— フォントと完全独立。これを変えてもフォントは変わらず、フォントを変えてもレイアウトは変わらない
+    const LAYOUT_RADIUS = 30;
 
     // クラスター配置オフセット（画面サイズに対する比率）
     const VERT_OFFSET = 0.16;   // 上・下クラスター中心の縦オフセット
@@ -266,13 +268,13 @@
       });
       if (!(maxNeededR > 0)) throw new Error("text bbox measurement failed (maxNeededR invalid)");
 
-      // NODE_RADIUS が設定されていれば固定値、null なら自動フィット（フォントと独立）
+      // 表示半径：NODE_RADIUS 固定 or テキスト自動フィット
       const nodeR = (NODE_RADIUS !== null && NODE_RADIUS > 0) ? NODE_RADIUS : maxNeededR;
       nodes.forEach(d => d.r = nodeR);
       node.select("circle").attr("r", nodeR);
 
-      // 重なりOK（衝突半径を縮める）
-      const collideR = nodeR * OVERLAP_FACTOR;
+      // 衝突半径：LAYOUT_RADIUS で独立制御（フォント・表示半径と無関係）
+      const collideR = LAYOUT_RADIUS * OVERLAP_FACTOR;
 
       // x,y へ戻す力を強めると「距離構造」が効く
       const sim = d3.forceSimulation(nodes)
