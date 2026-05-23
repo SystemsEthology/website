@@ -23,9 +23,9 @@
     const DATA_URL = "./clustered_keywords.json";
 
     // ===== クラスター配置 =====
-    const VERT_OFFSET      = 0.45; // 上・下クラスター重心の縦オフセット（画面Hの比率）
-    const HORIZ_OFFSET     = 0.45; // 左・右クラスター重心の横オフセット（画面Wの比率）
-    const WORLD_SCALE      = 0.8;  // クラスター内ノードの散らばり（小さいほど密集）
+    const VERT_OFFSET      = 0.55; // 上・下クラスター重心の縦オフセット（画面Hの比率）
+    const HORIZ_OFFSET     = 0.55; // 左・右クラスター重心の横オフセット（画面Wの比率）
+    const WORLD_SCALE      = 1.0;  // クラスター内ノードの散らばり（小さいほど密集）
     const TARGET_STRENGTH  = 0.2; // 目標位置への引き付け力（0.18〜0.45）
 
     // ===== 円・フォント =====
@@ -250,10 +250,12 @@
       // 衝突半径：LAYOUT_RADIUS で独立制御（フォント・表示半径と無関係）
       const collideR = LAYOUT_RADIUS * OVERLAP_FACTOR;
 
-      // x,y へ戻す力を強めると「距離構造」が効く
+      // シミュレーション開始前に目標座標を固定（d.x/d.y はシミュレーション中に書き換わるため）
+      nodes.forEach(d => { d.tx = d.x; d.ty = d.y; });
+
       const sim = d3.forceSimulation(nodes)
-        .force("x", d3.forceX(d => d.x).strength(TARGET_STRENGTH))
-        .force("y", d3.forceY(d => d.y).strength(TARGET_STRENGTH))
+        .force("x", d3.forceX(d => d.tx).strength(TARGET_STRENGTH))
+        .force("y", d3.forceY(d => d.ty).strength(TARGET_STRENGTH))
         .force("collide", d3.forceCollide(collideR))
         .stop();
 
