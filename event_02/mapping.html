@@ -22,44 +22,21 @@
     // ★JSON
     const DATA_URL = "./clustered_keywords.json";
 
-    // ===== 近づける系 =====
-    // カテゴリは分かるが離れすぎない：小さいほど詰まる（※今度はちゃんと効く）
-    const CLUSTER_COMPACT = 0.1; // 0.2〜0.8で調整
+    // ===== クラスター配置 =====
+    const VERT_OFFSET      = 0.30; // 上・下クラスター重心の縦オフセット（画面Hの比率）
+    const HORIZ_OFFSET     = 0.40; // 左・右クラスター重心の横オフセット（画面Wの比率）
+    const WORLD_SCALE      = 0.8;  // クラスター内ノードの散らばり（小さいほど密集）
+    const TARGET_STRENGTH  = 0.2; // 目標位置への引き付け力（0.18〜0.45）
 
-    // ★これが「見た目の詰まり」を決める主ツマミ（小さいほど詰まる）
-    // extentで引き伸ばさないので、距離構造がそのまま反映される
-    const WORLD_SCALE = 0.5;
-    // ======================
+    // ===== 円・フォント =====
+    const FONT_SIZE        = 20;   // テキストフォントサイズ（px）
+    const NODE_RADIUS      = 80;   // 表示円の半径（px）— null でテキスト自動フィット
+    const LAYOUT_RADIUS    = 70;   // 衝突・配置半径（px）— フォントと独立
+    const OVERLAP_FACTOR   = 0.8;  // 衝突半径の倍率（< 1 で重なり許容）
 
-    // 余白（px）
-    const PADDING = 0;
-
-    // 最大文字に合わせて全円同一半径：文字周り余白
-    const TEXT_PAD = 0;
-
-    // 円同士の重なり許容（<1 で重なってOK）
-    const OVERLAP_FACTOR = 0.8;
-
-    // 自動フィット余白（px）
-    const FIT_PAD = 0;
-
-    // ホバー
-    const HOVER_SCALE = 1.14;
-    const HOVER_RISE_PX = 6;
-
-    // 距離構造をどれだけ守るか（大きいほど x,y に忠実）
-    const TARGET_STRENGTH = 0.28; // 0.18〜0.45
-
-    // ★フォントサイズ（px）— レイアウトに影響しない（文字表示のみ）
-    const FONT_SIZE = 20;
-    // ★表示円の半径（px）— null でテキストに自動フィット
-    const NODE_RADIUS = 80;
-    // ★衝突・配置半径（px）— フォントと完全独立。これを変えてもフォントは変わらず、フォントを変えてもレイアウトは変わらない
-    const LAYOUT_RADIUS = 70;
-
-    // クラスター配置オフセット（画面サイズに対する比率）
-    const VERT_OFFSET = 0.20;   // 上・下クラスター中心の縦オフセット
-    const HORIZ_OFFSET = 0.40;  // 左・右クラスター中心の横オフセット
+    // ===== ホバー =====
+    const HOVER_SCALE      = 1.14;
+    const HOVER_RISE_PX    = 6;
 
     const statusEl = document.getElementById("status");
     const svg = document.getElementById("viz");
@@ -82,16 +59,6 @@
       return json;
     }
 
-    function compactAroundMean(items, factor) {
-      const mx = d3.mean(items, d => d.x);
-      const my = d3.mean(items, d => d.y);
-      return items.map(d => ({
-        ...d,
-        x: mx + (d.x - mx) * factor,
-        y: my + (d.y - my) * factor
-      }));
-    }
-
     function makeClusterColorMap(items) {
       const ids = Array.from(new Set(items.map(d => d.clusterId ?? 0))).sort((a,b)=>a-b);
       const palette = d3.schemePastel1; // パステル
@@ -110,8 +77,8 @@
       }
       if (!Number.isFinite(minX) || !Number.isFinite(minY) || !Number.isFinite(maxX) || !Number.isFinite(maxY)) return;
 
-      const bw = (maxX - minX) + FIT_PAD * 2;
-      const bh = (maxY - minY) + FIT_PAD * 2;
+      const bw = maxX - minX;
+      const bh = maxY - minY;
       if (!(bw > 0) || !(bh > 0)) return;
 
       const s = Math.min(W / bw, H / bh);
@@ -135,9 +102,6 @@
         return;
       }
 
-      // CLUSTER_COMPACT が “見た目に効く” ようになった
-      items = compactAroundMean(items, CLUSTER_COMPACT);
-
       const colorMap = makeClusterColorMap(items);
 
       const W = svg.clientWidth || 800;
@@ -160,18 +124,16 @@
       // D3 が設定する touch-action:none を上書き → 空白タッチでページを縦スクロール可能に
       d3.select(svg).style("touch-action", "pan-y");
 
-      // ★ fixed “world” mapping：extentで引き伸ばさない
       const xs = items.map(d => d.x);
       const ys = items.map(d => d.y);
       const mx = d3.mean(xs);
       const my = d3.mean(ys);
-
       const dx = d3.max(xs.map(x => Math.abs(x - mx))) || 1;
       const dy = d3.max(ys.map(y => Math.abs(y - my))) || 1;
 
-      // WORLD_SCALE を使って中心に描画（PADDING は画面端ガード）
-      const xToScreen = (x) => (W / 2) + (x - mx) * ((W - 2 * PADDING) * WORLD_SCALE) / (2 * dx);
-      const yToScreen = (y) => (H / 2) - (y - my) * ((H - 2 * PADDING) * WORLD_SCALE) / (2 * dy);
+      // WORLD_SCALE でクラスター内の散らばりを制御
+      const xToScreen = (x) => (W / 2) + (x - mx) * (W * WORLD_SCALE) / (2 * dx);
+      const yToScreen = (y) => (H / 2) - (y - my) * (H * WORLD_SCALE) / (2 * dy);
 
       const nodes = items.map(d => {
         const cid = (d.clusterId ?? 0);
@@ -275,7 +237,7 @@
         const t = d3.select(this).select("text").node();
         if (!t) return;
         const bb = t.getBBox();
-        const needed = Math.max(bb.width, bb.height) * 0.55 + TEXT_PAD;
+        const needed = Math.max(bb.width, bb.height) * 0.55;
         if (needed > maxNeededR) maxNeededR = needed;
       });
       if (!(maxNeededR > 0)) throw new Error("text bbox measurement failed (maxNeededR invalid)");
