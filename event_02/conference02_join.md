@@ -5,8 +5,6 @@ order: 5
 ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
 
-<br>
-
 ***
 
 ### 現在の参加者数（5月23日現在）：40人
