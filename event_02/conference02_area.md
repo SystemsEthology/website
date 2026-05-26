@@ -7,6 +7,10 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
  <br>
 
+<!-- Leaflet.js（全マップ共通：1回のみ読み込み） -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 ***
 
 ## 名古屋大学　豊田講堂
@@ -22,9 +26,25 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 会場周辺（名古屋大学駅・東山公園駅エリア）のおすすめランチスポットです。
 
-<div class="map__img">
-    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=136.9457%2C35.1434%2C136.9757%2C35.1634&layer=mapnik&marker=35.1534%2C136.9657" width="400" height="300" style="border:1px solid #ccc;" loading="lazy"></iframe>
-</div>
+<div id="map-lunch" style="width:100%;max-width:600px;height:300px;border:1px solid #ccc;border-radius:4px;"></div>
+<script>
+(function(){
+  var map = L.map('map-lunch').setView([35.1520, 136.9660], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  var places = [
+    {lat:35.1538, lng:136.9637, name:'花の木（名大生協）', info:'食堂・定食 ／ 名古屋大学構内', url:'https://www.google.com/maps/search/花の木+名古屋大学生協'},
+    {lat:35.1526, lng:136.9754, name:'蕎麦り ふ〜助',     info:'蕎麦 ／ 東山公園駅近く',      url:'https://www.google.com/maps/search/蕎麦り+ふ〜助+東山公園+名古屋'},
+    {lat:35.1498, lng:136.9648, name:'武蔵坊',             info:'蕎麦・定食 ／ 名古屋大学駅付近', url:'https://www.google.com/maps/search/武蔵坊+名古屋大学'},
+    {lat:35.1510, lng:136.9642, name:"BISTRO L'Assiette",  info:'フレンチ ／ 名古屋大学駅付近', url:'https://www.google.com/maps/search/BISTRO+L+Assiette+名古屋大学'}
+  ];
+  places.forEach(function(p){
+    L.marker([p.lat,p.lng]).addTo(map)
+      .bindPopup('<b><a href="'+p.url+'" target="_blank" rel="noopener">'+p.name+'</a></b><br>'+p.info);
+  });
+})();
+</script>
 
 | 店名 | ジャンル | 特徴 | アクセス |
 |------|---------|------|---------|
@@ -41,9 +61,25 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 会場から**名城線で1駅（約3分）**の最寄りエリアです。アクセス抜群で1次会に最適。
 
-<div class="map__img">
-    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=136.9359%2C35.1544%2C136.9759%2C35.1744&layer=mapnik&marker=35.1644%2C136.9559" width="400" height="300" style="border:1px solid #ccc;" loading="lazy"></iframe>
-</div>
+<div id="map-motoyama" style="width:100%;max-width:600px;height:300px;border:1px solid #ccc;border-radius:4px;"></div>
+<script>
+(function(){
+  var map = L.map('map-motoyama').setView([35.1645, 136.9555], 16);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  var places = [
+    {lat:35.1630, lng:136.9512, name:'鉄板鶏舎 tori to tamago', info:'焼き鳥・鉄板 ／ 本山駅徒歩4分', url:'https://www.google.com/maps/search/鉄板鶏舎+tori+to+tamago+本山+名古屋'},
+    {lat:35.1648, lng:136.9553, name:'串カツ どて ウラバン',     info:'串カツ居酒屋 ／ 本山駅徒歩1分', url:'https://www.google.com/maps/search/串カツ+どて+ウラバン+本山+名古屋'},
+    {lat:35.1650, lng:136.9560, name:'べこや 本山店',            info:'炉端焼き ／ 本山駅1番出口徒歩1分', url:'https://www.google.com/maps/search/べこや+本山+名古屋'},
+    {lat:35.1652, lng:136.9568, name:'Cafe Lembeek',             info:'ベルギービールバー ／ 本山駅1番出口徒歩2分', url:'https://www.google.com/maps/search/Cafe+Lembeek+本山+名古屋'}
+  ];
+  places.forEach(function(p){
+    L.marker([p.lat,p.lng]).addTo(map)
+      .bindPopup('<b><a href="'+p.url+'" target="_blank" rel="noopener">'+p.name+'</a></b><br>'+p.info);
+  });
+})();
+</script>
 
 | 店名 | ジャンル | 特徴 | アクセス |
 |------|---------|------|---------|
@@ -60,9 +96,25 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 名古屋最大の繁華街。会場から**名城線で約15分**。多人数の懇親会にも対応する大型店が多数あります。
 
-<div class="map__img">
-    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=136.8882%2C35.1600%2C136.9282%2C35.1800&layer=mapnik&marker=35.1700%2C136.9082" width="400" height="300" style="border:1px solid #ccc;" loading="lazy"></iframe>
-</div>
+<div id="map-sakae" style="width:100%;max-width:600px;height:300px;border:1px solid #ccc;border-radius:4px;"></div>
+<script>
+(function(){
+  var map = L.map('map-sakae').setView([35.1701, 136.9080], 17);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  var places = [
+    {lat:35.1701, lng:136.9068, name:'濱匠 錦 本店',          info:'串焼き・和食 ／ 栄駅西隣ビル地下', url:'https://www.google.com/maps/search/濱匠+錦+本店+名古屋'},
+    {lat:35.1706, lng:136.9086, name:'鉄板DINING 煌 錦邸',    info:'鉄板焼き ／ 栄駅徒歩3分',        url:'https://www.google.com/maps/search/鉄板DINING+煌+錦邸+名古屋'},
+    {lat:35.1700, lng:136.9088, name:'個室 俵家商店マルコメ栄', info:'和食居酒屋 ／ 栄駅徒歩1分',      url:'https://www.google.com/maps/search/俵家商店+マルコメ+栄+名古屋'},
+    {lat:35.1710, lng:136.9092, name:'BAR PARTAGE',           info:'バー ／ 栄駅徒歩3〜5分',         url:'https://www.google.com/maps/search/BAR+PARTAGE+栄+名古屋'}
+  ];
+  places.forEach(function(p){
+    L.marker([p.lat,p.lng]).addTo(map)
+      .bindPopup('<b><a href="'+p.url+'" target="_blank" rel="noopener">'+p.name+'</a></b><br>'+p.info);
+  });
+})();
+</script>
 
 | 店名 | ジャンル | 特徴 | アクセス |
 |------|---------|------|---------|
@@ -79,9 +131,25 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 新幹線でお越しの方にも便利なエリア。会場から**地下鉄で約30分**。ホテルバーから気軽な居酒屋まで幅広い選択肢があります。
 
-<div class="map__img">
-    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=136.8616%2C35.1606%2C136.9016%2C35.1806&layer=mapnik&marker=35.1706%2C136.8816" width="400" height="300" style="border:1px solid #ccc;" loading="lazy"></iframe>
-</div>
+<div id="map-nagoya-sta" style="width:100%;max-width:600px;height:300px;border:1px solid #ccc;border-radius:4px;"></div>
+<script>
+(function(){
+  var map = L.map('map-nagoya-sta').setView([35.1706, 136.8816], 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  var places = [
+    {lat:35.1720, lng:136.8838, name:'和食郷土料理茶寮 徳川', info:'和食居酒屋 ／ 名古屋駅徒歩3分',  url:'https://www.google.com/maps/search/和食郷土料理茶寮+徳川+名古屋駅'},
+    {lat:35.1730, lng:136.8854, name:'那古野サルーン',         info:'居酒屋 ／ 名古屋駅徒歩10分',    url:'https://www.google.com/maps/search/那古野サルーン+名古屋'},
+    {lat:35.1706, lng:136.8816, name:'エストマーレ',           info:'ホテルバー ／ 名古屋駅直結',     url:'https://www.google.com/maps/search/エストマーレ+名古屋マリオットアソシア'},
+    {lat:35.1725, lng:136.8848, name:'バー ニート 名駅店',     info:'バー ／ 名古屋駅徒歩10分',      url:'https://www.google.com/maps/search/バー+ニート+名駅+名古屋'}
+  ];
+  places.forEach(function(p){
+    L.marker([p.lat,p.lng]).addTo(map)
+      .bindPopup('<b><a href="'+p.url+'" target="_blank" rel="noopener">'+p.name+'</a></b><br>'+p.info);
+  });
+})();
+</script>
 
 | 店名 | ジャンル | 特徴 | アクセス |
 |------|---------|------|---------|
