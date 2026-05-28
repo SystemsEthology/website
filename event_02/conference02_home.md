@@ -19,10 +19,12 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 ## ポスター
 ***
-<a href="{{ site.baseurl }}/event_02/images/systems_ethology_2026_01.pdf" target="_blank" rel="noopener noreferrer">PDF</a>
+<a href="{{ site.baseurl }}/event_02/images/systems_ethology_2026_01.pdf" target="_blank" rel="noopener noreferrer">大会ポスターPDF</a>
+<a href="{{ site.baseurl }}/event_02/images/speakers.pdf" target="_blank" rel="noopener noreferrer">講演者ポスターPDF</a>
 
 <div style="display: flex; align-items: center; gap: 20px;">
     <img src="{{ site.baseurl }}/event_02/images/systems_ethology_2026_01.png" width="200" alt="Systems Ethology 2026 poster">
+    <img src="{{ site.baseurl }}/event_02/images/speakers.png" width="200" alt="Systems Ethology 2026 poster">
 </div>
 制作：浜道凱也
 
