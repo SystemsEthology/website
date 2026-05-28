@@ -24,7 +24,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-若手旅費支援の募集を開始しました。応募条件・支援額・申込方法の詳細は、以下のページをご確認ください。
+（NEW!!）若手旅費支援の募集を開始しました。応募条件・支援額・申込方法の詳細は、以下のページをご確認ください。
 
 [若手旅費支援の詳細はこちら](https://systemsethology.github.io/website/event_02/support/)
 
