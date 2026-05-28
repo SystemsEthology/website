@@ -11,7 +11,7 @@ title: ホーム
 ## ニュース
 
 
-- 2026年5月28日　第２回システム行動学研究会の[若手旅費支援](https://systemsethology.github.io/website/event_02/support/)の募集を開始しました。
+- 2026年5月28日　第２回システム行動学研究会の[若手旅費支援](https://systemsethology.github.io/website/event_02/conference02_support/)の募集を開始しました。
 
 - 2026年4月23日　システム行動学研究会の[ロゴ](/logo.md) が完成しました。
 
