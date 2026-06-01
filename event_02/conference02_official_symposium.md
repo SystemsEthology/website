@@ -8,7 +8,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 <br>
 <br>
 
-挨拶：依田憲
+### 挨拶：依田憲
 
 <br>
 
