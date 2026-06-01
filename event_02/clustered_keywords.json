@@ -1,963 +1,1383 @@
 {
-  "participantCount": 40,
+  "participantCount": 57,
   "range": "B2:B(last)",
   "delimiter": "comma, Japanese comma/period, newline, 「」, whitespace between obvious keyword boundaries",
   "clusters": [
     {
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "nKeywords": 23,
-      "totalMentions": 23
+      "nKeywords": 40,
+      "totalMentions": 40
     },
     {
       "clusterId": 1,
       "clusterLabel": "研究手法・技術",
-      "nKeywords": 28,
-      "totalMentions": 28
+      "nKeywords": 45,
+      "totalMentions": 45
     },
     {
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "nKeywords": 14,
-      "totalMentions": 14
+      "nKeywords": 21,
+      "totalMentions": 21
     },
     {
       "clusterId": 3,
       "clusterLabel": "その他の研究キーワード",
-      "nKeywords": 67,
-      "totalMentions": 67
+      "nKeywords": 86,
+      "totalMentions": 86
     }
   ],
   "keywords": [
     {
-      "keyword": "養殖魚",
+      "keyword": "線虫",
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "x": -104.88432,
-      "y": -53.337441
-    },
-    {
-      "keyword": "鳥類",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -75.210169,
-      "y": -47.897081
-    },
-    {
-      "keyword": "ブリ",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -105.935248,
-      "y": -41.362653
-    },
-    {
-      "keyword": "ニワトリ",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -76.261098,
-      "y": -35.922293
-    },
-    {
-      "keyword": "メダカ",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -112.202884,
-      "y": -35.620986
-    },
-    {
-      "keyword": "渡り鳥",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -82.528733,
-      "y": -30.180626
-    },
-    {
-      "keyword": "鮎",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -96.977549,
-      "y": -29.67892
+      "x": -114.0,
+      "y": 56.0
     },
     {
       "keyword": "ハムスター",
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "x": -81.455366,
-      "y": -15.689481
-    },
-    {
-      "keyword": "霊長類",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -66.469393,
-      "y": -13.916056
-    },
-    {
-      "keyword": "哺乳類",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -99.246423,
-      "y": -6.675786
-    },
-    {
-      "keyword": "コモンマーモセット",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -82.506294,
-      "y": -3.714693
-    },
-    {
-      "keyword": "ニホンジカ",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -88.773929,
-      "y": 2.026975
-    },
-    {
-      "keyword": "マウス",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -73.548594,
-      "y": 7.96904
-    },
-    {
-      "keyword": "Soldier crab",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -59.866182,
-      "y": 15.129166
-    },
-    {
-      "keyword": "蚊",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -128.773704,
-      "y": 15.987616
+      "x": -84.0,
+      "y": -15.0
     },
     {
       "keyword": "タコ",
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "x": -66.133818,
-      "y": 20.870834
+      "x": -68.0,
+      "y": 18.0
     },
     {
-      "keyword": "コクヌストモドキ",
+      "keyword": "ニホンジカ",
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "x": -117.35749,
-      "y": 23.970555
+      "x": -92.49795,
+      "y": -10.879509
     },
     {
       "keyword": "シロアリ",
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "x": -102.371517,
-      "y": 25.743979
-    },
-    {
-      "keyword": "ショウジョウバエ",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -135.148547,
-      "y": 32.98425
-    },
-    {
-      "keyword": "カマキリ",
-      "clusterId": 0,
-      "clusterLabel": "生物名・分類群名",
-      "x": -118.408418,
-      "y": 35.945343
+      "x": -118.0,
+      "y": 30.0
     },
     {
       "keyword": "クロヤマアリ",
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "x": -124.676054,
-      "y": 41.68701
+      "x": -126.49795,
+      "y": 34.120491
+    },
+    {
+      "keyword": "マウス",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -87.390656,
+      "y": -21.943161
+    },
+    {
+      "keyword": "ショウジョウバエ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -121.390656,
+      "y": 23.056839
+    },
+    {
+      "keyword": "コモンマーモセット",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -83.353166,
+      "y": -8.939028
+    },
+    {
+      "keyword": "霊長類",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -96.074651,
+      "y": -16.428292
+    },
+    {
+      "keyword": "ニワトリ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -71.0,
+      "y": -42.0
+    },
+    {
+      "keyword": "コクヌストモドキ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -117.353166,
+      "y": 36.060972
+    },
+    {
+      "keyword": "メダカ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -103.0,
+      "y": -37.0
+    },
+    {
+      "keyword": "カマキリ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -130.074651,
+      "y": 28.571708
+    },
+    {
+      "keyword": "哺乳類",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -80.662921,
+      "y": -19.667249
+    },
+    {
+      "keyword": "蚊",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -114.662921,
+      "y": 25.332751
+    },
+    {
+      "keyword": "Soldier crab",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -76.49795,
+      "y": 22.120491
+    },
+    {
+      "keyword": "ブリ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -111.49795,
+      "y": -32.879509
+    },
+    {
+      "keyword": "養殖魚",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -106.390656,
+      "y": -43.943161
     },
     {
       "keyword": "サバクトビバッタ",
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "x": -109.450718,
-      "y": 47.629076
+      "x": -124.373803,
+      "y": 38.83043
     },
     {
-      "keyword": "線虫",
+      "keyword": "渡り鳥",
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "x": -123.813552,
-      "y": 56.052171
+      "x": -79.49795,
+      "y": -37.879509
     },
     {
-      "keyword": "運動解析",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -33.773704,
-      "y": -139.012384
+      "keyword": "鳥類",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -74.390656,
+      "y": -48.943161
     },
     {
-      "keyword": "オープンソースソフトウェア",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": 15.650756,
-      "y": -137.472692
+      "keyword": "鮎",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -102.353166,
+      "y": -30.939028
     },
     {
-      "keyword": "動物追跡",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -22.35749,
-      "y": -131.029445
+      "keyword": "ジュウシマツ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -70.353166,
+      "y": -35.939028
     },
     {
-      "keyword": "行動追跡",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -7.371517,
-      "y": -129.256021
+      "keyword": "ヒヨコ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -83.074651,
+      "y": -43.428292
     },
     {
-      "keyword": "深層学習",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -2.140302,
-      "y": -128.458997
+      "keyword": "ミミズ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -122.49795,
+      "y": 60.120491
     },
     {
-      "keyword": "AI",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": 14.599827,
-      "y": -125.497904
+      "keyword": "昆虫",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -126.404463,
+      "y": 21.519474
     },
     {
-      "keyword": "行動認識",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -40.148547,
-      "y": -122.01575
+      "keyword": "マナマコ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -71.390656,
+      "y": 11.056839
     },
     {
-      "keyword": "RNN",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": 8.332192,
-      "y": -119.756236
+      "keyword": "魚群",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -115.074651,
+      "y": -38.428292
     },
     {
-      "keyword": "トラッキング",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -23.408418,
-      "y": -119.054657
+      "keyword": "エボシガイ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -67.353166,
+      "y": 24.060972
     },
     {
-      "keyword": "機械学習",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": 23.557527,
-      "y": -113.814171
+      "keyword": "スクミリンゴガイ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -80.074651,
+      "y": 16.571708
     },
     {
-      "keyword": "個体追跡",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -29.676054,
-      "y": -113.31299
+      "keyword": "ノコギリクワガタ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -112.663431,
+      "y": 33.4097
     },
     {
-      "keyword": "物体検出",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -31.349244,
-      "y": -107.472692
+      "keyword": "刺胞動物",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -117.390656,
+      "y": 49.056839
+    },
+    {
+      "keyword": "ネマトステラ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -113.353166,
+      "y": 62.060972
+    },
+    {
+      "keyword": "社会性昆虫",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -131.520759,
+      "y": 33.930031
+    },
+    {
+      "keyword": "アリ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -117.489947,
+      "y": 20.362278
+    },
+    {
+      "keyword": "ミツバチ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -118.718379,
+      "y": 40.462326
+    },
+    {
+      "keyword": "樹木",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -60.0,
+      "y": 52.0
+    },
+    {
+      "keyword": "ハダカデバネズミ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -90.373803,
+      "y": -6.16957
+    },
+    {
+      "keyword": "タヌキ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -92.404463,
+      "y": -23.480526
     },
     {
       "keyword": "行動解析",
       "clusterId": 1,
       "clusterLabel": "研究手法・技術",
-      "x": -14.450718,
-      "y": -107.370924
-    },
-    {
-      "keyword": "ベイズ推定",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": 35.544634,
-      "y": -105.689481
-    },
-    {
-      "keyword": "階層ベイズ",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": 50.530607,
-      "y": -103.916056
-    },
-    {
-      "keyword": "運動予測",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -28.813552,
-      "y": -98.947829
-    },
-    {
-      "keyword": "目視",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -49.140302,
-      "y": -98.458997
-    },
-    {
-      "keyword": "数理モデル",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": 17.753577,
-      "y": -96.675786
-    },
-    {
-      "keyword": "YOLO",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -32.400173,
-      "y": -95.497904
-    },
-    {
-      "keyword": "GWAS",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": 34.493706,
-      "y": -93.714693
-    },
-    {
-      "keyword": "聴覚刺激",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": 0.11568,
-      "y": -91.337441
-    },
-    {
-      "keyword": "プロジェクションマッピング",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -38.667808,
-      "y": -89.756236
+      "x": -21.0,
+      "y": -116.0
     },
     {
       "keyword": "シミュレーション",
       "clusterId": 1,
       "clusterLabel": "研究手法・技術",
-      "x": 28.226071,
-      "y": -87.973025
+      "x": 41.0,
+      "y": -96.0
     },
     {
-      "keyword": "画像解析",
+      "keyword": "RNN",
       "clusterId": 1,
       "clusterLabel": "研究手法・技術",
-      "x": -23.442473,
-      "y": -83.814171
+      "x": 29.0,
+      "y": -122.0
     },
     {
-      "keyword": "リアルタイム解析",
+      "keyword": "行動追跡",
       "clusterId": 1,
       "clusterLabel": "研究手法・技術",
-      "x": 43.451406,
-      "y": -82.03096
-    },
-    {
-      "keyword": "バイオロギング",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -0.935248,
-      "y": -79.362653
-    },
-    {
-      "keyword": "介入操作",
-      "clusterId": 1,
-      "clusterLabel": "研究手法・技術",
-      "x": -7.202884,
-      "y": -73.620986
+      "x": -29.49795,
+      "y": -111.879509
     },
     {
       "keyword": "音声刺激",
       "clusterId": 1,
       "clusterLabel": "研究手法・技術",
-      "x": 8.022451,
-      "y": -67.67892
+      "x": -11.0,
+      "y": -83.0
     },
     {
-      "keyword": "アニマルコンピューターインタラクション",
-      "clusterId": 2,
-      "clusterLabel": "学問分野名",
-      "x": 91.650756,
-      "y": -42.472692
+      "keyword": "機械学習",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 20.50205,
+      "y": -117.879509
+    },
+    {
+      "keyword": "画像解析",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -24.390656,
+      "y": -122.943161
+    },
+    {
+      "keyword": "数理モデル",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 32.50205,
+      "y": -91.879509
+    },
+    {
+      "keyword": "トラッキング",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -20.353166,
+      "y": -109.939028
+    },
+    {
+      "keyword": "深層学習",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 25.609344,
+      "y": -128.943161
+    },
+    {
+      "keyword": "階層ベイズ",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 37.609344,
+      "y": -102.943161
+    },
+    {
+      "keyword": "聴覚刺激",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -19.49795,
+      "y": -78.879509
+    },
+    {
+      "keyword": "GWAS",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 49.0,
+      "y": -82.0
+    },
+    {
+      "keyword": "物体検出",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 29.646834,
+      "y": -115.939028
+    },
+    {
+      "keyword": "運動解析",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -33.074651,
+      "y": -117.428292
+    },
+    {
+      "keyword": "ベイズ推定",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 41.646834,
+      "y": -89.939028
+    },
+    {
+      "keyword": "個体数推定",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 28.925349,
+      "y": -97.428292
+    },
+    {
+      "keyword": "個体追跡",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -17.662921,
+      "y": -120.667249
+    },
+    {
+      "keyword": "介入操作",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -14.390656,
+      "y": -89.943161
+    },
+    {
+      "keyword": "リアルタイム解析",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -27.373803,
+      "y": -107.16957
+    },
+    {
+      "keyword": "YOLO",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 16.925349,
+      "y": -123.428292
+    },
+    {
+      "keyword": "オープンソースソフトウェア",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 9.0,
+      "y": -139.0
+    },
+    {
+      "keyword": "Inverse Bayesian",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 44.337079,
+      "y": -100.667249
+    },
+    {
+      "keyword": "Quantum logic",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 34.626197,
+      "y": -87.16957
+    },
+    {
+      "keyword": "運動予測",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -29.404463,
+      "y": -124.480526
+    },
+    {
+      "keyword": "目視",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -10.353166,
+      "y": -76.939028
+    },
+    {
+      "keyword": "バイオロギング",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -23.074651,
+      "y": -84.428292
+    },
+    {
+      "keyword": "AI",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 32.337079,
+      "y": -126.667249
+    },
+    {
+      "keyword": "行動認識",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 22.626197,
+      "y": -113.16957
+    },
+    {
+      "keyword": "動物追跡",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -15.663431,
+      "y": -112.5903
+    },
+    {
+      "keyword": "プロジェクションマッピング",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -7.662921,
+      "y": -87.667249
+    },
+    {
+      "keyword": "音声解析",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 0.50205,
+      "y": -134.879509
+    },
+    {
+      "keyword": "複数個体追跡",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -34.520759,
+      "y": -112.069969
+    },
+    {
+      "keyword": "自動検出",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 20.595537,
+      "y": -130.480526
+    },
+    {
+      "keyword": "分子系統解析",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 40.50205,
+      "y": -77.879509
+    },
+    {
+      "keyword": "バイオテレメトリー",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -17.373803,
+      "y": -74.16957
+    },
+    {
+      "keyword": "行動状態推定",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -20.489947,
+      "y": -125.637722
+    },
+    {
+      "keyword": "機械開発",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 5.609344,
+      "y": -145.943161
+    },
+    {
+      "keyword": "ゲノム解析",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 45.609344,
+      "y": -88.943161
+    },
+    {
+      "keyword": "機能解析",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 49.646834,
+      "y": -75.939028
+    },
+    {
+      "keyword": "安定同位体",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 36.925349,
+      "y": -83.428292
+    },
+    {
+      "keyword": "行動検出",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 34.336569,
+      "y": -118.5903
+    },
+    {
+      "keyword": "個体識別",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -21.718379,
+      "y": -105.537674
+    },
+    {
+      "keyword": "RFID",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -19.404463,
+      "y": -91.480526
+    },
+    {
+      "keyword": "社会ネットワーク",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -34.754922,
+      "y": -121.653177
     },
     {
       "keyword": "動物福祉",
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "x": 73.859698,
-      "y": -33.458997
+      "x": 96.0,
+      "y": -28.0
     },
     {
-      "keyword": "Animal-computer interaction",
+      "keyword": "アニマルコンピューターインタラクション",
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "x": 90.599827,
-      "y": -30.497904
-    },
-    {
-      "keyword": "アニマルウェルフェア",
-      "clusterId": 2,
-      "clusterLabel": "学問分野名",
-      "x": 84.332192,
-      "y": -24.756236
+      "x": 87.50205,
+      "y": -23.879509
     },
     {
       "keyword": "ロボット工学",
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "x": 99.557527,
-      "y": -18.814171
-    },
-    {
-      "keyword": "医理工学際連携",
-      "clusterId": 2,
-      "clusterLabel": "学問分野名",
-      "x": 125.0,
-      "y": -15.0
+      "x": 92.609344,
+      "y": -34.943161
     },
     {
       "keyword": "神経科学",
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "x": 121.650756,
-      "y": 7.527308
-    },
-    {
-      "keyword": "遺伝学",
-      "clusterId": 2,
-      "clusterLabel": "学問分野名",
-      "x": 103.859698,
-      "y": 16.541003
-    },
-    {
-      "keyword": "エピジェティクス",
-      "clusterId": 2,
-      "clusterLabel": "学問分野名",
-      "x": 120.599827,
-      "y": 19.502096
+      "x": 115.0,
+      "y": 32.0
     },
     {
       "keyword": "定量生物学",
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "x": 114.332192,
-      "y": 25.243764
+      "x": 128.0,
+      "y": 6.0
+    },
+    {
+      "keyword": "アニマルウェルフェア",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 96.646834,
+      "y": -21.939028
+    },
+    {
+      "keyword": "遺伝学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 119.50205,
+      "y": 10.120491
+    },
+    {
+      "keyword": "エピジェティクス",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 124.609344,
+      "y": -0.943161
+    },
+    {
+      "keyword": "医理工学際連携",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 83.925349,
+      "y": -29.428292
     },
     {
       "keyword": "脳神経科学",
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "x": 129.557527,
-      "y": 31.185829
+      "x": 106.50205,
+      "y": 36.120491
     },
     {
       "keyword": "生物音響",
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "x": 97.789831,
-      "y": 35.102919
-    },
-    {
-      "keyword": "動物行動学",
-      "clusterId": 2,
-      "clusterLabel": "学問分野名",
-      "x": 96.738902,
-      "y": 47.077707
+      "x": 111.609344,
+      "y": 25.056839
     },
     {
       "keyword": "生物ナビゲーション",
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "x": 90.471267,
-      "y": 52.819374
+      "x": 115.646834,
+      "y": 38.060972
     },
     {
-      "keyword": "Quantum logic",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 65.108876,
-      "y": 67.447114
+      "keyword": "動物行動学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 96.0,
+      "y": 50.0
     },
     {
-      "keyword": "頭方位細胞",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 1.721565,
-      "y": 70.155774
+      "keyword": "Animal-computer interaction",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 99.337079,
+      "y": -32.667249
     },
     {
-      "keyword": "配偶行動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 45.243392,
-      "y": 71.069457
+      "keyword": "系統分類学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 128.646834,
+      "y": 12.060972
     },
     {
-      "keyword": "摂餌量",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 24.765279,
-      "y": 75.19918
+      "keyword": "生物多様性学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 115.925349,
+      "y": 4.571708
     },
     {
-      "keyword": "能動的聴覚",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 16.425872,
-      "y": 77.96926
+      "keyword": "神経進化",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 102.925349,
+      "y": 30.571708
     },
     {
-      "keyword": "Dependent origination",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 64.119766,
-      "y": 78.717503
+      "keyword": "建築意匠",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 89.626197,
+      "y": -19.16957
     },
     {
-      "keyword": "混信回避",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -4.05224,
-      "y": 82.098984
+      "keyword": "行動生態学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 87.50205,
+      "y": 54.120491
     },
     {
-      "keyword": "性的対立",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 35.509951,
-      "y": 82.712534
+      "keyword": "防災",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 87.595537,
+      "y": -36.480526
     },
     {
-      "keyword": "Inverse Bayesian",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 58.220815,
-      "y": 84.121425
-    },
-    {
-      "keyword": "採餌行動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 49.614396,
-      "y": 84.38164
-    },
-    {
-      "keyword": "集団行動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -34.756608,
-      "y": 86.069457
-    },
-    {
-      "keyword": "視覚",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -18.274114,
-      "y": 86.987312
-    },
-    {
-      "keyword": "ドーパミン",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 6.692432,
-      "y": 89.612338
-    },
-    {
-      "keyword": "スタートアップ",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 72.550543,
-      "y": 89.713958
-    },
-    {
-      "keyword": "群れ",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -55.234721,
-      "y": 90.19918
-    },
-    {
-      "keyword": "遺伝子発現",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 68.921732,
-      "y": 90.278526
-    },
-    {
-      "keyword": "捕食行動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 18.765426,
-      "y": 91.196012
-    },
-    {
-      "keyword": "地磁気感覚",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 20.796876,
-      "y": 91.281443
-    },
-    {
-      "keyword": "交尾",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 34.520842,
-      "y": 93.982923
-    },
-    {
-      "keyword": "表現型可塑性",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 48.443619,
-      "y": 94.408249
-    },
-    {
-      "keyword": "視覚行動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 33.874959,
-      "y": 94.689271
-    },
-    {
-      "keyword": "協調運搬",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -44.490049,
-      "y": 97.712534
-    },
-    {
-      "keyword": "周波数選択性",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -10.052093,
-      "y": 98.095815
-    },
-    {
-      "keyword": "社会性",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -30.385604,
-      "y": 99.38164
-    },
-    {
-      "keyword": "前肢運動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 28.621891,
-      "y": 99.386845
-    },
-    {
-      "keyword": "アクティブセンシング",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 5.703323,
-      "y": 100.882726
-    },
-    {
-      "keyword": "認知",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 20.243392,
-      "y": 101.069457
-    },
-    {
-      "keyword": "歩行",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 55.775257,
-      "y": 101.745001
-    },
-    {
-      "keyword": "冬眠",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 59.188291,
-      "y": 101.921603
-    },
-    {
-      "keyword": "警戒行動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 12.336549,
-      "y": 103.140277
-    },
-    {
-      "keyword": "胚",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 73.292736,
-      "y": 103.590709
-    },
-    {
-      "keyword": "捕食回避",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 42.951618,
-      "y": 104.979377
-    },
-    {
-      "keyword": "発声学習",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -0.234721,
-      "y": 105.19918
+      "keyword": "移動生態",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 92.609344,
+      "y": 43.056839
     },
     {
       "keyword": "母子行動",
       "clusterId": 3,
       "clusterLabel": "その他の研究キーワード",
-      "x": -61.234574,
-      "y": 106.196012
-    },
-    {
-      "keyword": "エコーロケーション",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -0.195628,
-      "y": 106.286649
-    },
-    {
-      "keyword": "生得的行動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 26.957737,
-      "y": 108.644805
-    },
-    {
-      "keyword": "Safety in number",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -45.479158,
-      "y": 108.982923
-    },
-    {
-      "keyword": "神経活動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -16.480971,
-      "y": 110.04008
-    },
-    {
-      "keyword": "種間比較",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 42.443766,
-      "y": 110.405081
-    },
-    {
-      "keyword": "ナビゲーション",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 14.134099,
-      "y": 111.879181
-    },
-    {
-      "keyword": "個体差",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 10.509951,
-      "y": 112.712534
-    },
-    {
-      "keyword": "摂餌行動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 29.433658,
-      "y": 112.906996
-    },
-    {
-      "keyword": "サハラ砂漠",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 58.199182,
-      "y": 113.191992
-    },
-    {
-      "keyword": "意思決定",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 24.614396,
-      "y": 114.38164
-    },
-    {
-      "keyword": "コントラリアン",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -51.378109,
-      "y": 114.386845
-    },
-    {
-      "keyword": "群制御",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -24.224743,
-      "y": 116.745001
-    },
-    {
-      "keyword": "行動伝播",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -67.663451,
-      "y": 118.140277
-    },
-    {
-      "keyword": "個体数推定",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 52.300231,
-      "y": 118.595914
-    },
-    {
-      "keyword": "防衛戦略",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 42.46174,
-      "y": 119.299758
-    },
-    {
-      "keyword": "海馬",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 0.616138,
-      "y": 119.8068
-    },
-    {
-      "keyword": "同調",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -37.048382,
-      "y": 119.979377
-    },
-    {
-      "keyword": "表現型構成",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 79.453597,
-      "y": 120.95407
-    },
-    {
-      "keyword": "学習",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -6.234574,
-      "y": 121.196012
-    },
-    {
-      "keyword": "遺伝子変異体",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 36.014889,
-      "y": 122.349346
-    },
-    {
-      "keyword": "アタッチメント",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 9.520842,
-      "y": 123.982923
-    },
-    {
-      "keyword": "種内多様性",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 66.629958,
-      "y": 124.188446
-    },
-    {
-      "keyword": "超音波",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -11.512176,
-      "y": 125.370001
-    },
-    {
-      "keyword": "脳",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 13.644221,
-      "y": 126.199561
-    },
-    {
-      "keyword": "社会性行動",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -50.566342,
-      "y": 127.906996
-    },
-    {
-      "keyword": "乳児期",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 3.621891,
-      "y": 129.386845
-    },
-    {
-      "keyword": "発達",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 30.775257,
-      "y": 131.745001
-    },
-    {
-      "keyword": "臨界現象",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": 53.111998,
-      "y": 132.116065
-    },
-    {
-      "keyword": "親の期待",
-      "clusterId": 3,
-      "clusterLabel": "その他の研究キーワード",
-      "x": -12.663451,
-      "y": 133.140277
+      "x": -40.0,
+      "y": 108.0
     },
     {
       "keyword": "音声コミュニケーション",
       "clusterId": 3,
       "clusterLabel": "その他の研究キーワード",
-      "x": -37.53826,
-      "y": 134.299758
+      "x": -48.49795,
+      "y": 112.120491
+    },
+    {
+      "keyword": "神経活動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 11.0,
+      "y": 100.0
+    },
+    {
+      "keyword": "冬眠",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 64.0,
+      "y": 122.0
+    },
+    {
+      "keyword": "社会性",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -43.390656,
+      "y": 101.056839
+    },
+    {
+      "keyword": "警戒行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -39.353166,
+      "y": 114.060972
+    },
+    {
+      "keyword": "種間比較",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 55.50205,
+      "y": 126.120491
+    },
+    {
+      "keyword": "防衛戦略",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -52.074651,
+      "y": 106.571708
+    },
+    {
+      "keyword": "協調運搬",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -36.662921,
+      "y": 103.332751
+    },
+    {
+      "keyword": "集団行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -46.373803,
+      "y": 116.83043
+    },
+    {
+      "keyword": "群制御",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -48.404463,
+      "y": 99.519474
+    },
+    {
+      "keyword": "群れ",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -34.663431,
+      "y": 111.4097
+    },
+    {
+      "keyword": "視覚",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 29.0,
+      "y": 113.0
+    },
+    {
+      "keyword": "学習",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -53.520759,
+      "y": 111.930031
     },
     {
       "keyword": "古典的条件付け",
       "clusterId": 3,
       "clusterLabel": "その他の研究キーワード",
-      "x": 17.951618,
-      "y": 134.979377
+      "x": -39.489947,
+      "y": 98.362278
     },
     {
-      "keyword": "時系列構造",
+      "keyword": "ドーパミン",
       "clusterId": 3,
       "clusterLabel": "その他の研究キーワード",
-      "x": 4.433658,
-      "y": 142.906996
+      "x": 2.50205,
+      "y": 104.120491
     },
     {
       "keyword": "迷路",
       "clusterId": 3,
       "clusterLabel": "その他の研究キーワード",
-      "x": 17.46174,
-      "y": 149.299758
+      "x": 20.50205,
+      "y": 117.120491
+    },
+    {
+      "keyword": "採餌行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -40.718379,
+      "y": 118.462326
+    },
+    {
+      "keyword": "胚",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 60.609344,
+      "y": 115.056839
+    },
+    {
+      "keyword": "交尾",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -53.754922,
+      "y": 102.346823
+    },
+    {
+      "keyword": "捕食回避",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -32.698242,
+      "y": 105.51534
+    },
+    {
+      "keyword": "歩行",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -50.819586,
+      "y": 117.700159
+    },
+    {
+      "keyword": "社会性行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -45.559254,
+      "y": 95.967343
+    },
+    {
+      "keyword": "アタッチメント",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 8.0,
+      "y": 132.0
+    },
+    {
+      "keyword": "親の期待",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -0.49795,
+      "y": 136.120491
+    },
+    {
+      "keyword": "乳児期",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 4.609344,
+      "y": 125.056839
+    },
+    {
+      "keyword": "個体差",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 64.646834,
+      "y": 128.060972
+    },
+    {
+      "keyword": "発達",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 51.925349,
+      "y": 120.571708
+    },
+    {
+      "keyword": "遺伝子発現",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 67.337079,
+      "y": 117.332751
+    },
+    {
+      "keyword": "捕食行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -34.518352,
+      "y": 115.991142
+    },
+    {
+      "keyword": "前肢運動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 57.626197,
+      "y": 130.83043
+    },
+    {
+      "keyword": "視覚行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -56.647712,
+      "y": 108.523023
+    },
+    {
+      "keyword": "生得的行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -34.849335,
+      "y": 98.893865
+    },
+    {
+      "keyword": "ナビゲーション",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 25.609344,
+      "y": 106.056839
+    },
+    {
+      "keyword": "認知",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 29.646834,
+      "y": 119.060972
+    },
+    {
+      "keyword": "意思決定",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 16.925349,
+      "y": 111.571708
+    },
+    {
+      "keyword": "同調",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -44.607588,
+      "y": 121.139648
+    },
+    {
+      "keyword": "表現型構成",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 55.595537,
+      "y": 113.519474
+    },
+    {
+      "keyword": "行動伝播",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -52.580047,
+      "y": 97.718236
+    },
+    {
+      "keyword": "種内多様性",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 69.336569,
+      "y": 125.4097
+    },
+    {
+      "keyword": "配偶行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -30.498256,
+      "y": 109.81664
+    },
+    {
+      "keyword": "能動的聴覚",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 7.609344,
+      "y": 93.056839
+    },
+    {
+      "keyword": "周波数選択性",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 11.646834,
+      "y": 106.060972
+    },
+    {
+      "keyword": "脳",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -1.074651,
+      "y": 98.571708
+    },
+    {
+      "keyword": "Dependent origination",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 76.0,
+      "y": 82.0
+    },
+    {
+      "keyword": "スタートアップ",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 67.50205,
+      "y": 86.120491
+    },
+    {
+      "keyword": "摂餌量",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 52.0,
+      "y": 88.0
+    },
+    {
+      "keyword": "摂餌行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 20.0,
+      "y": 125.0
+    },
+    {
+      "keyword": "性的対立",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 43.50205,
+      "y": 92.120491
+    },
+    {
+      "keyword": "サハラ砂漠",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 72.609344,
+      "y": 75.056839
+    },
+    {
+      "keyword": "表現型可塑性",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 48.609344,
+      "y": 81.056839
+    },
+    {
+      "keyword": "アクティブセンシング",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 14.337079,
+      "y": 95.332751
+    },
+    {
+      "keyword": "超音波",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 4.626197,
+      "y": 108.83043
+    },
+    {
+      "keyword": "エコーロケーション",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 2.595537,
+      "y": 91.519474
+    },
+    {
+      "keyword": "混信回避",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 16.336569,
+      "y": 103.4097
+    },
+    {
+      "keyword": "頭方位細胞",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -2.520759,
+      "y": 103.930031
+    },
+    {
+      "keyword": "海馬",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 11.510053,
+      "y": 90.362278
+    },
+    {
+      "keyword": "地磁気感覚",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 10.281621,
+      "y": 110.462326
+    },
+    {
+      "keyword": "Safety in number",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 76.646834,
+      "y": 88.060972
+    },
+    {
+      "keyword": "臨界現象",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 52.646834,
+      "y": 94.060972
+    },
+    {
+      "keyword": "コントラリアン",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 39.925349,
+      "y": 86.571708
+    },
+    {
+      "keyword": "遺伝子変異体",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 50.479241,
+      "y": 125.930031
+    },
+    {
+      "keyword": "発声学習",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -55.368784,
+      "y": 115.910104
+    },
+    {
+      "keyword": "時系列構造",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 64.510053,
+      "y": 112.362278
+    },
+    {
+      "keyword": "社会相互作用",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -40.911624,
+      "y": 94.271857
+    },
+    {
+      "keyword": "社会行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -36.896351,
+      "y": 120.396815
+    },
+    {
+      "keyword": "聴覚",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -2.754922,
+      "y": 94.346823
+    },
+    {
+      "keyword": "染色体",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 63.281621,
+      "y": 132.462326
+    },
+    {
+      "keyword": "種分化",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 50.245078,
+      "y": 116.346823
+    },
+    {
+      "keyword": "集団現象",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 55.337079,
+      "y": 83.332751
+    },
+    {
+      "keyword": "新種",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 71.301758,
+      "y": 119.51534
+    },
+    {
+      "keyword": "形態進化",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 53.180414,
+      "y": 131.700159
+    },
+    {
+      "keyword": "養育行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -57.814045,
+      "y": 103.592943
+    },
+    {
+      "keyword": "親子",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -30.648262,
+      "y": 101.831158
+    },
+    {
+      "keyword": "父子",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -49.756912,
+      "y": 121.755847
+    },
+    {
+      "keyword": "母子",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -49.114744,
+      "y": 93.77971
+    },
+    {
+      "keyword": "神経ペプチド",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 18.301758,
+      "y": 97.51534
+    },
+    {
+      "keyword": "摂食行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -30.448771,
+      "y": 115.122146
+    },
+    {
+      "keyword": "社会的孤立",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -58.990137,
+      "y": 111.951352
+    },
+    {
+      "keyword": "栄養交換",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -35.51301,
+      "y": 94.800779
+    },
+    {
+      "keyword": "ふるまい",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -41.310409,
+      "y": 123.64996
+    },
+    {
+      "keyword": "都市",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 63.925349,
+      "y": 80.571708
+    },
+    {
+      "keyword": "防衛行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -56.70024,
+      "y": 98.164221
+    },
+    {
+      "keyword": "概日リズム",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 0.180414,
+      "y": 109.700159
+    },
+    {
+      "keyword": "行動タイプ",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -27.810467,
+      "y": 106.65873
+    },
+    {
+      "keyword": "ロードキル",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 79.337079,
+      "y": 77.332751
     }
   ],
   "notes": {
     "category_policy": "4 fixed categories: 0=生物名・分類群名; 1=研究手法・技術; 2=学問分野名; 3=その他の研究キーワード",
-    "replacement_policy": "All previous keywords were removed. The supplied keyword list was parsed and deduplicated. The keyword-level count field was intentionally omitted as requested.",
+    "replacement_policy": "All previous keywords were removed. The supplied keyword list was parsed and deduplicated. The keyword-level count field was intentionally omitted as in the original format.",
     "layout_policy": "2D coordinates were assigned by manual semantic judgment rather than an automatic language-distance mapping. Each fixed class has subtheme anchors, and keywords are positioned within those subthemes with deterministic offsets for readability.",
-    "classification_note": "Ambiguous items were classified by primary function in the supplied research context. For example, 音声刺激/聴覚刺激 are treated as experimental methods; Animal-computer interaction and アニマルコンピューターインタラクション are retained as separate supplied keywords; 脳 and 海馬 are treated as research keywords rather than taxa or disciplines."
+    "classification_note": "Ambiguous items were classified by primary function in the supplied research context. For example, YOLO/RFID/GWAS are treated as methods; animal names and taxa are treated as biological names; behavior, neural substrates, developmental states, places, and application contexts are treated as other research keywords unless they function primarily as disciplines."
   }
 }
