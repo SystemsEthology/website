@@ -8,7 +8,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-代表：千葉大学 佐藤大気
+### 代表：千葉大学 佐藤大気
 
 <br>
 
