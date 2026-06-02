@@ -55,9 +55,7 @@
 
     // ===== 円・フォント =====
     const FONT_SIZE        = 20;   // テキストフォントサイズ（px）
-    const NODE_RADIUS      = 80;   // 全件同count時の固定半径（px）— null でテキスト自動フィット
-    const NODE_RADIUS_MIN  = 50;   // count最小ノードの半径下限（px）
-    const NODE_RADIUS_MAX  = 130;  // count最大ノードの半径上限（px）
+    const NODE_RADIUS      = 80;   // 全ノード固定半径（px）
     const OVERLAP_FACTOR   = 0.8;  // 衝突半径の倍率（< 1 で重なり許容）
 
     // ===== ホバー =====
@@ -80,9 +78,9 @@
       if (_hideTimer !== null) { clearTimeout(_hideTimer); _hideTimer = null; }
     }
 
-    // ツールチップ上にマウスがある間は非表示にしない
-    tooltipEl.addEventListener("mouseenter", cancelHide);
-    tooltipEl.addEventListener("mouseleave", scheduleHide);
+    // ツールチップ内のリンク操作では、外側クリック扱いにしない
+    tooltipEl.addEventListener("pointerdown", event => event.stopPropagation());
+    tooltipEl.addEventListener("click", event => event.stopPropagation());
 
     function showTooltip(clientX, clientY, d) {
       cancelHide();
@@ -313,25 +311,8 @@
       });
       if (!(maxNeededR > 0)) throw new Error("text bbox measurement failed (maxNeededR invalid)");
 
-      // countに基づいて各ノードの表示半径を決定（√スケール = 面積比例）
-      {
-        const countMin = d3.min(nodes, d => d.count);
-        const countMax = d3.max(nodes, d => d.count);
-        const baseR = Math.max(maxNeededR, NODE_RADIUS_MIN);
-        let rFn;
-        if (countMin === countMax) {
-          // 全件同count → NODE_RADIUS 固定（従来通り）
-          const fixedR = (NODE_RADIUS !== null && NODE_RADIUS > 0) ? NODE_RADIUS : baseR;
-          rFn = () => fixedR;
-        } else {
-          // countが異なる → √スケールでNODE_RADIUS_MIN〜NODE_RADIUS_MAXに写像
-          const rScale = d3.scaleSqrt()
-            .domain([countMin, countMax])
-            .range([baseR, Math.max(baseR, NODE_RADIUS_MAX)]);
-          rFn = (count) => rScale(count);
-        }
-        nodes.forEach(d => d.r = rFn(d.count));
-      }
+      // count による半径変更は行わず、全ノードを固定半径にする
+      nodes.forEach(d => { d.r = NODE_RADIUS; });
       node.select("circle").attr("r", d => d.r);
 
       // シミュレーション開始前に目標座標を固定（d.x/d.y はシミュレーション中に書き換わるため）
@@ -353,36 +334,71 @@
           .ease(d3.easeBackOut.overshoot(1.3))
           .attr("transform", d => `translate(${d.x},${d.y}) scale(1)`);
 
-      // ホバー＆ツールチップ
-      node.on("mouseenter", function(event, d) {
-          showTooltip(event.clientX, event.clientY, d);
-          d3.select(this).raise()
-            .transition().duration(90)
-            .attr("transform", `translate(${d.x},${d.y - HOVER_RISE_PX}) scale(${HOVER_SCALE})`);
+      // ホバー演出のみ復元
+      // - ツールチップはホバーでは出さない
+      // - ノードだけ、マウスをかざしたときに前面へ出して少し拡大する
+      function raiseNode(el, d) {
+        d3.select(el).raise()
+          .transition().duration(90)
+          .attr("transform", `translate(${d.x},${d.y - HOVER_RISE_PX}) scale(${HOVER_SCALE})`);
+      }
+
+      function resetNode(el, d) {
+        d3.select(el)
+          .transition().duration(90)
+          .attr("transform", `translate(${d.x},${d.y}) scale(1)`);
+      }
+
+      // クリック固定ツールチップ
+      // - ホバーでは表示しない
+      // - 短いクリックだけ反応させる
+      // - 長押し・ドラッグはマップ移動操作として無視する
+      const CLICK_MAX_MS = 250;
+      const CLICK_MAX_MOVE_PX = 6;
+      const pressState = new WeakMap();
+
+      node.on("mouseenter.hover", function(event, d) {
+          raiseNode(this, d);
         })
-        .on("mousemove", function(event, d) {
-          showTooltip(event.clientX, event.clientY, d);
+        .on("mouseleave.hover", function(event, d) {
+          resetNode(this, d);
         })
-        .on("mouseleave", function(event, d) {
-          scheduleHide();
-          d3.select(this)
-            .transition().duration(90)
-            .attr("transform", `translate(${d.x},${d.y}) scale(1)`);
-        })
-        .on("click.tooltip", function(event, d) {
+        .on("pointerdown.tooltip", function(event, d) {
           event.stopPropagation();
+          pressState.set(this, {
+            x: event.clientX,
+            y: event.clientY,
+            t: performance.now()
+          });
+        })
+        .on("pointerup.tooltip", function(event, d) {
+          event.stopPropagation();
+          const st = pressState.get(this);
+          pressState.delete(this);
+          if (!st) return;
+
+          const dx = event.clientX - st.x;
+          const dy = event.clientY - st.y;
+          const moved = Math.hypot(dx, dy);
+          const elapsed = performance.now() - st.t;
+
+          if (elapsed > CLICK_MAX_MS || moved > CLICK_MAX_MOVE_PX) return;
+
           if (_activeTooltipNode === d) {
             hideTooltip();
           } else {
-            const touch = event.changedTouches?.[0];
-            const cx = touch?.clientX ?? event.clientX;
-            const cy = touch?.clientY ?? event.clientY;
-            showTooltip(cx, cy, d);
+            d3.select(this).raise();
+            showTooltip(event.clientX, event.clientY, d);
           }
+        })
+        .on("pointercancel.tooltip", function() {
+          pressState.delete(this);
         });
 
-      root.on("click.tooltip", function(event) {
-        if (!event.target.closest(".node")) hideTooltip();
+      root.on("pointerdown.tooltip", function(event) {
+        const target = event.target;
+        if (target.closest(".node") || target.closest("#tooltip")) return;
+        hideTooltip();
       });
 
       // 初期倍率で必ず入りきる
