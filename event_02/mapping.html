@@ -58,7 +58,7 @@
     const NODE_RADIUS      = 80;   // 全件同count時の固定半径（px）— null でテキスト自動フィット
     const NODE_RADIUS_MIN  = 50;   // count最小ノードの半径下限（px）
     const NODE_RADIUS_MAX  = 130;  // count最大ノードの半径上限（px）
-    const OVERLAP_FACTOR   = 1.05; // 衝突半径の倍率（< 1 で重なり許容、> 1 で隙間）
+    const OVERLAP_FACTOR   = 0.8;  // 衝突半径の倍率（< 1 で重なり許容）
 
     // ===== ホバー =====
     const HOVER_SCALE      = 1.14;
@@ -220,6 +220,7 @@
       });
 
       // === クラスター配置：キーワード数順で上・下・左・右に割り当て ===
+      let sortedCids = [];
       {
         // クラスターごとの重心とキーワード数を集計
         const cStats = new Map();
@@ -237,7 +238,7 @@
         }
 
         // キーワード数降順でソート → 1位=上、2位=下、3位=左、4位=右
-        const sortedCids = Array.from(cStats.entries())
+        sortedCids = Array.from(cStats.entries())
           .sort((a, b) => b[1].count - a[1].count)
           .map(([cid]) => cid);
         const ROLES = ['top', 'bottom', 'left', 'right'];
@@ -343,7 +344,14 @@
         .stop();
 
       for (let i = 0; i < 320; i++) sim.tick();
-      node.attr("transform", d => `translate(${d.x},${d.y})`);
+
+      // 登場アニメーション：クラスターごとに時差で出現（バウンス）
+      node.attr("transform", d => `translate(${d.x},${d.y}) scale(0)`)
+          .transition()
+          .duration(600)
+          .delay(d => sortedCids.indexOf(d.clusterId) * 180)
+          .ease(d3.easeBackOut.overshoot(1.3))
+          .attr("transform", d => `translate(${d.x},${d.y}) scale(1)`);
 
       // ホバー＆ツールチップ
       node.on("mouseenter", function(event, d) {
