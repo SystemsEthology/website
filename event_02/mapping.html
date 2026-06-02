@@ -10,10 +10,35 @@
     svg { width: 100%; height: 100vh; display: block; }
     .node { cursor: default; }
     .node text { pointer-events: none; }
+    #tooltip {
+      display: none;
+      position: fixed;
+      background: rgba(30,30,30,0.9);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: sans-serif;
+      max-width: 240px;
+      z-index: 200;
+      line-height: 1.6;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
+    #tooltip .tt-kw { font-weight: bold; font-size: 15px; }
+    #tooltip .tt-desc { font-size: 12px; opacity: 0.88; margin-top: 3px; }
+    #tooltip .tt-link {
+      display: inline-block;
+      margin-top: 7px;
+      color: #7ec8f5;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    #tooltip .tt-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div id="status"></div>
+  <div id="tooltip"><span class="tt-kw"></span><div class="tt-desc"></div><a class="tt-link" href="" target="_blank" rel="noopener noreferrer">Google で検索 →</a></div>
   <svg id="viz"></svg>
 
   <script type="module">
@@ -30,9 +55,10 @@
 
     // ===== 円・フォント =====
     const FONT_SIZE        = 20;   // テキストフォントサイズ（px）
-    const NODE_RADIUS      = 80;   // 表示円の半径（px）— null でテキスト自動フィット
-    const LAYOUT_RADIUS    = 70;   // 衝突・配置半径（px）— フォントと独立
-    const OVERLAP_FACTOR   = 0.8;  // 衝突半径の倍率（< 1 で重なり許容）
+    const NODE_RADIUS      = 80;   // 全件同count時の固定半径（px）— null でテキスト自動フィット
+    const NODE_RADIUS_MIN  = 50;   // count最小ノードの半径下限（px）
+    const NODE_RADIUS_MAX  = 130;  // count最大ノードの半径上限（px）
+    const OVERLAP_FACTOR   = 1.05; // 衝突半径の倍率（< 1 で重なり許容、> 1 で隙間）
 
     // ===== ホバー =====
     const HOVER_SCALE      = 1.14;
@@ -40,6 +66,48 @@
 
     const statusEl = document.getElementById("status");
     const svg = document.getElementById("viz");
+    const tooltipEl = document.getElementById("tooltip");
+    const tooltipKw = tooltipEl.querySelector(".tt-kw");
+    const tooltipDesc = tooltipEl.querySelector(".tt-desc");
+    const tooltipLink = tooltipEl.querySelector(".tt-link");
+    let _activeTooltipNode = null;
+    let _hideTimer = null;
+
+    function scheduleHide() {
+      _hideTimer = setTimeout(hideTooltip, 150);
+    }
+    function cancelHide() {
+      if (_hideTimer !== null) { clearTimeout(_hideTimer); _hideTimer = null; }
+    }
+
+    // ツールチップ上にマウスがある間は非表示にしない
+    tooltipEl.addEventListener("mouseenter", cancelHide);
+    tooltipEl.addEventListener("mouseleave", scheduleHide);
+
+    function showTooltip(clientX, clientY, d) {
+      cancelHide();
+      _activeTooltipNode = d;
+      tooltipKw.textContent = d.keyword;
+      const desc = d.description || d.clusterLabel || "";
+      tooltipDesc.textContent = desc;
+      tooltipDesc.style.display = desc ? "block" : "none";
+      tooltipLink.href = `https://www.google.com/search?q=${encodeURIComponent(d.keyword)}`;
+      const tw = 240;
+      const vw = window.innerWidth;
+      let left = clientX + 14;
+      let top = clientY - 50;
+      if (left + tw > vw - 8) left = clientX - tw - 14;
+      if (top < 8) top = clientY + 14;
+      tooltipEl.style.left = left + "px";
+      tooltipEl.style.top = top + "px";
+      tooltipEl.style.display = "block";
+    }
+
+    function hideTooltip() {
+      tooltipEl.style.display = "none";
+      _activeTooltipNode = null;
+      _hideTimer = null;
+    }
 
     function showError(msg) {
       statusEl.style.display = "block";
@@ -142,6 +210,8 @@
           keyword: d.keyword,
           count: d.count ?? 1,
           clusterId: cid,
+          clusterLabel: d.clusterLabel ?? "",
+          description: d.description ?? null,
           x: xToScreen(d.x),
           y: yToScreen(d.y),
           r: 10,
@@ -206,7 +276,6 @@
         .attr("stroke", "black")
         .attr("stroke-width", 1.0);
 
-      node.append("title").text(d => d.keyword);
 
       const WRAP_CHARS = 8; // 1行の最大文字数
       function wrapLines(str) {
@@ -243,13 +312,26 @@
       });
       if (!(maxNeededR > 0)) throw new Error("text bbox measurement failed (maxNeededR invalid)");
 
-      // 表示半径：NODE_RADIUS 固定 or テキスト自動フィット
-      const nodeR = (NODE_RADIUS !== null && NODE_RADIUS > 0) ? NODE_RADIUS : maxNeededR;
-      nodes.forEach(d => d.r = nodeR);
-      node.select("circle").attr("r", nodeR);
-
-      // 衝突半径：LAYOUT_RADIUS で独立制御（フォント・表示半径と無関係）
-      const collideR = LAYOUT_RADIUS * OVERLAP_FACTOR;
+      // countに基づいて各ノードの表示半径を決定（√スケール = 面積比例）
+      {
+        const countMin = d3.min(nodes, d => d.count);
+        const countMax = d3.max(nodes, d => d.count);
+        const baseR = Math.max(maxNeededR, NODE_RADIUS_MIN);
+        let rFn;
+        if (countMin === countMax) {
+          // 全件同count → NODE_RADIUS 固定（従来通り）
+          const fixedR = (NODE_RADIUS !== null && NODE_RADIUS > 0) ? NODE_RADIUS : baseR;
+          rFn = () => fixedR;
+        } else {
+          // countが異なる → √スケールでNODE_RADIUS_MIN〜NODE_RADIUS_MAXに写像
+          const rScale = d3.scaleSqrt()
+            .domain([countMin, countMax])
+            .range([baseR, Math.max(baseR, NODE_RADIUS_MAX)]);
+          rFn = (count) => rScale(count);
+        }
+        nodes.forEach(d => d.r = rFn(d.count));
+      }
+      node.select("circle").attr("r", d => d.r);
 
       // シミュレーション開始前に目標座標を固定（d.x/d.y はシミュレーション中に書き換わるため）
       nodes.forEach(d => { d.tx = d.x; d.ty = d.y; });
@@ -257,23 +339,43 @@
       const sim = d3.forceSimulation(nodes)
         .force("x", d3.forceX(d => d.tx).strength(TARGET_STRENGTH))
         .force("y", d3.forceY(d => d.ty).strength(TARGET_STRENGTH))
-        .force("collide", d3.forceCollide(collideR))
+        .force("collide", d3.forceCollide(d => d.r * OVERLAP_FACTOR))
         .stop();
 
       for (let i = 0; i < 320; i++) sim.tick();
       node.attr("transform", d => `translate(${d.x},${d.y})`);
 
-      // ホバー
+      // ホバー＆ツールチップ
       node.on("mouseenter", function(event, d) {
+          showTooltip(event.clientX, event.clientY, d);
           d3.select(this).raise()
             .transition().duration(90)
             .attr("transform", `translate(${d.x},${d.y - HOVER_RISE_PX}) scale(${HOVER_SCALE})`);
         })
+        .on("mousemove", function(event, d) {
+          showTooltip(event.clientX, event.clientY, d);
+        })
         .on("mouseleave", function(event, d) {
+          scheduleHide();
           d3.select(this)
             .transition().duration(90)
             .attr("transform", `translate(${d.x},${d.y}) scale(1)`);
+        })
+        .on("click.tooltip", function(event, d) {
+          event.stopPropagation();
+          if (_activeTooltipNode === d) {
+            hideTooltip();
+          } else {
+            const touch = event.changedTouches?.[0];
+            const cx = touch?.clientX ?? event.clientX;
+            const cy = touch?.clientY ?? event.clientY;
+            showTooltip(cx, cy, d);
+          }
         });
+
+      root.on("click.tooltip", function(event) {
+        if (!event.target.closest(".node")) hideTooltip();
+      });
 
       // 初期倍率で必ず入りきる
       fitToView(root, zoom, nodes, W, H);

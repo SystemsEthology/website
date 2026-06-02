@@ -6,7 +6,9 @@
       "Bash(curl -s \"https://systemsethology.github.io/website/\")",
       "Bash(curl -s \"https://systemsethology.github.io/website/aboutus/\")",
       "Bash(curl -I \"https://systemsethology.github.io/website/public/favicon.ico\")",
-      "WebFetch(domain:link.springer.com)"
+      "WebFetch(domain:link.springer.com)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 fetch_descriptions.py)"
     ]
   }
 }

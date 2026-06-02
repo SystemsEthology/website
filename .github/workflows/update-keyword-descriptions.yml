@@ -1,0 +1,40 @@
+name: Update keyword descriptions from Wikipedia
+
+on:
+  schedule:
+    # 毎週月曜 JST 9:00 (UTC 0:00) に実行
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+    # Actions タブから手動実行も可能
+
+permissions:
+  contents: write  # JSON の変更をコミット・プッシュするために必要
+
+jobs:
+  update-descriptions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch descriptions from Wikipedia
+        working-directory: event_02
+        run: python3 fetch_descriptions.py
+
+      - name: Commit and push if JSON changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add event_02/clustered_keywords.json
+          if git diff --cached --quiet; then
+            echo "説明文に変化なし。コミットをスキップします。"
+          else
+            git commit -m "chore: update keyword descriptions from Wikipedia"
+            git push
+          fi
