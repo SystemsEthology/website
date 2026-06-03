@@ -40,14 +40,12 @@
       text-decoration: none;
     }
     #tooltip .tt-link:hover { text-decoration: underline; }
-    #tooltip .tt-loading { font-size: 11px; opacity: 0.55; font-style: italic; margin-top: 4px; }
   </style>
 </head>
 <body>
   <div id="status"></div>
   <div id="tooltip">
     <span class="tt-kw"></span>
-    <div class="tt-loading"></div>
     <div class="tt-desc"></div>
     <div class="tt-links">
       <a class="tt-wiki-link" href="" target="_blank" rel="noopener noreferrer" style="display:none">Wikipedia →</a>
@@ -131,7 +129,7 @@
 
     async function fetchWikiSummary(keyword) {
       const controller = new AbortController();
-      const timerId = setTimeout(() => controller.abort(), 4000);
+      const timerId = setTimeout(() => controller.abort(), 2000);
       try {
         for (const lang of ["ja", "en"]) {
           const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(keyword)}`;
@@ -144,7 +142,7 @@
           }
         }
       } catch {
-        // タイムアウトまたはネットワークエラー → fallback
+        // タイムアウトまたはネットワークエラー → Google fallback
       } finally {
         clearTimeout(timerId);
       }
@@ -155,22 +153,19 @@
       cancelHide();
       _activeTooltipNode = d;
 
-      // --- 即時表示（既存説明 or 空） ---
+      // --- 即時表示 ---
       tooltipKw.textContent = d.keyword;
       const fallback = d.description || d.clusterLabel || "";
       tooltipDesc.textContent = fallback;
       tooltipDesc.style.display = fallback ? "block" : "none";
-      tooltipLoading.textContent = "Wikipedia を検索中…";
       tooltipWikiLink.style.display = "none";
       tooltipLink.href = `https://www.google.com/search?q=${encodeURIComponent(d.keyword)}`;
 
       positionTooltip(clientX, clientY);
 
-      // --- Wikipedia 取得（非同期） ---
+      // --- Wikipedia 取得（2秒タイムアウト、失敗時はGoogle検索リンクのまま） ---
       const wiki = await fetchWikiSummary(d.keyword);
-      if (_activeTooltipNode !== d) return; // 他のノードに切り替わっていたら無視
-
-      tooltipLoading.textContent = "";
+      if (_activeTooltipNode !== d) return;
 
       if (wiki) {
         const MAX_CHARS = 200;
@@ -180,13 +175,13 @@
         tooltipDesc.textContent = text;
         tooltipDesc.style.display = "block";
         tooltipWikiLink.href = `https://${wiki.lang}.wikipedia.org/wiki/${encodeURIComponent(wiki.title)}`;
-        tooltipWikiLink.textContent = `Wikipedia →`;
+        tooltipWikiLink.textContent = "Wikipedia →";
         tooltipWikiLink.style.display = "inline";
       } else if (!fallback) {
         tooltipDesc.style.display = "none";
       }
 
-      positionTooltip(clientX, clientY); // サイズ変化後に再配置
+      positionTooltip(clientX, clientY);
     }
 
     function hideTooltip() {
