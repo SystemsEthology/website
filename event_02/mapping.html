@@ -20,26 +20,40 @@
       border-radius: 8px;
       font-size: 14px;
       font-family: sans-serif;
-      max-width: 240px;
+      max-width: 320px;
       z-index: 200;
       line-height: 1.6;
       box-shadow: 0 2px 10px rgba(0,0,0,0.35);
     }
     #tooltip .tt-kw { font-weight: bold; font-size: 15px; }
     #tooltip .tt-desc { font-size: 12px; opacity: 0.88; margin-top: 3px; }
+    #tooltip .tt-links { margin-top: 7px; display: flex; gap: 10px; align-items: center; }
+    #tooltip .tt-wiki-link {
+      color: #a8d8a8;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    #tooltip .tt-wiki-link:hover { text-decoration: underline; }
     #tooltip .tt-link {
-      display: inline-block;
-      margin-top: 7px;
       color: #7ec8f5;
       font-size: 12px;
       text-decoration: none;
     }
     #tooltip .tt-link:hover { text-decoration: underline; }
+    #tooltip .tt-loading { font-size: 11px; opacity: 0.55; font-style: italic; margin-top: 4px; }
   </style>
 </head>
 <body>
   <div id="status"></div>
-  <div id="tooltip"><span class="tt-kw"></span><div class="tt-desc"></div><a class="tt-link" href="" target="_blank" rel="noopener noreferrer">Google で検索 →</a></div>
+  <div id="tooltip">
+    <span class="tt-kw"></span>
+    <div class="tt-loading"></div>
+    <div class="tt-desc"></div>
+    <div class="tt-links">
+      <a class="tt-wiki-link" href="" target="_blank" rel="noopener noreferrer" style="display:none">Wikipedia →</a>
+      <a class="tt-link" href="" target="_blank" rel="noopener noreferrer">Google で検索 →</a>
+    </div>
+  </div>
   <svg id="viz"></svg>
 
   <script type="module">
@@ -66,9 +80,11 @@
     const statusEl = document.getElementById("status");
     const svg = document.getElementById("viz");
     const tooltipEl = document.getElementById("tooltip");
-    const tooltipKw = tooltipEl.querySelector(".tt-kw");
-    const tooltipDesc = tooltipEl.querySelector(".tt-desc");
-    const tooltipLink = tooltipEl.querySelector(".tt-link");
+    const tooltipKw       = tooltipEl.querySelector(".tt-kw");
+    const tooltipLoading  = tooltipEl.querySelector(".tt-loading");
+    const tooltipDesc     = tooltipEl.querySelector(".tt-desc");
+    const tooltipWikiLink = tooltipEl.querySelector(".tt-wiki-link");
+    const tooltipLink     = tooltipEl.querySelector(".tt-link");
     let _activeTooltipNode = null;
     let _hideTimer = null;
 
@@ -83,46 +99,94 @@
     tooltipEl.addEventListener("pointerdown", event => event.stopPropagation());
     tooltipEl.addEventListener("click", event => event.stopPropagation());
 
-    function showTooltip(clientX, clientY, d) {
-      cancelHide();
-      _activeTooltipNode = d;
-      tooltipKw.textContent = d.keyword;
-      const desc = d.description || d.clusterLabel || "";
-      tooltipDesc.textContent = desc;
-      tooltipDesc.style.display = desc ? "block" : "none";
-      tooltipLink.href = `https://www.google.com/search?q=${encodeURIComponent(d.keyword)}`;
-
+    function positionTooltip(clientX, clientY) {
       const margin = 8;
       const gap = 14;
-      const nodeClearance = NODE_RADIUS + 12; // ノード中心から十分離して、円の上に重ならないようにする
+      const nodeClearance = NODE_RADIUS + 12;
       const vw = window.innerWidth;
       const vh = window.innerHeight;
-      const tw = Math.min(240, Math.max(160, vw - margin * 2));
+      const tw = Math.min(320, Math.max(200, vw - margin * 2));
 
       tooltipEl.style.width = tw + "px";
       tooltipEl.style.display = "block";
 
       const th = tooltipEl.offsetHeight || 80;
 
-      // 横方向はクリック位置を基準にしつつ、必ず画面内に収める
       let left = clientX + gap;
       if (left + tw > vw - margin) left = clientX - tw - gap;
       left = Math.max(margin, Math.min(left, vw - tw - margin));
 
-      // 縦方向は画面上半分なら上、下半分なら下へ逃がす
-      // ノード半径ぶん離すことで、黒いツールチップが要素上に重ならない
       const preferAbove = clientY < vh / 2;
       let top = preferAbove
         ? clientY - th - nodeClearance
         : clientY + nodeClearance;
 
-      // 画面外に出る場合のみ、反対側へ逃がす。それでも収まらなければ最終的にクランプする。
       if (top < margin) top = clientY + nodeClearance;
       if (top + th > vh - margin) top = clientY - th - nodeClearance;
       top = Math.max(margin, Math.min(top, vh - th - margin));
 
       tooltipEl.style.left = left + "px";
       tooltipEl.style.top = top + "px";
+    }
+
+    async function fetchWikiSummary(keyword) {
+      const controller = new AbortController();
+      const timerId = setTimeout(() => controller.abort(), 4000);
+      try {
+        for (const lang of ["ja", "en"]) {
+          const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(keyword)}`;
+          const res = await fetch(url, { signal: controller.signal });
+          if (!res.ok) continue;
+          const data = await res.json();
+          if (data.type === "standard" && data.extract) {
+            clearTimeout(timerId);
+            return { extract: data.extract, lang, title: data.title };
+          }
+        }
+      } catch {
+        // タイムアウトまたはネットワークエラー → fallback
+      } finally {
+        clearTimeout(timerId);
+      }
+      return null;
+    }
+
+    async function showTooltip(clientX, clientY, d) {
+      cancelHide();
+      _activeTooltipNode = d;
+
+      // --- 即時表示（既存説明 or 空） ---
+      tooltipKw.textContent = d.keyword;
+      const fallback = d.description || d.clusterLabel || "";
+      tooltipDesc.textContent = fallback;
+      tooltipDesc.style.display = fallback ? "block" : "none";
+      tooltipLoading.textContent = "Wikipedia を検索中…";
+      tooltipWikiLink.style.display = "none";
+      tooltipLink.href = `https://www.google.com/search?q=${encodeURIComponent(d.keyword)}`;
+
+      positionTooltip(clientX, clientY);
+
+      // --- Wikipedia 取得（非同期） ---
+      const wiki = await fetchWikiSummary(d.keyword);
+      if (_activeTooltipNode !== d) return; // 他のノードに切り替わっていたら無視
+
+      tooltipLoading.textContent = "";
+
+      if (wiki) {
+        const MAX_CHARS = 200;
+        const text = wiki.extract.length > MAX_CHARS
+          ? wiki.extract.slice(0, MAX_CHARS) + "…"
+          : wiki.extract;
+        tooltipDesc.textContent = text;
+        tooltipDesc.style.display = "block";
+        tooltipWikiLink.href = `https://${wiki.lang}.wikipedia.org/wiki/${encodeURIComponent(wiki.title)}`;
+        tooltipWikiLink.textContent = `Wikipedia (${wiki.lang}) →`;
+        tooltipWikiLink.style.display = "inline";
+      } else if (!fallback) {
+        tooltipDesc.style.display = "none";
+      }
+
+      positionTooltip(clientX, clientY); // サイズ変化後に再配置
     }
 
     function hideTooltip() {
