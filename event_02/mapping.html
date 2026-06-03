@@ -171,7 +171,7 @@
       const bh = maxY - minY;
       if (!(bw > 0) || !(bh > 0)) return;
 
-      const INITIAL_ZOOM_FACTOR = 1.4; // 初期表示倍率（1.0=全体表示、2.0=2倍）
+      const INITIAL_ZOOM_FACTOR = 1.6; // 初期表示倍率（1.0=全体表示、2.0=2倍）
       const s = Math.min(W / bw, H / bh) * INITIAL_ZOOM_FACTOR;
       const cx = (minX + maxX) / 2;
       const cy = (minY + maxY) / 2;
