@@ -1,5 +1,5 @@
 {
-  "participantCount": 57,
+  "participantCount": 78,
   "range": "B2:B(last)",
   "delimiter": "comma, Japanese comma/period, newline, 「」, whitespace between obvious keyword boundaries",
   "clusters": [
