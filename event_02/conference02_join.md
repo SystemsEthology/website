@@ -16,11 +16,6 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 </iframe>
 
 ***
-
-（NEW!!）若手旅費支援の募集を開始しました。応募条件・支援額・申込方法の詳細は、以下のページをご確認ください。
-
-[若手旅費支援の詳細はこちら](https://systemsethology.github.io/website/event_02/conference02_support/)
-
 <br>
 
 ### 参加登録：締切 2026年7月10日 23:59
@@ -58,7 +53,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 <br>
-<a href="https://app.payvent.net/embedded_forms/show/69e851cd68ada6e44ca651fb" target="_blank" rel="noopener noreferrer">
+<a href="https://app.payvent.net/embedded_forms/show/69e851cd68ada6e44ca651fb" target="_blank" rel="noopener noreferrer" style="font-size: 2.0em;">
   参加申し込みフォーム
 </a>
 
@@ -67,8 +62,14 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 ### 発表者　要旨登録：締切 2026年6月10日 23:59
 
 <br>
-<a href="https://app.payvent.net/embedded_forms/show/69e852de68ada6e44da827dc" target="_blank" rel="noopener noreferrer">
+<a href="https://app.payvent.net/embedded_forms/show/69e852de68ada6e44da827dc" target="_blank" rel="noopener noreferrer"style="font-size: 2.0em;">
   要旨登録フォーム
 </a>
 
 >- 参加登録フォームとは別になっております。発表を希望される方はこちらも期日までにご登録お願い致します。
+
+***
+
+（NEW!!）若手旅費支援の募集を開始しました。応募条件・支援額・申込方法の詳細は、以下のページをご確認ください。
+
+[若手旅費支援の詳細はこちら](https://systemsethology.github.io/website/event_02/conference02_support/)
