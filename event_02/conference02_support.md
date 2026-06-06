@@ -13,14 +13,21 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 ## 応募条件
 
-- 自身で研究費を持たない学生（学部生・大学院生）であり、ポスター発表を予定している方
-- 愛知県外にお住まいの方
+- 学生であること
+- 愛知県外に在住していること
+- 旅費支援が研究費等による支給と重複しないこと
+- 第２回システム行動学研究会で、ポスター発表をする方
 
 <br>
 
 ## 応募方法
 
-当研究会のメールアドレス（systems.ethology@gmail.com）まで、旅費支援希望の旨をご連絡ください。
+<br>
+<a href="{{ site.baseurl }}/event_02/forms/travel_support.xlsx" download>旅費支援フォーマット</a>
+
+- 旅費支援フォーマットを入力していただき、システム行動学研究会のメール（systems.ethology@gmail.com）に添付してお送りください。
+- メールタイトルは「旅費支援 -第２回システム行動学研究会- 名前」としてください。
+- ファイル名は「travel_support_NAME.xlsx」としてください。
 
 <br>
 
