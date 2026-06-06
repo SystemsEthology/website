@@ -24,7 +24,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 <a href="{{ site.baseurl }}/event_02/forms/travel_support.xlsx" download>旅費支援フォーマット</a>
-
+<br>
 - 旅費支援フォーマットを入力していただき、システム行動学研究会のメール（systems.ethology@gmail.com）に添付してお送りください。
 - メールタイトルは「旅費支援 -第２回システム行動学研究会- 名前」としてください。
 - ファイル名は「travel_support_NAME.xlsx」としてください。
