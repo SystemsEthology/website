@@ -61,13 +61,13 @@
     const DATA_URL = "./clustered_keywords.json";
 
     // ===== クラスター配置 =====
-    const VERT_OFFSET      = 0.75; // 上・下クラスター重心の縦オフセット（画面Hの比率）
-    const HORIZ_OFFSET     = 0.75; // 左・右クラスター重心の横オフセット（画面Wの比率）
+    const VERT_OFFSET      = 0.85; // 上・下クラスター重心の縦オフセット（画面Hの比率）
+    const HORIZ_OFFSET     = 0.85; // 左・右クラスター重心の横オフセット（画面Wの比率）
     const WORLD_SCALE      = 1.0;  // クラスター内ノードの散らばり（小さいほど密集）
     const TARGET_STRENGTH  = 0.2; // 目標位置への引き付け力（0.18〜0.45）
 
     // ===== 円・フォント =====
-    const FONT_SIZE        = 20;   // テキストフォントサイズ（px）
+    const FONT_SIZE        = 18;   // テキストフォントサイズ（px）
     const NODE_RADIUS      = 80;   // 全ノード固定半径（px）
     const OVERLAP_FACTOR   = 0.8;  // 衝突半径の倍率（< 1 で重なり許容）
 
@@ -230,7 +230,7 @@
       const bh = maxY - minY;
       if (!(bw > 0) || !(bh > 0)) return;
 
-      const INITIAL_ZOOM_FACTOR = 1.6; // 初期表示倍率（1.0=全体表示、2.0=2倍）
+      const INITIAL_ZOOM_FACTOR = 1.7; // 初期表示倍率（1.0=全体表示、2.0=2倍）
       const s = Math.min(W / bw, H / bh) * INITIAL_ZOOM_FACTOR;
       const cx = (minX + maxX) / 2;
       const cy = (minY + maxY) / 2;
