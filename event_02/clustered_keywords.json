@@ -6,26 +6,26 @@
     {
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "nKeywords": 45,
-      "totalMentions": 45
+      "nKeywords": 48,
+      "totalMentions": 48
     },
     {
       "clusterId": 1,
       "clusterLabel": "研究手法・技術",
-      "nKeywords": 53,
-      "totalMentions": 53
+      "nKeywords": 60,
+      "totalMentions": 60
     },
     {
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "nKeywords": 36,
-      "totalMentions": 36
+      "nKeywords": 38,
+      "totalMentions": 38
     },
     {
       "clusterId": 3,
       "clusterLabel": "その他の研究キーワード",
-      "nKeywords": 115,
-      "totalMentions": 115
+      "nKeywords": 126,
+      "totalMentions": 126
     }
   ],
   "keywords": [
@@ -1771,13 +1771,175 @@
       "clusterLabel": "その他の研究キーワード",
       "x": 48.979885,
       "y": 84.319161
+    },
+    {
+      "keyword": "生態学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 104.0,
+      "y": 58.0
+    },
+    {
+      "keyword": "ものづくり",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 73.0,
+      "y": 84.0
+    },
+    {
+      "keyword": "生体機械学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 110.0,
+      "y": -38.0
+    },
+    {
+      "keyword": "自律神経",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 4.0,
+      "y": 96.0
+    },
+    {
+      "keyword": "視床下部",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 6.0,
+      "y": 101.0
+    },
+    {
+      "keyword": "アミノ酸",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 38.0,
+      "y": 88.0
+    },
+    {
+      "keyword": "味覚",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 8.0,
+      "y": 118.0
+    },
+    {
+      "keyword": "運搬",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -38.0,
+      "y": 100.0
+    },
+    {
+      "keyword": "衛星",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -18.0,
+      "y": -80.0
+    },
+    {
+      "keyword": "アルゴス",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -24.0,
+      "y": -78.0
+    },
+    {
+      "keyword": "イリジウム",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -30.0,
+      "y": -80.0
+    },
+    {
+      "keyword": "音声データベース",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 2.0,
+      "y": -128.0
+    },
+    {
+      "keyword": "ミジンコ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -108.0,
+      "y": 52.0
+    },
+    {
+      "keyword": "休眠",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 66.0,
+      "y": 118.0
+    },
+    {
+      "keyword": "ゼブラフィッシュ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -95.0,
+      "y": -36.0
+    },
+    {
+      "keyword": "未来予測",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 26.0,
+      "y": -92.0
+    },
+    {
+      "keyword": "鳴き",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -6.0,
+      "y": 112.0
+    },
+    {
+      "keyword": "睡眠用状態",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 70.0,
+      "y": 132.0
+    },
+    {
+      "keyword": "DeepLabCut",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 12.0,
+      "y": -132.0
+    },
+    {
+      "keyword": "原生生物",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -62.0,
+      "y": 58.0
+    },
+    {
+      "keyword": "行動力学",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 32.0,
+      "y": 86.0
+    },
+    {
+      "keyword": "複雑環境",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 68.0,
+      "y": 78.0
+    },
+    {
+      "keyword": "ヒューリスティクス",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 42.0,
+      "y": -95.0
     }
   ],
   "notes": {
     "category_policy": "4 fixed categories: 0=生物名・分類群名; 1=研究手法・技術; 2=学問分野名; 3=その他の研究キーワード",
-    "replacement_policy": "The supplied keyword list was parsed and deduplicated. Plain English duplicates of Japanese terms and conceptually redundant Japanese loanword duplicates were removed or unified in favor of Japanese terms.",
-    "deduplication_note": "Removed/unified アニマルウェルフェア into 動物福祉. Unified 古典的条件づけ into 古典的条件付け and 母仔関係 into 母子関係. Kept English-only technical or taxonomic terms where no Japanese duplicate was supplied.",
-    "layout_policy": "2D coordinates were assigned by semantic judgment within each fixed class rather than by language-distance mapping. Existing coordinates were preserved only when the keyword stayed in the same class; newly added or reclassified terms were placed inside the corresponding class region.",
-    "classification_note": "Ambiguous items were classified by primary function in the supplied research context: animal names and taxa are class 0; analytical, measurement, modeling, intervention, detection, and computational/system terms are class 1; disciplinary fields are class 2; behavior, neural substrates, sensory/cognitive states, ecological contexts, and application concepts are class 3."
+    "replacement_policy": "The supplied keyword list was parsed, normalized, deduplicated, and reordered according to first appearance. Plain English duplicates of Japanese terms and conceptually redundant Japanese loanword duplicates were removed or unified in favor of Japanese terms.",
+    "deduplication_note": "Removed/unified アニマルウェルフェア into 動物福祉, 古典的条件づけ into 古典的条件付け, 母仔関係 into 母子関係, 生物音響学 into 生物音響, and 数理モデリング into 数理モデル. Kept English-only technical or taxonomic terms where no Japanese duplicate was supplied.",
+    "layout_policy": "2D coordinates were assigned by semantic judgment within each fixed class rather than by language-distance mapping. Existing coordinates were preserved where possible; newly added terms were placed inside the corresponding class region.",
+    "classification_note": "Ambiguous items were classified by primary function in the supplied research context: animal names and taxa are class 0; analytical, measurement, modeling, intervention, detection, database, telemetry, and computational/system terms are class 1; disciplinary fields are class 2; behavior, neural substrates, sensory/cognitive states, ecological contexts, materials, and application concepts are class 3.",
+    "update_summary": "Updated from the supplied keyword list. Added missing terms including 自律神経, 視床下部, アルゴス, イリジウム, DeepLabCut, ゼブラフィッシュ, 原生生物, and related keywords."
   }
 }
