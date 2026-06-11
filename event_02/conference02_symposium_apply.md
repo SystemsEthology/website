@@ -1,7 +1,7 @@
 ---
 layout: page_conference_02
 title: (終了しました)公募シンポジウム募集
-order: 10
+order: 11
 ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
 ***
