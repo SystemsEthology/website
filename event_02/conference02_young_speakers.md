@@ -4,7 +4,6 @@ title: 若手特別講演
 order: 5
 ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
-# 若手特別講演
 
 <br>
 
