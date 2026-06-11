@@ -1,7 +1,7 @@
 ---
 layout: page_conference_02
 title: 若手旅費支援
-order: 6
+order: 8
 ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
 
