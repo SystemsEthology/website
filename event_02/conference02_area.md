@@ -1,7 +1,7 @@
 ---
 layout: page_conference_02
 title: 会場案内
-order: 7
+order: 9
 ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
 
