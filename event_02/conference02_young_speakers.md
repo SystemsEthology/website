@@ -27,7 +27,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 国立大学法人東海国立大学機構岐阜大学 大学院医学系研究科
 
-<img src="{{ site.baseurl }}/event_02/images/sasaki.jpg" width="300px">  
+<img src="{{ site.baseurl }}/event_02/images/morimoto.jpg" width="300px">  
 
 ## 音から読み解く翅ばたきの力学：スズメバチの飛翔音と非定常空力機構の解明
 
