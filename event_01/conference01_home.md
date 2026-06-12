@@ -106,7 +106,7 @@ title: Home
 ***
 こちらの動画を見て「面白そう！」と思ったすべての人が対象です。
 <br><br>
-<a href="https://drive.google.com/file/d/1CkHziNDeUbJRRFNIOpsRu4ZrUMOpP4FT/view?usp=sharing" target="_blank" rel="noopener noreferrer">プロモーション動画</a>
+<a href="https://www.dropbox.com/scl/fi/88hwpluket5drh7dr005w/systems_ethology_2025_movie_v1.1.mp4?rlkey=36cwo5hp5s74gkrdigmm0wzaw&st=rmvwfl0i&dl=0" target="_blank" rel="noopener noreferrer">プロモーション動画</a>
 <br>
 制作：納富祐典（東京大学）
 <br>
