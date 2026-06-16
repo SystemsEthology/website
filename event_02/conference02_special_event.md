@@ -11,7 +11,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 ## 第34回 ⾃⼰組織化セミナー
 MIMS/CMMA Seminar on Self–Organization
 
-URL：https://www.mims.meiji.ac.jp/seminars/so_s/index.html
+URL：[https://www.mims.meiji.ac.jp/seminars/so_s/index.html](https://www.mims.meiji.ac.jp/seminars/so_s/index.html)
 
 ### 日時
 6月17日(水) 16:00～17:00
