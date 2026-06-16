@@ -8,8 +8,8 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 第２回システム行動学研究会に先立ちまして、以下のセミナーを緊急開催させていただきます。
 
-# 第３４回 ⾃⼰組織化セミナー
-
+## 第３４回 ⾃⼰組織化セミナー
+MIMS/CMMA Seminar on Self–Organization
 ## 日時
 6月17日(水) 16:00～
 ## 場所
