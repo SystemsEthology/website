@@ -23,6 +23,11 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
+## 中野キャンパスへのアクセス
+JR中央線快速・総武線、東京メトロ東西線 中野駅 下車 北口より徒歩約8分
+
+<br>
+
 ## 世話人
 末松 J. 信彦、山口智彦 連絡先：suematsu@meiji.ac.jp
 ## 組織委員
