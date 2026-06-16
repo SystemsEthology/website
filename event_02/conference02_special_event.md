@@ -40,5 +40,5 @@ JR中央線快速・総武線、東京メトロ東西線 中野駅 下車 北口
 
 <br>
 
-<a href="{{ site.baseurl }}/event_02/images/sasaki_takao_poster.pdf" download>PDF</a><br>
+<a href="{{ site.baseurl }}/event_02/images/sasaki_takao_poster.pdf">PDF</a><br>
 <img src="{{ site.baseurl }}/event_02/images/sasaki_takao_poster.png" width="800px">  
