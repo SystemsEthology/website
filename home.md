@@ -10,7 +10,7 @@ title: ホーム
 
 ## ニュース
 
-- 2026年6月16日　緊急開催：第２回システム行動学研究会に先立ち、[特別講演（佐々木崇夫）](https://systemsethology.github.io/website/event_02/conference02_special_event/)を開催します。
+- 2026年6月16日　緊急開催：第２回システム行動学研究会に先立ち、[特別講演（ロチェスター大学 佐々木崇夫先生）](https://systemsethology.github.io/website/event_02/conference02_special_event/)を開催します。
 
 - 2026年5月28日　第２回システム行動学研究会の[若手旅費支援](https://systemsethology.github.io/website/event_02/conference02_support/)の募集を開始しました。
 
