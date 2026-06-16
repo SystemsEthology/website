@@ -58,7 +58,7 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.097977054295!2d1
 
 ## 活動報告・更新履歴
 ***
-2026/6/16.　緊急開催：第２回システム行動学研究会に先立ち、[ロチェスター大学 佐々木崇夫先生に特別講演](https://systemsethology.github.io/website/event_02/conference02_special_event/)をしていただきます。
+2026/6/16.　緊急開催：第２回システム行動学研究会に先立ち、[特別講演（佐々木崇夫）](https://systemsethology.github.io/website/event_02/conference02_special_event/)を開催します。
 2026/6/9.　要旨登録期間を6月24日まで延長しました。<br>
 2026/5/28.　第２回システム行動学研究会の[若手旅費支援](https://systemsethology.github.io/website/event_02/conference02_support/)の募集を開始しました。<br>
 2026/5/1.　公募シンポジウムの募集を終了しました。<br>
