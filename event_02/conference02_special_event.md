@@ -23,5 +23,14 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
+## 世話人
+末松 J. 信彦、山口智彦 連絡先：suematsu@meiji.ac.jp
+## 組織委員
+池田幸太、上山大信（武蔵野大学）、小川知之、小田切健太（専修大学）
+## 共催
+システム行動学研究会
+
+<br>
+
 <a href="{{ site.baseurl }}/event_02/images/sasaki_takao_poster.pdf" download>PDF</a><br>
 <img src="{{ site.baseurl }}/event_02/images/sasaki_takao_poster.png" width="800px">  
