@@ -57,7 +57,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 広島大学 統合生命科学研究科
 
-<img src="{{ site.baseurl }}/event_02/images/miyoshi.jpg" width="300px">  
+<img src="{{ site.baseurl }}/event_02/images/miyoshi.png" width="300px">  
 
 ## どうやって群れを操るか？：視覚に基づく群制御モデル
 
