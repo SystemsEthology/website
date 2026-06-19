@@ -39,4 +39,32 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
+## 角うらん
+
+神戸大学 大学院農学研究科
+
+<img src="{{ site.baseurl }}/event_02/images/sumi.png" width="300px">  
+
+## 音から読み解く翅ばたきの力学：スズメバチの飛翔音と非定常空力機構の解明
+
+<br>
+
+キーワード：捕食回避
+
+<br>
+
+## 三好晃輔
+
+広島大学 統合生命科学研究科
+
+<img src="{{ site.baseurl }}/event_02/images/miyoshi.jpg" width="300px">  
+
+## 音から読み解く翅ばたきの力学：スズメバチの飛翔音と非定常空力機構の解明
+
+<br>
+
+キーワード：群制御，群れ，数理モデル，視覚
+
+<br>
+
 ## and more...
