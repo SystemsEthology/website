@@ -67,6 +67,8 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 キーワード：群制御，群れ，数理モデル，視覚
 
+***
+
 <br>
 
 ## and more...
