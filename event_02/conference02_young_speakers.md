@@ -45,7 +45,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <img src="{{ site.baseurl }}/event_02/images/sumi.png" width="300px">  
 
-## 音から読み解く翅ばたきの力学：スズメバチの飛翔音と非定常空力機構の解明
+## 鳥糞模様は警告色？: オジロアシナガゾウムシの防衛戦略
 
 <br>
 
@@ -59,7 +59,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <img src="{{ site.baseurl }}/event_02/images/miyoshi.jpg" width="300px">  
 
-## 音から読み解く翅ばたきの力学：スズメバチの飛翔音と非定常空力機構の解明
+## どうやって群れを操るか？：視覚に基づく群制御モデル
 
 <br>
 
