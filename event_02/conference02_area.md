@@ -19,6 +19,14 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 ***
 
+## 会場マップ
+
+<img src="{{ site.baseurl }}/event_02/images/会場マップ.jpg" style="width:100%;max-width:640px;height:auto;" alt="会場マップ">
+
+<br>
+
+***
+
 ## ランチ：名古屋大学付近
 
 会場周辺（名古屋大学駅・東山公園駅エリア）のおすすめランチスポットです。
