@@ -113,7 +113,8 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.097977054295!2d1
 ## 協賛企業
 ***
 
-<img src="{{ site.baseurl }}/event_02/images/chinojohosystem.jpg" width="300px"> <a href="https://www.chino-js.com">株式会社 知能情報システム</a> 様
+<img src="{{ site.baseurl }}/event_02/images/chinojohosystem.jpg" width="300px">
+<a href="https://www.chino-js.com">株式会社 知能情報システム</a> 様
 
 <br>
 
