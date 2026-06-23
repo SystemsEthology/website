@@ -113,17 +113,17 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.097977054295!2d1
 ## 協賛企業
 ***
 
-<img src="{{ site.baseurl }}/event_02/images/chinojohosystem.jpg" width="300px"><br>
+<img src="{{ site.baseurl }}/event_02/images/chinojohosystem.jpg" width="300px">
 <a href="https://www.chino-js.com">株式会社 知能情報システム</a> 様
 
 <br>
 
-<img src="{{ site.baseurl }}/event_02/images/tanakasanjiro.jpg" width="300px"><br>
+<img src="{{ site.baseurl }}/event_02/images/tanakasanjiro.jpg" width="300px">
 <a href="https://www.tanaka-sanjiro.com/">株式会社 田中三次郎商店</a> 様
 
 <br>
 
-<img src="{{ site.baseurl }}/event_02/images/Cubic_i.jpg" width="100px"><br>
+<img src="{{ site.baseurl }}/event_02/images/Cubic_i.jpg" width="100px">
 <a href="https://www.cubic-i.co.jp/">株式会社 キュービック・アイ</a> 様
 
 <br>
