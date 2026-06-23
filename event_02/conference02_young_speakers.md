@@ -71,4 +71,20 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
+## 福谷匠哉
+
+関西学院大学 理工学研究科
+
+<img src="{{ site.baseurl }}/event_02/images/fukutani.jpeg" width="300px">  
+
+## 分業の専門化は社会的統合をもたらすか？
+
+<br>
+
+キーワード：社会的孤立，栄養交換，トラッキング，安定同位体，行動検出
+
+***
+
+<br>
+
 ## and more...
