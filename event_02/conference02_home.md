@@ -112,9 +112,22 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.097977054295!2d1
 
 ## 協賛企業
 ***
-- 株式会社知能情報システム 様
-- 株式会社田中三次郎商店 様
-- 株式会社キュービック・アイ 様
+<table>
+  <tr>
+    <td align="center">
+      <img src="{{ site.baseurl }}/event_02/images/chinojohosystem.jpg" width="200px"><br>
+      <a href="https://www.chino-js.com">株式会社 知能情報システム</a> 様
+    </td>
+    <td align="center">
+      <img src="{{ site.baseurl }}/event_02/images/tanakasanjiro.jpg" width="200px"><br>
+      <a href="https://www.tanaka-sanjiro.com/">株式会社 田中三次郎商店</a> 様
+    </td>
+    <td align="center">
+      <img src="{{ site.baseurl }}/event_02/images/Cubic_i.jpg" width="200px"><br>
+      <a href="https://www.cubic-i.co.jp/">株式会社 キュービック・アイ</a> 様
+    </td>
+  </tr>
+</table>
 
 <br>
 
