@@ -7,7 +7,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-## 佐々木智也
+## 佐々木 智也
 
 東京理科大学 先進工学部 機能デザイン工学科
 
@@ -23,7 +23,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-## 森元伊織
+## 森元 伊織
 
 国立大学法人東海国立大学機構岐阜大学 大学院医学系研究科
 
@@ -39,7 +39,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-## 角うらん
+## 角 うらん
 
 神戸大学 大学院農学研究科
 
@@ -55,7 +55,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-## 三好晃輔
+## 三好 晃輔
 
 広島大学 統合生命科学研究科
 
@@ -71,7 +71,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-## 福谷匠哉
+## 福谷 匠哉
 
 関西学院大学 理工学研究科
 
@@ -103,7 +103,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-## 陣内　響子
+## 陣内 響子
 
 東京理科大学 先進工学研究科
 
@@ -113,7 +113,23 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-キーワード：脳機能の左右差、染色体モザイク、片側のニューロン操作、ショウジョウバエ、嗅覚記憶行動
+キーワード：脳機能の左右差，染色体モザイク，片側のニューロン操作，ショウジョウバエ，嗅覚記憶行動
+
+***
+
+<br>
+
+## 原田 凌
+
+長崎大学大学院 総合生産科学研究科
+
+<img src="{{ site.baseurl }}/event_02/images/harada.jpg" width="300px">  
+
+## 状態遷移ダイナミクス解析に基づく魚群集団行動の類型表現
+
+<br>
+
+キーワード：魚群集団行動，オプティカルフロー，行動パターン解析
 
 ***
 
