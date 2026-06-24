@@ -103,4 +103,20 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
+## 陣内　響子
+
+東京理科大学 先進工学研究科
+
+<img src="{{ site.baseurl }}/event_02/images/jinnai.png" width="300px">  
+
+## 片側の脳を操作する：ショウジョウバエで探る左右非対称な脳機能
+
+<br>
+
+キーワード：脳機能の左右差、染色体モザイク、片側のニューロン操作、ショウジョウバエ、嗅覚記憶行動
+
+***
+
+<br>
+
 ## and more...
