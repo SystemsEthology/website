@@ -32,7 +32,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 会場周辺（名古屋大学駅・東山公園駅エリア）のおすすめランチスポットです。
 
 <div style="width:100%;max-width:640px;aspect-ratio:4/3;margin-bottom:1rem;">
-  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=17UiBSXJY5nr_9nvnWu_pHPF3uV3dlKI&ehbc=2E312F" width="100%" height="100%" style="border:0;border-radius:6px;" allowfullscreen="" loading="lazy"></iframe>
+  <iframe src="https://www.google.com/maps/d/embed?mid=17UiBSXJY5nr_9nvnWu_pHPF3uV3dlKI&ehbc=2E312F" width="100%" height="100%" style="border:0;border-radius:6px;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 <br>
@@ -44,7 +44,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 会場から**名城線で1駅（約3分）**の最寄りエリアです。
 
 <div style="width:100%;max-width:640px;aspect-ratio:4/3;margin-bottom:1rem;">
-  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=10OSaFv3xBKsm_qb7B4-a40KTUb1OdRg&ehbc=2E312F" width="100%" height="100%" style="border:0;border-radius:6px;" allowfullscreen="" loading="lazy"></iframe>
+  <iframe src="https://www.google.com/maps/d/embed?mid=10OSaFv3xBKsm_qb7B4-a40KTUb1OdRg&ehbc=2E312F" width="100%" height="100%" style="border:0;border-radius:6px;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 <br>
@@ -56,7 +56,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 名古屋最大の繁華街。会場から**地下鉄で約20分**。多人数の懇親会にも対応する大型店が多数あります。
 
 <div style="width:100%;max-width:640px;aspect-ratio:4/3;margin-bottom:1rem;">
-  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=12AOR6_xxes1_uLQ5-RQ9__arFIxlGb8&ehbc=2E312F" width="100%" height="100%" style="border:0;border-radius:6px;" allowfullscreen="" loading="lazy"></iframe>
+  <iframe src="https://www.google.com/maps/d/embed?mid=12AOR6_xxes1_uLQ5-RQ9__arFIxlGb8&ehbc=2E312F" width="100%" height="100%" style="border:0;border-radius:6px;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 <br>
@@ -68,5 +68,5 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 新幹線でお越しの方にも便利なエリア。会場から**地下鉄で約25分**。ホテルバーから気軽な居酒屋まで幅広い選択肢があります。
 
 <div style="width:100%;max-width:640px;aspect-ratio:4/3;margin-bottom:1rem;">
-  <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1WnWvs2XuKTAOOj5chDNkgIWTtGmOb7o&ehbc=2E312F" width="100%" height="100%" style="border:0;border-radius:6px;" allowfullscreen="" loading="lazy"></iframe>
+  <iframe src="https://www.google.com/maps/d/embed?mid=1WnWvs2XuKTAOOj5chDNkgIWTtGmOb7o&ehbc=2E312F" width="100%" height="100%" style="border:0;border-radius:6px;" allowfullscreen="" loading="lazy"></iframe>
 </div>
