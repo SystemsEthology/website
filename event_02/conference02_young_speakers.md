@@ -151,4 +151,20 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
+## 桂 宗広
+
+名古屋大学 理学研究科
+
+<img src="{{ site.baseurl }}/event_02/images/katsura.png" width="300px">  
+
+## ショウジョウバエの花の認識を支える視覚システムの適応進化
+
+<br>
+
+キーワード：ショウジョウバエ, 訪花, 視覚, 色覚, 種間比較
+
+***
+
+<br>
+
 ## and more...
