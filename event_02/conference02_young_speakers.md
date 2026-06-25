@@ -135,4 +135,20 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
+## 西本 翔裕
+
+東京大学 大学院総合文化研究科
+
+<img src="{{ site.baseurl }}/event_02/images/nishimoto.png" width="300px">  
+
+## 頭部固定マウスの知覚意思決定課題の設計：課題様式が行動を規定する
+
+<br>
+
+キーワード：マウス, 知覚意思決定, 頭部固定, Go/No-Go課題, 行動解析
+
+***
+
+<br>
+
 ## and more...
