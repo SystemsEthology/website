@@ -10,9 +10,9 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 <a href="https://app.payvent.net/embedded_forms/show/69e851cd68ada6e44ca651fb" target="_blank" rel="noopener noreferrer" style="font-size: 2.0em;">
   参加申し込みフォーム
 </a><br>
-<a href="https://app.payvent.net/embedded_forms/show/69e852de68ada6e44da827dc" target="_blank" rel="noopener noreferrer" style="font-size: 2.0em;">
-  要旨登録フォーム
-</a><br>
+
+## ~~要旨登録フォーム~~
+
 
 ***
 
