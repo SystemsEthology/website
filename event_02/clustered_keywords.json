@@ -1,31 +1,31 @@
 {
-  "participantCount": 132,
+  "participantCount": 151,
   "range": "B2:B(last)",
   "delimiter": "comma, Japanese comma/period, newline, 「」, whitespace between obvious keyword boundaries",
   "clusters": [
     {
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "nKeywords": 59,
-      "totalMentions": 91
+      "nKeywords": 69,
+      "totalMentions": 106
     },
     {
       "clusterId": 1,
       "clusterLabel": "研究手法・技術",
-      "nKeywords": 74,
-      "totalMentions": 133
+      "nKeywords": 82,
+      "totalMentions": 152
     },
     {
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "nKeywords": 46,
-      "totalMentions": 52
+      "nKeywords": 50,
+      "totalMentions": 62
     },
     {
       "clusterId": 3,
       "clusterLabel": "その他の研究キーワード",
-      "nKeywords": 165,
-      "totalMentions": 199
+      "nKeywords": 180,
+      "totalMentions": 221
     }
   ],
   "keywords": [
@@ -2436,14 +2436,273 @@
       "clusterLabel": "研究手法・技術",
       "x": 36.620601,
       "y": -76.366677
+    },
+    {
+      "keyword": "視覚機能",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 12.4,
+      "y": 118.2
+    },
+    {
+      "keyword": "隠れマルコフモデル",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 35.2,
+      "y": -110.8
+    },
+    {
+      "keyword": "姿勢推定",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -26.8,
+      "y": -121.6
+    },
+    {
+      "keyword": "オオミズナギドリ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -82.4,
+      "y": -46.2
+    },
+    {
+      "keyword": "羽ばたき周波数",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 31.8,
+      "y": 96.4
+    },
+    {
+      "keyword": "採餌",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -38.8,
+      "y": 121.2
+    },
+    {
+      "keyword": "帰巣",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 12.8,
+      "y": 121.6
+    },
+    {
+      "keyword": "カラス",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -78.2,
+      "y": -51.6
+    },
+    {
+      "keyword": "動物認知",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 103.2,
+      "y": 29.4
+    },
+    {
+      "keyword": "スティグマ",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 76.2,
+      "y": 88.4
+    },
+    {
+      "keyword": "規範逸脱行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 69.6,
+      "y": 79.4
+    },
+    {
+      "keyword": "生理指標",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 58.8,
+      "y": 111.2
+    },
+    {
+      "keyword": "センシング",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -18.8,
+      "y": -73.8
+    },
+    {
+      "keyword": "ウコッケイ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -70.8,
+      "y": -46.8
+    },
+    {
+      "keyword": "社会行動検出",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -31.8,
+      "y": -116.2
+    },
+    {
+      "keyword": "動画像処理",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -18.6,
+      "y": -126.8
+    },
+    {
+      "keyword": "擬態",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -44.8,
+      "y": 118.6
+    },
+    {
+      "keyword": "チョウ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -126.8,
+      "y": 29.6
+    },
+    {
+      "keyword": "知覚意思決定",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 8.6,
+      "y": 102.8
+    },
+    {
+      "keyword": "頭部固定",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -7.8,
+      "y": -84.2
+    },
+    {
+      "keyword": "Go/No-Go課題",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -3.4,
+      "y": -88.6
+    },
+    {
+      "keyword": "クロオオアリ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -127.6,
+      "y": 25.8
+    },
+    {
+      "keyword": "女王フェロモン",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -6.2,
+      "y": 100.8
+    },
+    {
+      "keyword": "労働分業",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -43.8,
+      "y": 98.4
+    },
+    {
+      "keyword": "生物流体力学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 91.8,
+      "y": -29.6
+    },
+    {
+      "keyword": "人工生命",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 86.2,
+      "y": -40.8
+    },
+    {
+      "keyword": "ダンゴムシ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -111.8,
+      "y": 39.6
+    },
+    {
+      "keyword": "オオグソクムシ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -107.4,
+      "y": 44.2
+    },
+    {
+      "keyword": "ミナミコメツキガニ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -103.0,
+      "y": 48.8
+    },
+    {
+      "keyword": "心",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 75.2,
+      "y": 91.4
+    },
+    {
+      "keyword": "行動抑制ネットワーク",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 20.8,
+      "y": 106.8
+    },
+    {
+      "keyword": "発生",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 61.8,
+      "y": 129.8
+    },
+    {
+      "keyword": "アフリカツメガエル",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -78.6,
+      "y": -14.8
+    },
+    {
+      "keyword": "孤独感",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 73.8,
+      "y": 83.4
+    },
+    {
+      "keyword": "エージェントシミュレーション",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 39.6,
+      "y": -112.4
+    },
+    {
+      "keyword": "ソメワケササクレヤモリ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -72.2,
+      "y": -19.6
+    },
+    {
+      "keyword": "脳進化",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 121.6,
+      "y": 6.8
     }
   ],
   "notes": {
     "category_policy": "4 fixed categories: 0=生物名・分類群名; 1=研究手法・技術; 2=学問分野名; 3=その他の研究キーワード",
-    "classification_policy": "Classification was manually re-evaluated by the keyword's primary role in the supplied research context: taxa/common organism groups→0; analytical, experimental, measurement, modeling, software, telemetry, robotic, and intervention terms→1; established academic fields/interdisciplinary domains→2; behaviors, biological mechanisms, anatomical/physiological states, concepts, contexts, and application terms→3.",
-    "deduplication_policy": "Keyword order follows first appearance after normalization. Direct translation/orthographic duplicates were normalized in favor of Japanese or more standard Japanese labels: アニマルウェルフェア→動物福祉, 古典的条件づけ→古典的条件付け, 母仔関係→母子関係, 鳥→鳥類. English labels were retained when no Japanese duplicate was supplied in the source list.",
+    "classification_policy": "Classification was manually re-evaluated by each keyword's primary role in the supplied research context: taxa/common organism groups→0; analytical, experimental, measurement, modeling, software, telemetry, sensing, robotic, and intervention terms→1; established academic fields/interdisciplinary domains→2; behaviors, biological mechanisms, anatomical/physiological states, concepts, contexts, and application terms→3.",
+    "deduplication_policy": "Keyword order follows first appearance after normalization. Direct translation/orthographic duplicates were normalized in favor of Japanese or more standard Japanese labels: アニマルウェルフェア→動物福祉, 古典的条件づけ→古典的条件付け, 母仔関係→母子関係, 鳥→鳥類, 移動生態学→移動生態. English labels were retained when no Japanese duplicate was supplied in the source list.",
     "split_policy": "The bundled item 集団現象・臨界現象・コントラリアン was split into three keywords. Terms where the middle dot is part of the term, such as 化学・光遺伝学, were retained as a single keyword.",
-    "layout_policy": "Coordinates were regenerated from curated semantic anchors inside each fixed class, not from language-distance embedding. Subregions separate organismal taxonomy, image/tracking methods, computational modeling, molecular/chemical methods, telemetry/sensing, engineering/robotics, ecology/behavioral fields, neuro/psych fields, social behavior, foraging/mating/defense, sensory/neural/cognitive terms, development/physiology/genetics, parent-offspring terms, locomotion/biomechanics, and context/application terms.",
-    "update_summary": "344 unique keywords were retained after normalization from 475 normalized mentions across 132 non-empty supplied lines. Cluster counts and mention totals were recalculated."
+    "layout_policy": "Coordinates use curated semantic anchors inside each fixed class rather than language-distance embedding. Newly added terms were placed near semantically related subregions: taxa groups, image/tracking methods, computational modeling, experimental tasks, telemetry/sensing, engineering/robotics, ecology/behavioral fields, neuro/psych fields, social behavior, foraging/mating/defense, sensory/neural/cognitive terms, development/physiology/genetics, locomotion/biomechanics, and context/application terms.",
+    "update_summary": "381 unique keywords were retained after normalization from 541 normalized mentions across 151 non-empty supplied lines. Cluster counts and mention totals were recalculated."
   }
 }
