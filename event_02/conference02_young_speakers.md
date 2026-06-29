@@ -167,4 +167,16 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-## and more...
+## 青田 幸大
+
+東京大学大学院 農学生命科学研究科 水圏生物科学専攻
+
+<img src="{{ site.baseurl }}/event_02/images/Aota.jpg" width="300px">  
+
+## 海洋におけるアカウミガメの睡眠ダイナミクス：睡眠パターンの個体内・個体間変異およびエネルギー要求量との関係
+
+<br>
+
+キーワード：，睡眠生態，行動睡眠，バイオロギング，ウミガメ
+
+***
