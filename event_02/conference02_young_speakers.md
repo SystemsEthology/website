@@ -173,7 +173,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <img src="{{ site.baseurl }}/event_02/images/Aota.jpg" width="300px">  
 
-## 海洋におけるアカウミガメの睡眠ダイナミクス：睡眠パターンの個体内・個体間変異および<br>エネルギー要求量との関係
+## 海洋におけるアカウミガメの睡眠ダイナミクス：睡眠パターンの個体内・個体間変異およびエネルギー要求量との関係
 
 <br>
 
