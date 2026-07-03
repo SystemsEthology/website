@@ -7,70 +7,6 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
-## 佐々木 智也
-
-東京理科大学 先進工学部 機能デザイン工学科
-
-<img src="{{ site.baseurl }}/event_02/images/sasaki.jpg" width="300px">  
-
-## 拡張人型ロボットの行動をつくる
-
-<br>
-
-キーワード：人間拡張，ロボット，強化学習，インタラクション，手
-
-***
-
-<br>
-
-## 森元 伊織
-
-国立大学法人東海国立大学機構岐阜大学 大学院医学系研究科
-
-<img src="{{ site.baseurl }}/event_02/images/morimoto.jpg" width="300px">  
-
-## 音から読み解く翅ばたきの力学：スズメバチの飛翔音と非定常空力機構の解明
-
-<br>
-
-キーワード：飛翔，翅音，翅ばたき，空力
-
-***
-
-<br>
-
-## 角 うらん
-
-神戸大学 大学院農学研究科
-
-<img src="{{ site.baseurl }}/event_02/images/sumi.png" width="300px">  
-
-## 鳥糞模様は警告色？: オジロアシナガゾウムシの防衛戦略
-
-<br>
-
-キーワード：捕食回避
-
-***
-
-<br>
-
-## 三好 晃輔
-
-広島大学 統合生命科学研究科
-
-<img src="{{ site.baseurl }}/event_02/images/miyoshi.png" width="300px">  
-
-## どうやって群れを操るか？：視覚に基づく群制御モデル
-
-<br>
-
-キーワード：群制御，群れ，数理モデル，視覚
-
-***
-
-<br>
-
 ## 福谷 匠哉
 
 関西学院大学 理工学研究科
@@ -82,22 +18,6 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 <br>
 
 キーワード：社会的孤立，栄養交換，トラッキング，安定同位体，行動検出
-
-***
-
-<br>
-
-## 五藤 花
-
-北海道大学 生命科学院
-
-<img src="{{ site.baseurl }}/event_02/images/goto.jpg" width="300px">  
-
-## 音圧からみた鳥の歌の進化
-
-<br>
-
-キーワード：生物音響学，音声コミュニケーション，進化，鳴禽類
 
 ***
 
@@ -119,6 +39,55 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
+## 森元 伊織
+
+国立大学法人東海国立大学機構岐阜大学 大学院医学系研究科
+
+<img src="{{ site.baseurl }}/event_02/images/morimoto.jpg" width="300px">  
+
+## 音から読み解く翅ばたきの力学：スズメバチの飛翔音と非定常空力機構の解明
+
+<br>
+
+キーワード：飛翔，翅音，翅ばたき，空力
+
+***
+
+<br>
+
+
+## 佐々木 智也
+
+東京理科大学 先進工学部 機能デザイン工学科
+
+<img src="{{ site.baseurl }}/event_02/images/sasaki.jpg" width="300px">  
+
+## 拡張人型ロボットの行動をつくる
+
+<br>
+
+キーワード：人間拡張，ロボット，強化学習，インタラクション，手
+
+***
+
+<br>
+
+## 三好 晃輔
+
+広島大学 統合生命科学研究科
+
+<img src="{{ site.baseurl }}/event_02/images/miyoshi.png" width="300px">  
+
+## どうやって群れを操るか？：視覚に基づく群制御モデル
+
+<br>
+
+キーワード：群制御，群れ，数理モデル，視覚
+
+***
+
+<br>
+
 ## 原田 凌
 
 長崎大学大学院 総合生産科学研究科
@@ -133,19 +102,20 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 ***
 
-<br>
-
-## 西本 翔裕
-
-東京大学 大学院総合文化研究科
-
-<img src="{{ site.baseurl }}/event_02/images/nishimoto.png" width="300px">  
-
-## 頭部固定マウスの知覚意思決定課題の設計：課題様式が行動を規定する
 
 <br>
 
-キーワード：マウス, 知覚意思決定, 頭部固定, Go/No-Go課題, 行動解析
+## 五藤 花
+
+北海道大学 生命科学院
+
+<img src="{{ site.baseurl }}/event_02/images/goto.jpg" width="300px">  
+
+## 音圧からみた鳥の歌の進化
+
+<br>
+
+キーワード：生物音響学，音声コミュニケーション，進化，鳴禽類
 
 ***
 
@@ -165,6 +135,25 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 ***
 
+
+
+<br>
+
+## 西本 翔裕
+
+東京大学 大学院総合文化研究科
+
+<img src="{{ site.baseurl }}/event_02/images/nishimoto.png" width="300px">  
+
+## 頭部固定マウスの知覚意思決定課題の設計：課題様式が行動を規定する
+
+<br>
+
+キーワード：マウス, 知覚意思決定, 頭部固定, Go/No-Go課題, 行動解析
+
+***
+
+
 <br>
 
 ## 青田 幸大
@@ -179,4 +168,20 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 キーワード：睡眠生態，行動睡眠，バイオロギング，ウミガメ
 
+***
+
+
 <br>
+
+## 角 うらん
+
+神戸大学 大学院農学研究科
+
+<img src="{{ site.baseurl }}/event_02/images/sumi.png" width="300px">  
+
+## 鳥糞模様は警告色？: オジロアシナガゾウムシの防衛戦略
+
+<br>
+
+キーワード：捕食回避
+
