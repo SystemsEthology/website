@@ -1,7 +1,7 @@
 ---
 layout: page_conference_02
 title: （終了しました）特別講演 佐々木崇夫
-order: 14
+order: 24
 ogp_image: /event_02/images/systems_ethology_2026_01.png
 ---
 ***
