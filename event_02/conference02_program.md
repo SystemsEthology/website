@@ -71,8 +71,3 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 <br>
 
 ***  
-
-
-## プログラムブック
-TBA  
-<!-- <a href="{{ site.baseurl }}/event_01/images/システム行動学研究会_プログラム冊子.pdf" target="_blank" rel="noopener noreferrer">プログラムブックはこちら</a>   -->
