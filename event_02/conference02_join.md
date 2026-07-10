@@ -10,6 +10,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 <a href="https://app.payvent.net/embedded_forms/show/69e851cd68ada6e44ca651fb" target="_blank" rel="noopener noreferrer" style="font-size: 2.0em;">
   参加申し込みフォーム
 </a><br>
+<br>
 
 これ以降の対面のお申込みは引き続き可能ですが、必要な連絡が届かない可能性がございます。
 また、2日目のお弁当を発注しましたので、ご提供できない可能性がございます。
