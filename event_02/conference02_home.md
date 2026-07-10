@@ -17,6 +17,31 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 <br>
 
+## 大会パンフレット
+***
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+    <a href="{{ site.baseurl }}/event_02/images/第2回システム行動学研究会_パンフレット.pdf" target="_blank" rel="noopener noreferrer">
+        パンフレットをプレビュー
+    </a>
+    <a href="{{ site.baseurl }}/event_02/images/第2回システム行動学研究会_パンフレット.pdf" download="第2回システム行動学研究会_パンフレット.pdf">
+        パンフレットをダウンロード
+    </a>
+</div>
+
+<object
+  data="{{ site.baseurl }}/event_02/images/第2回システム行動学研究会_パンフレット.pdf"
+  type="application/pdf"
+  width="100%"
+  height="700"
+  aria-label="第2回システム行動学研究会パンフレットのプレビュー">
+  <p>
+    PDFを表示できない場合は、
+    <a href="{{ site.baseurl }}/event_02/images/第2回システム行動学研究会_パンフレット.pdf" target="_blank" rel="noopener noreferrer">こちらからパンフレットを開いてください</a>。
+  </p>
+</object>
+
+<br>
+
 ## ポスター
 ***
 <div style="display: flex; gap: 20px; margin-bottom: 16px;">
