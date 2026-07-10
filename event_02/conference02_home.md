@@ -40,8 +40,8 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 ## 大会パンフレット
 ***
-<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
-    <a href="{{ site.baseurl }}/event_02/images/第2回システム行動学研究会_パンフレット.pdf" download="第2回システム行動学研究会_パンフレット.pdf">
+<div style="display: flex; gap: 20px; margin-bottom: 16px;">
+    <a href="{{ site.baseurl }}/event_02/images/第2回システム行動学研究会_パンフレット.pdf" target="_blank" rel="noopener noreferrer">
         パンフレットをダウンロード
     </a>
 </div>
