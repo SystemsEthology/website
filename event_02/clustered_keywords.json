@@ -1,31 +1,31 @@
 {
-  "participantCount": 171,
+  "participantCount": 193,
   "range": "B2:B(last)",
   "delimiter": "comma, Japanese comma/period, newline, 「」, whitespace between obvious keyword boundaries",
   "clusters": [
     {
       "clusterId": 0,
       "clusterLabel": "生物名・分類群名",
-      "nKeywords": 77,
-      "totalMentions": 135
+      "nKeywords": 87,
+      "totalMentions": 150
     },
     {
       "clusterId": 1,
       "clusterLabel": "研究手法・技術",
-      "nKeywords": 92,
-      "totalMentions": 200
+      "nKeywords": 98,
+      "totalMentions": 212
     },
     {
       "clusterId": 2,
       "clusterLabel": "学問分野名",
-      "nKeywords": 61,
-      "totalMentions": 86
+      "nKeywords": 66,
+      "totalMentions": 96
     },
     {
       "clusterId": 3,
       "clusterLabel": "その他の研究キーワード",
-      "nKeywords": 207,
-      "totalMentions": 281
+      "nKeywords": 237,
+      "totalMentions": 317
     }
   ],
   "keywords": [
@@ -3087,14 +3087,371 @@
       "clusterLabel": "その他の研究キーワード",
       "x": -51.3641,
       "y": 106.2497
+    },
+    {
+      "keyword": "ハリガネムシ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -102.6316,
+      "y": 47.5625
+    },
+    {
+      "keyword": "入水",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 69.4383,
+      "y": 104.1358
+    },
+    {
+      "keyword": "宿主操作",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -17.5151,
+      "y": 105.8146
+    },
+    {
+      "keyword": "行動操作",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -20.3141,
+      "y": 104.1708
+    },
+    {
+      "keyword": "延長された表現型",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 58.9043,
+      "y": 125.2587
+    },
+    {
+      "keyword": "折紙工学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 92.1686,
+      "y": -40.6411
+    },
+    {
+      "keyword": "音響",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 8.3872,
+      "y": 101.9045
+    },
+    {
+      "keyword": "衝突解析",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 14.7278,
+      "y": -114.6181
+    },
+    {
+      "keyword": "アオリイカ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -102.184,
+      "y": 48.8461
+    },
+    {
+      "keyword": "対捕食者行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -45.5342,
+      "y": 124.6619
+    },
+    {
+      "keyword": "種間相互作用",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -50.3664,
+      "y": 99.2187
+    },
+    {
+      "keyword": "映像認知",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 10.236,
+      "y": 93.2737
+    },
+    {
+      "keyword": "3Dモデル",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 17.7525,
+      "y": -111.1438
+    },
+    {
+      "keyword": "swimming",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 24.8163,
+      "y": 97.9837
+    },
+    {
+      "keyword": "チャバネゴキブリ属",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -126.7626,
+      "y": 26.053
+    },
+    {
+      "keyword": "食性",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -46.3469,
+      "y": 123.5989
+    },
+    {
+      "keyword": "ウミネコ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -75.5891,
+      "y": -51.1953
+    },
+    {
+      "keyword": "魚類",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -108.8213,
+      "y": -37.7475
+    },
+    {
+      "keyword": "生態",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 80.738,
+      "y": 83.1109
+    },
+    {
+      "keyword": "好蟻性ハネカクシ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -129.2558,
+      "y": 27.0071
+    },
+    {
+      "keyword": "猛禽類",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -72.1103,
+      "y": -52.0841
+    },
+    {
+      "keyword": "フクロウ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -74.3614,
+      "y": -50.4894
+    },
+    {
+      "keyword": "音声",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 5.7245,
+      "y": 103.8217
+    },
+    {
+      "keyword": "ヘビ",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -78.5252,
+      "y": -10.8227
+    },
+    {
+      "keyword": "視覚生態学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 102.4407,
+      "y": 53.6314
+    },
+    {
+      "keyword": "頭足類",
+      "clusterId": 0,
+      "clusterLabel": "生物名・分類群名",
+      "x": -102.4389,
+      "y": 45.3399
+    },
+    {
+      "keyword": "光物理学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 85.7987,
+      "y": -46.5104
+    },
+    {
+      "keyword": "心理学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 99.5274,
+      "y": 21.3867
+    },
+    {
+      "keyword": "深層学習モデル",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 30.6963,
+      "y": -112.7759
+    },
+    {
+      "keyword": "視覚情報処理",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -30.0458,
+      "y": -120.5427
+    },
+    {
+      "keyword": "錯視",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 11.3544,
+      "y": 97.0252
+    },
+    {
+      "keyword": "非線形系",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 43.7365,
+      "y": 98.9566
+    },
+    {
+      "keyword": "非平衡系",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 3.9253,
+      "y": 109.3287
+    },
+    {
+      "keyword": "組織動力学",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -13.3019,
+      "y": 104.6637
+    },
+    {
+      "keyword": "意思動力学",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 22.015,
+      "y": 93.0713
+    },
+    {
+      "keyword": "動物行動",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 71.7462,
+      "y": 95.4404
+    },
+    {
+      "keyword": "婚姻贈呈",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -44.9708,
+      "y": 120.5761
+    },
+    {
+      "keyword": "交尾器",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -46.1973,
+      "y": 122.4341
+    },
+    {
+      "keyword": "分析化学",
+      "clusterId": 2,
+      "clusterLabel": "学問分野名",
+      "x": 117.5425,
+      "y": 9.0398
+    },
+    {
+      "keyword": "二次代謝",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 59.4554,
+      "y": 121.212
+    },
+    {
+      "keyword": "DNA",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 56.6712,
+      "y": 116.4897
+    },
+    {
+      "keyword": "MEMS",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": -8.5621,
+      "y": -107.5005
+    },
+    {
+      "keyword": "ハイドロゲル",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 69.6017,
+      "y": 105.4095
+    },
+    {
+      "keyword": "物性解析",
+      "clusterId": 1,
+      "clusterLabel": "研究手法・技術",
+      "x": 23.8834,
+      "y": -96.1559
+    },
+    {
+      "keyword": "性選択",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -45.2375,
+      "y": 121.624
+    },
+    {
+      "keyword": "風",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 79.0841,
+      "y": 77.1346
+    },
+    {
+      "keyword": "移動戦略",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 34.5622,
+      "y": 105.9795
+    },
+    {
+      "keyword": "自傷行為",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 73.4065,
+      "y": 85.9465
+    },
+    {
+      "keyword": "マインドフルネス",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 76.6617,
+      "y": 90.4719
+    },
+    {
+      "keyword": "ソーシャルサポート",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": -52.5144,
+      "y": 105.6488
+    },
+    {
+      "keyword": "感情調節",
+      "clusterId": 3,
+      "clusterLabel": "その他の研究キーワード",
+      "x": 72.4005,
+      "y": 86.5022
     }
   ],
   "notes": {
     "category_policy": "4 fixed categories: 0=生物名・分類群名; 1=研究手法・技術; 2=学問分野名; 3=その他の研究キーワード",
     "classification_policy": "Each keyword was reviewed by primary research role rather than language-distance embedding: organism/taxon or organism-group names→0; analytical, experimental, measurement, modeling, software, telemetry, sensing, robotic, optimization, and intervention terms→1; established academic, interdisciplinary, engineering, psychological, ecological, agricultural, and theoretical fields→2; behaviors, biological mechanisms, anatomical/physiological states, sensory/cognitive concepts, ecological contexts, locations, and applications→3.",
-    "deduplication_policy": "Keyword order follows first appearance after normalization. Japanese or the more standard Japanese form was retained for direct translation, orthographic, or explicit variant duplicates: アニマルウェルフェア→動物福祉, 古典的条件づけ→古典的条件付け, 母仔関係→母子関係, 鳥→鳥類, 移動生態→移動生態学, 数理生物→数理生物学, Soldier crab→ミナミコメツキガニ. English-only terms without a supplied Japanese duplicate were retained.",
+    "deduplication_policy": "Keyword order follows first appearance after normalization. Japanese or the more standard Japanese form was retained for direct translation, orthographic, or explicit variant duplicates: アニマルウェルフェア→動物福祉, 古典的条件づけ→古典的条件付け, 母仔関係→母子関係, 鳥→鳥類, 移動生態→移動生態学, 数理生物→数理生物学, Soldier crab→ミナミコメツキガニ. English-only terms without a supplied Japanese duplicate, including swimming, were retained.",
     "split_policy": "Bundled middle-dot lists were split only where the dot clearly separated independent keywords: 集団現象・臨界現象・コントラリアン, 組合せ最適化・LLM・数理モデリング, 行動解析・モデリング, and 行動解析・ショウジョウバエ・群れ・キーストーン個体・多様性. Terms where the middle dot is part of one technical term, such as 化学・光遺伝学, were retained.",
-    "layout_policy": "Coordinates were regenerated from curated semantic anchors inside each fixed class, not from language-distance mapping. Taxa are arranged by major lineage; methods by computer vision/tracking, behavioral or acoustic analysis, AI, statistical modeling, experimental intervention, molecular analysis, sensing/telemetry, and engineering; disciplines by ecology/behavior, neuroscience, psychology, evolution/genetics, bioacoustics/navigation, engineering, mathematical theory, human/earth applications, and agriculture; other topics by social behavior, foraging/reproduction/defense, sensory communication, cognition/learning, development/neural physiology/genetics, locomotion/biomechanics, parent-offspring/attachment, environmental context, life history, and psychological/social concepts.",
-    "update_summary": "20 appended keyword records (72 mentions) were incorporated. The result contains 437 unique normalized keywords from 702 mentions; all four fixed classes and every within-class coordinate were recalculated."
+    "layout_policy": "Coordinates are curated from semantic anchors inside each fixed class rather than language-distance mapping. Existing curated coordinates were preserved; newly added taxa were placed by lineage, methods by analytical or engineering function, disciplines by academic domain, and other terms by behavioral, sensory, cognitive, physiological, ecological, or psychosocial meaning. Small deterministic offsets prevent overlap.",
+    "update_summary": "22 appended participant rows (73 mentions) were incorporated. 51 new unique keyword records were added after normalization and deduplication. The result contains 488 unique keywords from 775 mentions across 193 participants."
   }
 }
