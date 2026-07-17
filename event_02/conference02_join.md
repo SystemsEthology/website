@@ -61,7 +61,7 @@ ogp_image: /event_02/images/systems_ethology_2026_01.png
 
 ***
 
-### 現在の参加者数（7月9日現在）：202人
+### 現在の参加者数（7月12日現在）：約240人
 
 <iframe
   src="{{ '/event_02/mapping.html' | relative_url }}"
